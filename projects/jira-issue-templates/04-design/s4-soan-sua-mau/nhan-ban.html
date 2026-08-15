@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Jira Automation - Nhân bản mẫu sang dự án khác</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                        "success-container": "#B7F0C4",
+                        "on-success-container": "#002110",
+                        "surface-container-low": "#f1f3ff",
+                        "scrim": "#051a3e",
+                      "surface-container-high": "#e1e8ff",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-container": "#ffc6b2",
+                      "tertiary-fixed": "#ffdbcf",
+                      "secondary-fixed-dim": "#b1c6ff",
+                      "error-container": "#ffdad6",
+                      "on-primary-container": "#c4d2ff",
+                      "inverse-primary": "#b2c5ff",
+                      "on-tertiary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "surface-tint": "#0c56d0",
+                      "primary-fixed-dim": "#b2c5ff",
+                      "surface-dim": "#ccdaff",
+                      "on-surface": "#051a3e",
+                      "surface-variant": "#d8e2ff",
+                      "outline": "#737685",
+                      "on-secondary-fixed-variant": "#00419d",
+                      "tertiary": "#7b2600",
+                      "on-background": "#051a3e",
+                      "on-secondary-fixed": "#001946",
+                      "on-tertiary-fixed": "#380d00",
+                      "secondary-container": "#709bfe",
+                      "secondary": "#285ab9",
+                      "surface-container-highest": "#d8e2ff",
+                      "primary-fixed": "#dae2ff",
+                      "on-secondary-container": "#003179",
+                      "tertiary-container": "#a33500",
+                      "on-primary-fixed": "#001848",
+                      "inverse-surface": "#1d3054",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed-dim": "#ffb59b",
+                      "surface-bright": "#faf9ff",
+                      "surface": "#faf9ff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container": "#e9edff",
+                      "inverse-on-surface": "#edf0ff",
+                      "background": "#faf9ff",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#812800",
+                      "on-surface-variant": "#434654",
+                      "secondary-fixed": "#d9e2ff",
+                      "primary": "#003d9b",
+                      "outline-variant": "#c3c6d6",
+                      "surface-container-low": "#f1f3ff",
+                      "primary-container": "#0052cc",
+                      "on-primary-fixed-variant": "#0040a2",
+                      "on-error": "#ffffff",
+                      // Specific status colors requested in prompt
+                      "status-success-bg": "#E3FCEF",
+                      "status-success-text": "#006644",
+                      "status-warning-bg": "#FFFAE6",
+                      "status-warning-text": "#FF8B00",
+                      "status-error-bg": "#FFEBE6",
+                      "status-error-text": "#BF2600"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "layout-gutter": "16px",
+                      "md": "12px",
+                      "xs": "4px",
+                      "xl": "24px",
+                      "sm": "8px",
+                      "layout-margin": "24px",
+                      "lg": "16px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "h1": [
+                              "Hanken Grotesk"
+                      ],
+                      "mono": [
+                              "JetBrains Mono"
+                      ],
+                      "label-xs": [
+                              "Inter"
+                      ],
+                      "h3": [
+                              "Hanken Grotesk"
+                      ],
+                      "h2": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-md": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h1": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-xs": [
+                              "11px",
+                              {
+                                      "lineHeight": "14px",
+                                      "letterSpacing": "0.04em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "h3": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h2": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for high density */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #DFE1E6;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C1C7D0;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-lg h-screen overflow-hidden flex selection:bg-primary-container selection:text-on-primary">
+<!-- Background App Shell (Blurred/Inactive) -->
+<!-- SideNavBar -->
+<nav aria-label="Main Navigation" class="bg-surface text-primary fixed left-0 top-0 h-full w-[240px] border-r border-outline-variant flex flex-col h-screen p-md space-y-sm z-10">
+<!-- Header -->
+<div class="flex items-center space-x-md p-sm mb-lg">
+<div class="w-8 h-8 rounded-DEFAULT bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">api</span>
+</div>
+<div>
+<h1 class="text-h2 font-h2 font-bold text-primary">Jira Automation</h1>
+<p class="text-label-xs font-label-xs text-on-surface-variant uppercase tracking-wider">Project Selector</p>
+</div>
+</div>
+<!-- Create CTA -->
+<!-- Navigation Links -->
+<div class="flex-1 space-y-xs">
+<a class="flex items-center space-x-md px-sm py-sm rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">description</span>
+<span class="font-label-md text-label-md group-hover:text-primary transition-colors">Mẫu issue</span>
+</a>
+<a class="flex items-center space-x-md px-sm py-sm rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">history</span>
+<span class="font-label-md text-label-md group-hover:text-primary transition-colors">Lịch sử issue</span>
+</a>
+<!-- Active Tab -->
+<a class="flex items-center space-x-md px-sm py-sm text-primary bg-secondary-fixed font-bold rounded-lg transition-transform duration-150 scale-[0.98]" href="#">
+<span class="material-symbols-outlined fill text-[20px]">settings</span>
+<span class="font-label-md text-label-md">Cấu hình dự án</span>
+</a>
+</div>
+<!-- Footer Navigation -->
+<div class="mt-auto pt-md border-t border-outline-variant">
+<a class="flex items-center space-x-md px-sm py-sm rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">account_circle</span>
+<span class="font-label-md text-label-md group-hover:text-primary transition-colors">Thông tin tài khoản</span>
+</a>
+</div>
+</nav>
+<!-- TopAppBar -->
+<header aria-label="Top Header" class="bg-surface text-primary docked full-width top-0 ml-[240px] border-b border-outline-variant flex justify-between items-center h-16 px-xl w-[calc(100%-240px)] z-10 fixed">
+<!-- Left: Product / Context -->
+<div class="flex items-center">
+<h2 class="text-h1 font-h1 font-bold text-on-surface">Cấu hình dự án: IT Helpdesk</h2>
+</div>
+<!-- Right: Actions & Profile -->
+<div class="flex items-center space-x-lg">
+<!-- Global Search -->
+<div class="relative w-64 hidden lg:block">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full h-8 pl-[32px] pr-sm bg-surface text-body-sm font-body-sm text-on-surface border border-outline-variant rounded-DEFAULT focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-shadow placeholder:text-on-surface-variant" placeholder="Tìm kiếm cấu hình..." type="text"/>
+</div>
+<!-- Icon Actions -->
+<div class="flex items-center space-x-xs border-r border-outline-variant pr-lg mr-lg">
+<button class="p-xs rounded-DEFAULT text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors duration-200 relative focus:ring-2 focus:ring-primary focus:ring-offset-2">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full border border-surface"></span>
+</button>
+<button class="p-xs rounded-DEFAULT text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors duration-200 focus:ring-2 focus:ring-primary focus:ring-offset-2">
+<span class="material-symbols-outlined text-[20px]">help</span>
+</button>
+</div>
+<!-- Trailing CTA (From TopAppBar JSON) -->
+<!-- Profile -->
+<button class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-primary font-label-md text-label-md font-bold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 shrink-0">
+<img alt="User Avatar" class="w-full h-full object-cover rounded-full" data-alt="A professional headshot of a corporate user, smiling slightly, set against a clean, minimal white background, sharp focus, professional lighting, B2B software aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBydecNDuIhWkfp2o0-RHpVwE_Hhxs37qlJpqCElNNExaYj30ZwktWD2U_V3y61uuRCtN-cWjfZsyCyRHXK8aFjJIN_zLZwEdulJMHb-XrwMskmzvSjzEBoMQWbmuBDs0lCAAnXpaA4E0mX0vj0jGLpmduf3zU4Ad_zrsuukMhvFITyIAWIvetTQwfxHw6uzM00l6it7CSCuXvq6OPvaUWhlxrI2TyQk2miEtGMcesao3RqwjO8NwVn1bAVW2FDe4s6PP9XJs6Rz_E"/>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas (Background) -->
+<main aria-hidden="true" class="mt-16 ml-[240px] p-layout-margin w-full h-[calc(100vh-64px)] overflow-y-auto bg-background flex flex-col space-y-layout-gutter blur-[2px] pointer-events-none opacity-80">
+<!-- Fake Content to show background context -->
+<div class="flex justify-between items-end">
+<div>
+<h3 class="text-h2 font-h2 text-on-surface font-bold">Mẫu Issue hiện tại</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-xs">Quản lý các mẫu cấu hình cho dự án IT Helpdesk.</p>
+</div>
+</div>
+<div class="bg-surface border border-outline-variant rounded-lg flex flex-col">
+<!-- Table Header -->
+<div class="grid grid-cols-12 gap-sm p-sm bg-surface-container-low border-b border-outline-variant font-label-md text-label-md text-on-surface">
+<div class="col-span-4">Tên Mẫu</div>
+<div class="col-span-3">Loại Issue</div>
+<div class="col-span-3">Trạng thái</div>
+<div class="col-span-2 text-right">Thao tác</div>
+</div>
+<!-- Table Rows -->
+<div class="grid grid-cols-12 gap-sm p-sm items-center border-b border-outline-variant hover:bg-surface-container-high transition-colors min-h-[40px]">
+<div class="col-span-4 font-body-sm text-on-surface">Yêu cầu cấp laptop mới</div>
+<div class="col-span-3 font-body-sm text-on-surface-variant">Service Request</div>
+<div class="col-span-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-xs font-label-xs bg-success-container text-on-success-container">Hoạt động</span>
+</div>
+<div class="col-span-2 text-right">
+<button class="text-primary font-label-md text-label-md hover:underline">Sửa</button>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-sm p-sm items-center border-b border-outline-variant hover:bg-surface-container-high transition-colors min-h-[40px]">
+<div class="col-span-4 font-body-sm text-on-surface">Báo lỗi phần mềm kế toán</div>
+<div class="col-span-3 font-body-sm text-on-surface-variant">Incident</div>
+<div class="col-span-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-xs font-label-xs bg-success-container text-on-success-container">Hoạt động</span>
+</div>
+<div class="col-span-2 text-right">
+<button class="text-primary font-label-md text-label-md hover:underline">Sửa</button>
+</div>
+</div>
+</div>
+</main>
+<!-- MODAL OVERLAY -->
+<div aria-labelledby="modal-title" aria-modal="true" class="fixed inset-0 bg-scrim/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm" role="dialog">
+<!-- MODAL CONTAINER -->
+<div class="bg-surface rounded-xl shadow-[0_8px_24px_rgba(9,30,66,0.25)] w-full max-w-[600px] flex flex-col overflow-hidden animate-[fadeIn_0.2s_ease-out]">
+<!-- Modal Header -->
+<div class="flex justify-between items-center p-xl border-b border-outline-variant">
+<div class="flex items-center space-x-md">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">content_copy</span>
+</div>
+<h2 class="text-h2 font-h2 font-bold text-on-surface" id="modal-title">Nhân bản mẫu issue</h2>
+</div>
+<button aria-label="Close modal" class="p-xs rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors focus:outline-none focus:ring-2 focus:ring-primary">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Modal Body -->
+<div class="p-xl space-y-layout-gutter overflow-y-auto max-h-[614px]">
+<!-- Target Project Selection -->
+<div class="space-y-sm">
+<label class="block font-label-md text-label-md text-on-surface" for="target-project">Chọn dự án đích <span class="text-error">*</span></label>
+<div class="relative">
+<select class="w-full h-[40px] pl-md pr-xl bg-surface border border-outline-variant rounded-DEFAULT text-body-lg font-body-lg text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary appearance-none hover:bg-surface-container-lowest cursor-pointer transition-shadow" id="target-project">
+<option disabled="" value="">-- Chọn dự án --</option>
+<option selected="" value="hrq">HRQ — Yêu cầu nhân sự</option>
+<option value="fin">FIN — Tài chính kế toán</option>
+<option value="mkt">MKT — Marketing</option>
+</select>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Compatibility Check Results (Bento-style layout for data density) -->
+<div class="space-y-sm mt-lg">
+<div class="flex items-center justify-between">
+<h3 class="font-label-md text-label-md text-on-surface">Kết quả đối chiếu trường dữ liệu</h3>
+<span class="inline-flex items-center px-2 py-1 rounded bg-surface-container-high text-on-surface-variant font-mono text-[11px] font-medium border border-outline-variant">
+                            Checking against HRQ schema...
+                        </span>
+</div>
+<div class="bg-surface-bright border border-outline-variant rounded-lg overflow-hidden flex flex-col">
+<!-- Error Item 1 -->
+<div class="flex items-start p-md border-b border-outline-variant bg-status-error-bg/30">
+<span class="material-symbols-outlined text-on-warning-container mt-0.5 mr-md shrink-0">warning</span>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface font-medium">Trường <span class="font-mono bg-surface-container border border-outline-variant px-1 rounded mx-1">Thời gian thực tế đã bỏ ra để xử lý</span> không tồn tại ở HRQ.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5 text-[12px]">Hành động: Sẽ bị bỏ trống trong mẫu mới.</p>
+</div>
+</div>
+<!-- Error Item 2 -->
+<div class="flex items-start p-md border-b border-outline-variant bg-status-error-bg/30">
+<span class="material-symbols-outlined text-on-warning-container mt-0.5 mr-md shrink-0">warning</span>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface font-medium">Giá trị <span class="font-mono bg-surface-container border border-outline-variant px-1 rounded mx-1">Khối văn phòng</span> của trường Nhóm hỗ trợ không có trong HRQ.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5 text-[12px]">Hành động: Sẽ bị thiết lập lại về mặc định.</p>
+</div>
+</div>
+<!-- Success Item -->
+<div class="flex items-start p-md bg-status-success-bg/20">
+<span class="material-symbols-outlined text-status-success-text mt-0.5 mr-md shrink-0">check_circle</span>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface font-medium">7 trường còn lại mang sang nguyên vẹn.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5 text-[12px]">Bao gồm: Tiêu đề, Mô tả, Người báo cáo, Độ ưu tiên, v.v.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Explanation Footer Note -->
+<div class="bg-surface-container-low border border-outline-variant rounded-DEFAULT p-md flex items-start space-x-md">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                        Các trường lỗi sẽ bị bỏ trống. Mẫu mới sau khi nhân bản sẽ ở trạng thái <strong class="text-on-surface font-semibold">Nháp</strong> để bạn kiểm tra lại trước khi kích hoạt.
+                    </p>
+</div>
+</div>
+<!-- Modal Footer / Actions -->
+<div class="p-xl border-t border-outline-variant bg-surface-bright flex justify-end items-center space-x-md">
+<button class="px-xl py-2 font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high rounded-DEFAULT transition-colors focus:outline-none focus:ring-2 focus:ring-primary border border-transparent hover:border-outline-variant">
+                    Huỷ
+                </button>
+<button class="px-xl py-2 font-label-md text-label-md bg-primary-container text-on-primary hover:bg-on-primary-fixed-variant rounded-DEFAULT transition-colors shadow-[0_4px_12px_rgba(9,30,66,0.15)] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 flex items-center space-x-sm">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+<span>Xác nhận nhân bản</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Minimal script for basic interaction demo (escape key to close logic placeholder) -->
+<script>
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                // In a real app, this would close the modal.
+                console.log('Escape pressed. Modal close intended.');
+            }
+        });
+    </script>
+</body></html>

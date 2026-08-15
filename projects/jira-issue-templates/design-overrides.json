@@ -1,0 +1,221 @@
+{
+  "extends": "org@0.1",
+  "project": "jira-issue-templates",
+  "$note": "README của design-system nêu ví dụ khoá phẳng 'color.primary'. Ở đây tách theo theme vì org giữ light/dark ở hai file riêng và dự án lệch khác nhau ở mỗi theme. Trường $orgValue chỉ để đối chiếu, không phải giá trị áp dụng.",
+  "inherited": [
+    "color.success",
+    "color.success-container",
+    "color.on-success-container",
+    "color.warning-container",
+    "color.on-warning-container",
+    "spacing.*",
+    "radius.*",
+    "typography.*"
+  ],
+  "overrides": {
+    "light": {
+      "color.error": {
+        "$value": "#ba1a1a",
+        "$orgValue": "#b3261e",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.error-container": {
+        "$value": "#ffdad6",
+        "$orgValue": "#f9dedc",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.inverse-on-surface": {
+        "$value": "#edf0ff",
+        "$orgValue": "#f3f5fb",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.inverse-surface": {
+        "$value": "#1d3054",
+        "$orgValue": "#30343e",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.on-error-container": {
+        "$value": "#93000a",
+        "$orgValue": "#410e0b",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.on-primary-container": {
+        "$value": "#c4d2ff",
+        "$orgValue": "#0a1f52",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.on-surface": {
+        "$value": "#051a3e",
+        "$orgValue": "#171a21",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.on-surface-variant": {
+        "$value": "#434654",
+        "$orgValue": "#414751",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.outline": {
+        "$value": "#737685",
+        "$orgValue": "#6f757f",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.outline-variant": {
+        "$value": "#c3c6d6",
+        "$orgValue": "#c0c6d0",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.primary": {
+        "$value": "#003d9b",
+        "$orgValue": "#1d4ed8",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.primary-container": {
+        "$value": "#0052cc",
+        "$orgValue": "#dbeafe",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.surface": {
+        "$value": "#faf9ff",
+        "$orgValue": "#f9fafe",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.surface-container": {
+        "$value": "#e9edff",
+        "$orgValue": "#edf0f7",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.surface-container-high": {
+        "$value": "#e1e8ff",
+        "$orgValue": "#e7eaf3",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.surface-container-highest": {
+        "$value": "#d8e2ff",
+        "$orgValue": "#dfe2ec",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.surface-container-low": {
+        "$value": "#f1f3ff",
+        "$orgValue": "#f3f5fb",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.surface-variant": {
+        "$value": "#d8e2ff",
+        "$orgValue": "#dde3ed",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      }
+    },
+    "dark": {
+      "color.error": {
+        "$value": "#ffb4ab",
+        "$orgValue": "#f2b8b5",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.error-container": {
+        "$value": "#93000a",
+        "$orgValue": "#8c1d18",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.inverse-on-surface": {
+        "$value": "#2d3444",
+        "$orgValue": "#171a21",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.inverse-surface": {
+        "$value": "#e2e6f2",
+        "$orgValue": "#dfe2ec",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.on-error": {
+        "$value": "#690005",
+        "$orgValue": "#601410",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.on-error-container": {
+        "$value": "#ffdad6",
+        "$orgValue": "#f9dedc",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.on-primary": {
+        "$value": "#002d7d",
+        "$orgValue": "#12326e",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.on-primary-container": {
+        "$value": "#002d7d",
+        "$orgValue": "#dbeafe",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.on-surface": {
+        "$value": "#e2e6f2",
+        "$orgValue": "#dfe2ec",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.on-surface-variant": {
+        "$value": "#c3c6d6",
+        "$orgValue": "#c0c6d0",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.outline": {
+        "$value": "#8d90a0",
+        "$orgValue": "#898f99",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.outline-variant": {
+        "$value": "#434654",
+        "$orgValue": "#30343e",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.primary": {
+        "$value": "#b2c5ff",
+        "$orgValue": "#a8c7fa",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.primary-container": {
+        "$value": "#93b0ff",
+        "$orgValue": "#1e40af",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.success": {
+        "$value": "#4bce97",
+        "$orgValue": "#9bd5ac",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.surface": {
+        "$value": "#0e1421",
+        "$orgValue": "#000000",
+        "$reason": "Nền tối dùng navy #0e1421 thay cho đen tuyệt đối của org — giao diện mật độ cao mở hằng ngày, navy giữ được độ đọc của chữ xanh và đỡ mỏi mắt hơn nền đen."
+      },
+      "color.surface-container": {
+        "$value": "#1a2130",
+        "$orgValue": "#10131a",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.surface-container-high": {
+        "$value": "#242b3b",
+        "$orgValue": "#171a21",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.surface-container-highest": {
+        "$value": "#2f3646",
+        "$orgValue": "#1e212a",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.surface-container-low": {
+        "$value": "#161c2a",
+        "$orgValue": "#0b0d12",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.surface-container-lowest": {
+        "$value": "#090d18",
+        "$orgValue": "#000000",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      },
+      "color.surface-variant": {
+        "$value": "#434654",
+        "$orgValue": "#262a34",
+        "$reason": "Bảng màu sinh từ Stitch theo seed #0052CC (Jira Blue) thay cho seed org #2563EB — người dùng thao tác song song với Jira nên màu hành động trùng Jira giúp nhận diện nhanh. Bảng màu nằm ở cột 'thả lỏng' của design-system/README."
+      }
+    }
+  }
+}

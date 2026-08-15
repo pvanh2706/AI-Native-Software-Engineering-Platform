@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tạo issue thất bại - Jira Automation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#d8e2ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "secondary-container": "#709bfe",
+                    "on-surface-variant": "#434654",
+                    "on-tertiary-fixed": "#380d00",
+                    "tertiary-fixed-dim": "#ffb59b",
+                    "surface-container-high": "#e1e8ff",
+                    "tertiary-fixed": "#ffdbcf",
+                    "surface-container-low": "#f1f3ff",
+                    "on-error-container": "#93000a",
+                    "outline": "#737685",
+                    "inverse-on-surface": "#edf0ff",
+                    "inverse-surface": "#1d3054",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#e9edff",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#051a3e",
+                    "tertiary": "#7b2600",
+                    "surface": "#faf9ff",
+                    "on-primary-fixed-variant": "#0040a2",
+                    "secondary-fixed": "#d9e2ff",
+                    "outline-variant": "#c3c6d6",
+                    "background": "#faf9ff",
+                    "primary-fixed": "#dae2ff",
+                    "on-tertiary-fixed-variant": "#812800",
+                    "surface-bright": "#faf9ff",
+                    "inverse-primary": "#b2c5ff",
+                    "on-primary-fixed": "#001848",
+                    "secondary-fixed-dim": "#b1c6ff",
+                    "on-background": "#051a3e",
+                    "surface-dim": "#ccdaff",
+                    "error": "#ba1a1a",
+                    "secondary": "#285ab9",
+                    "surface-container-highest": "#d8e2ff",
+                    "on-tertiary-container": "#ffc6b2",
+                    "on-secondary-fixed": "#001946",
+                    "on-primary-container": "#c4d2ff",
+                    "surface-tint": "#0c56d0",
+                    "on-secondary-fixed-variant": "#00419d",
+                    "on-secondary-container": "#003179",
+                    "primary-fixed-dim": "#b2c5ff",
+                    "primary-container": "#0052cc",
+                    "primary": "#003d9b",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#a33500"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "layout-margin": "24px",
+                    "xl": "24px",
+                    "base": "4px",
+                    "sm": "8px",
+                    "md": "12px",
+                    "xs": "4px",
+                    "lg": "16px",
+                    "layout-gutter": "16px"
+            },
+            "fontFamily": {
+                    "h3": ["Hanken Grotesk"],
+                    "h1": ["Hanken Grotesk"],
+                    "label-md": ["Inter"],
+                    "h2": ["Hanken Grotesk"],
+                    "body-lg": ["Inter"],
+                    "mono": ["JetBrains Mono"],
+                    "label-xs": ["Inter"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "h3": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "h1": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "h2": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "mono": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "label-xs": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700"}],
+                    "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-lg h-screen overflow-hidden flex">
+<!-- SideNavBar -->
+<nav class="bg-surface dark:bg-inverse-surface border-r border-outline-variant dark:border-outline fixed left-0 top-0 h-full w-[240px] flex flex-col p-md space-y-sm z-20">
+<!-- Brand / Header -->
+<div class="px-sm py-md mb-lg">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-DEFAULT bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary-container" style="font-size: 20px;">layers</span>
+</div>
+<div>
+<h2 class="text-h2 font-h2 font-bold text-primary dark:text-inverse-primary truncate">Jira Automation</h2>
+<p class="text-label-xs font-label-xs text-on-surface-variant uppercase">Project Selector</p>
+</div>
+</div>
+</div>
+<!-- Create CTA -->
+<div class="px-sm mb-md">
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 space-y-xs overflow-y-auto">
+<a class="flex items-center gap-sm px-sm py-[10px] text-primary dark:text-inverse-primary bg-secondary-fixed dark:bg-on-secondary-fixed-variant font-bold rounded-lg transition-colors duration-200" href="#" style="scale: 0.98;">
+<span class="material-symbols-outlined" style="font-size: 20px;">description</span>
+<span class="font-label-md text-label-md">Mẫu issue</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-[10px] text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">history</span>
+<span class="font-label-md text-label-md">Lịch sử issue</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-[10px] text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">settings</span>
+<span class="font-label-md text-label-md">Cấu hình dự án</span>
+</a>
+</div>
+<!-- Footer -->
+<div class="mt-auto pt-sm border-t border-outline-variant/50">
+<a class="flex items-center gap-sm px-sm py-[10px] text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors duration-200" href="#">
+<img class="w-6 h-6 rounded-full object-cover" data-alt="A small circular avatar placeholder image indicating a user profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV4M6f4JYJcObgelgatSiehLDgoQb9qL0lMMHRRN5kHXbpdTRFbSC1qNi_x2Mixd28fptef-jtiEV3YQyFcS6oxUjjRuSPEPOFcXG_ePs5WfQeHWQ0K_iUZaGttFz9j6XFiE-OG0j1pSOqr4qARc6URQFJAjp0MwyzOtxV4GU29uuDR5eGzYLPO6mY-HXCqpW7f4xwUzc5xpMI5fSCczqDEoCjNsgoyD7b6wsLy-YdOHLMAqpb2IyfuCB2PsSedG94PXgswGuEPkU"/>
+<span class="font-label-md text-label-md">Thông tin tài khoản</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col ml-[240px] h-screen bg-background">
+<!-- TopAppBar (Customized for Form) -->
+<header class="bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline flex justify-between items-center h-16 px-xl shrink-0 sticky top-0 z-10">
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center w-8 h-8 rounded-full hover:bg-surface-container-high">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<span class="text-label-xs font-label-xs text-on-surface-variant uppercase tracking-wider">Tạo Issue (ITSUP)</span>
+<h1 class="text-h2 font-h2 font-bold text-on-surface dark:text-inverse-on-surface flex items-center gap-sm">
+                        Ghi nhận hỗ trợ đã xử lý
+                        <span class="px-2 py-0.5 bg-surface-container-high text-on-surface-variant text-label-xs rounded-full font-normal">Template</span>
+</h1>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="text-label-md font-label-md text-on-surface-variant hover:text-on-surface px-md py-sm rounded-DEFAULT transition-colors">
+                    Huỷ
+                </button>
+<button class="text-label-md font-label-md text-primary hover:bg-surface-container-low px-md py-sm rounded-DEFAULT transition-colors">
+                    Đặt lại
+                </button>
+<button class="bg-primary-container text-on-primary font-label-md text-label-md px-lg py-sm rounded-DEFAULT hover:bg-primary transition-colors flex items-center gap-xs shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add_task</span>
+                    Tạo issue
+                </button>
+</div>
+</header>
+<!-- Form Content -->
+<main class="flex-1 overflow-y-auto p-xl">
+<div class="max-w-[1200px] mx-auto">
+<div class="flex items-start gap-sm bg-error-container border border-error rounded-DEFAULT p-md mb-lg">
+<span class="material-symbols-outlined text-on-error-container text-[20px] shrink-0" style="font-variation-settings: 'FILL' 1;">error</span>
+<div>
+<p class="text-label-md font-label-md text-on-error-container">Không tạo được issue trên Jira</p>
+<p class="text-body-sm text-on-error-container mt-0.5">Jira từ chối yêu cầu. Chi tiết ở trường bị đánh dấu bên dưới. Dữ liệu bạn đã nhập vẫn được giữ nguyên.</p>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-xl">
+<!-- Left Column: Key Fields (Read Only) & Primary Inputs -->
+<div class="col-span-12 lg:col-span-7 flex flex-col gap-lg">
+<!-- Section: Locked Fields -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md shadow-sm">
+<div class="flex items-center gap-xs mb-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+<span class="text-label-md font-label-md">Trường cố định theo mẫu</span>
+<span class="material-symbols-outlined text-[14px] cursor-help" title="Trường này được cố định theo mẫu">info</span>
+</div>
+<div class="grid grid-cols-3 gap-md">
+<!-- Issue Type -->
+<div>
+<label class="block text-label-xs font-label-xs text-on-surface-variant mb-xs">Loại issue</label>
+<div class="flex items-center gap-xs bg-surface-container px-sm py-[6px] border border-outline-variant rounded-DEFAULT">
+<span class="material-symbols-outlined text-secondary text-[16px] fill">check_box</span>
+<span class="text-body-sm font-body-sm text-on-surface">Task</span>
+</div>
+</div>
+<!-- Assignee -->
+<div>
+<label class="block text-label-xs font-label-xs text-on-surface-variant mb-xs">Người được giao</label>
+<div class="flex items-center gap-xs bg-surface-container px-sm py-[6px] border border-outline-variant rounded-DEFAULT">
+<div class="w-5 h-5 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container text-[10px] font-bold">PA</div>
+<span class="text-body-sm font-body-sm text-on-surface truncate">Phạm Việt Anh</span>
+</div>
+</div>
+<!-- Reporter -->
+<div>
+<label class="block text-label-xs font-label-xs text-on-surface-variant mb-xs">Người báo cáo</label>
+<div class="flex items-center gap-xs bg-surface-container px-sm py-[6px] border border-outline-variant rounded-DEFAULT">
+<div class="w-5 h-5 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container text-[10px] font-bold">PA</div>
+<span class="text-body-sm font-body-sm text-on-surface truncate">Phạm Việt Anh</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Inputs -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg shadow-sm flex flex-col gap-md">
+<!-- Summary -->
+<div>
+<div class="flex justify-between items-center mb-xs">
+<label class="text-label-md font-label-md text-on-surface">Tiêu đề <span class="text-error">*</span></label>
+<span class="px-2 py-0.5 bg-surface-container-highest text-primary text-[10px] font-bold rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">auto_awesome</span> Tự sinh
+                                    </span>
+</div>
+<input class="w-full h-8 px-sm text-body-sm font-body-sm border border-outline-variant rounded-DEFAULT focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow text-on-surface bg-surface-container-lowest" type="text" value="Hỗ trợ người dùng khối văn phòng — xử lý sự cố đăng nhập và cấp lại quyền truy cập ngày 11/08/2026"/>
+</div>
+<!-- Description -->
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-xs">Mô tả</label>
+<div class="flex gap-sm h-[200px]">
+<textarea class="flex-1 p-sm text-body-sm font-body-sm border border-outline-variant rounded-DEFAULT focus:border-primary focus:ring-1 focus:ring-primary outline-none resize-none text-on-surface font-mono">h3. Yêu cầu hỗ trợ:
+* Sự cố: Không thể đăng nhập vào hệ thống ERP nội bộ.
+* Thông báo lỗi: "Tài khoản bị khóa do đăng nhập sai nhiều lần".
+
+h3. Các bước xử lý:
+1. Kiểm tra log đăng nhập trên Active Directory.
+2. Mở khóa tài khoản (Unlock account).
+3. Đặt lại mật khẩu tạm thời (Reset password).
+4. Hướng dẫn user đổi mật khẩu qua cổng self-service.
+
+h3. Kết quả:
+* Trạng thái: Đã xử lý thành công.
+* User đã đăng nhập và xác nhận hoạt động bình thường.</textarea>
+<!-- Formatting Hints -->
+<div class="w-[160px] bg-surface-container-low border border-outline-variant rounded-DEFAULT p-sm overflow-y-auto">
+<span class="block text-label-xs font-label-xs text-on-surface-variant mb-sm uppercase border-b border-outline-variant/50 pb-1">Wiki Syntax</span>
+<ul class="text-[11px] font-mono text-on-surface-variant space-y-2">
+<li><code class="text-on-surface bg-surface px-1 rounded">h1.</code> Heading 1</li>
+<li><code class="text-on-surface bg-surface px-1 rounded">*</code> Bullet list</li>
+<li><code class="text-on-surface bg-surface px-1 rounded">#</code> Number list</li>
+<li><code class="text-on-surface bg-surface px-1 rounded">*bold*</code> <b>Bold</b></li>
+<li><code class="text-on-surface bg-surface px-1 rounded">_italic_</code> <i>Italic</i></li>
+<li><code class="text-on-surface bg-surface px-1 rounded">[Link|url]</code></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Secondary Metadata -->
+<div class="col-span-12 lg:col-span-5 flex flex-col gap-lg">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg shadow-sm flex flex-col gap-md">
+<h3 class="text-h3 font-h3 text-on-surface border-b border-outline-variant/50 pb-xs mb-xs">Chi tiết phân loại</h3>
+<div class="grid grid-cols-2 gap-md">
+<!-- Priority -->
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-xs">Độ ưu tiên</label>
+<div class="relative">
+<select class="w-full h-8 pl-sm pr-8 text-body-sm font-body-sm border border-outline-variant rounded-DEFAULT focus:border-primary focus:ring-1 focus:ring-primary outline-none appearance-none bg-surface-container-lowest">
+<option>Cao nhất</option>
+<option>Cao</option>
+<option selected="">Trung bình</option>
+<option>Thấp</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">stat_2</span> <!-- Just an icon for priority -->
+</div>
+</div>
+</div>
+<!-- Due Date -->
+<div>
+<div class="flex justify-between items-center mb-xs">
+<label class="text-label-md font-label-md text-on-surface">Hạn hoàn thành</label>
+<span class="px-2 py-0.5 bg-surface-container-highest text-primary text-[10px] font-bold rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">auto_awesome</span>
+</span>
+</div>
+<div class="relative">
+<input class="w-full h-8 pl-8 pr-sm text-body-sm font-body-sm border border-outline-variant rounded-DEFAULT focus:border-primary outline-none bg-surface-container-lowest text-on-surface" type="text" value="11/08/2026"/>
+<div class="absolute inset-y-0 left-0 flex items-center pl-2 pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Labels -->
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-xs">Nhãn</label>
+<div class="min-h-[32px] p-1 border border-outline-variant rounded-DEFAULT bg-surface-container-lowest flex flex-wrap gap-1 items-center focus-within:border-primary focus-within:ring-1 focus-within:ring-primary">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 bg-surface-variant text-on-surface text-[12px] rounded-DEFAULT">
+                                        hỗ-trợ-nội-bộ
+                                        <span class="material-symbols-outlined text-[14px] cursor-pointer hover:text-error">close</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 bg-surface-variant text-on-surface text-[12px] rounded-DEFAULT">
+                                        đã-xử-lý
+                                        <span class="material-symbols-outlined text-[14px] cursor-pointer hover:text-error">close</span>
+</span>
+<input class="flex-1 min-w-[80px] h-6 px-1 border-none focus:ring-0 text-body-sm bg-transparent outline-none" placeholder="Thêm nhãn..." type="text"/>
+</div>
+</div>
+<!-- Actual Time (Required Alert) -->
+<div class="bg-error-container/30 border border-error/50 p-sm rounded-DEFAULT">
+<label class="block text-label-md font-label-md text-on-error-container mb-xs">Thời gian thực tế đã bỏ ra để xử lý (phút) <span class="text-error">*</span></label>
+<div class="relative">
+<input class="w-full h-8 px-sm pr-8 text-body-sm font-body-sm border border-error rounded-DEFAULT focus:border-error focus:ring-1 focus:ring-error outline-none bg-surface-container-lowest text-on-surface" placeholder="0" type="number"/>
+<div class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+<span class="material-symbols-outlined text-error text-[16px]">error</span>
+</div>
+</div>
+<p class="text-[11px] text-error mt-1">Jira trả về: <span class="font-mono">Field 'customfield_10312' is required.</span></p>
+</div>
+</div>
+<!-- Section: Request Context -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg shadow-sm flex flex-col gap-md">
+<h3 class="text-h3 font-h3 text-on-surface border-b border-outline-variant/50 pb-xs mb-xs">Bối cảnh yêu cầu</h3>
+<!-- Support Group Cascader -->
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-xs">Nhóm hỗ trợ</label>
+<div class="flex items-center h-8 border border-outline-variant rounded-DEFAULT bg-surface-container-lowest overflow-hidden">
+<select class="flex-1 h-full px-sm text-body-sm border-none focus:ring-0 outline-none bg-transparent border-r border-outline-variant appearance-none">
+<option selected="">Khối văn phòng</option>
+<option>Khối sản xuất</option>
+</select>
+<div class="px-2 text-on-surface-variant">/</div>
+<select class="flex-1 h-full px-sm text-body-sm border-none focus:ring-0 outline-none bg-transparent appearance-none">
+<option selected="">Hà Nội</option>
+<option>Hồ Chí Minh</option>
+</select>
+</div>
+</div>
+<!-- Requester -->
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-xs">Người yêu cầu</label>
+<div class="relative">
+<input class="w-full h-8 pl-8 pr-sm text-body-sm font-body-sm border border-outline-variant rounded-DEFAULT focus:border-primary focus:ring-1 focus:ring-primary outline-none bg-surface-container-lowest text-on-surface" type="text" value="Nguyễn Thị Hoa"/>
+<div class="absolute inset-y-0 left-0 flex items-center pl-2 pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">person</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

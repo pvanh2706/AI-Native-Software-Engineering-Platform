@@ -1,0 +1,70 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "BẢNG MÀU GỐC (primitive). Đây chỉ là các thang tông, KHÔNG mang ngữ nghĩa. Không component nào được dùng trực tiếp token ở file này — phải đi qua vai trò ngữ nghĩa trong themes/light.json và themes/dark.json. Lý do: một màu dùng trực tiếp thì không đổi được theo theme.",
+  "$extensions": {
+    "seed": "#2563EB",
+    "seedName": "Xanh dương",
+    "toneScale": "0 = đen, 100 = trắng (quy ước Material tonal palette)",
+    "neutralTint": "Dải neutral pha nhẹ sắc xanh của seed để hoà với primary, không phải xám thuần"
+  },
+
+  "palette": {
+    "blue": {
+      "$type": "color",
+      "10": { "$value": "#0A1F52" },
+      "20": { "$value": "#12326E" },
+      "30": { "$value": "#1E40AF" },
+      "40": { "$value": "#1D4ED8" },
+      "50": { "$value": "#2563EB", "$description": "Hạt giống (seed)." },
+      "70": { "$value": "#60A5FA" },
+      "80": { "$value": "#A8C7FA" },
+      "90": { "$value": "#DBEAFE" },
+      "95": { "$value": "#EFF6FF" }
+    },
+
+    "neutral": {
+      "$type": "color",
+      "0":   { "$value": "#000000", "$description": "Nền chế độ tối — đen tuyệt đối." },
+      "4":   { "$value": "#0B0D12" },
+      "6":   { "$value": "#10131A" },
+      "10":  { "$value": "#171A21" },
+      "12":  { "$value": "#1E212A" },
+      "17":  { "$value": "#262A34" },
+      "22":  { "$value": "#30343E" },
+      "30":  { "$value": "#434751" },
+      "50":  { "$value": "#71757F" },
+      "60":  { "$value": "#8B8F99" },
+      "70":  { "$value": "#A6AAB4" },
+      "80":  { "$value": "#C2C6D0" },
+      "90":  { "$value": "#DFE2EC" },
+      "92":  { "$value": "#E7EAF3" },
+      "94":  { "$value": "#EDF0F7" },
+      "96":  { "$value": "#F3F5FB" },
+      "98":  { "$value": "#F9FAFE" },
+      "100": { "$value": "#FFFFFF" }
+    },
+
+    "neutral-variant": {
+      "$type": "color",
+      "$description": "Dành riêng cho đường viền và chữ phụ. Tách khỏi neutral để chỉnh độ tương phản viền mà không đụng nền.",
+      "30": { "$value": "#414751" },
+      "50": { "$value": "#6F757F" },
+      "60": { "$value": "#898F99" },
+      "80": { "$value": "#C0C6D0" },
+      "90": { "$value": "#DDE3ED" }
+    },
+
+    "red":   { "$type": "color", "10": { "$value": "#410E0B" }, "20": { "$value": "#601410" }, "30": { "$value": "#8C1D18" }, "40": { "$value": "#B3261E" }, "80": { "$value": "#F2B8B5" }, "90": { "$value": "#F9DEDC" } },
+    "green": { "$type": "color", "10": { "$value": "#002110" }, "20": { "$value": "#00391D" }, "30": { "$value": "#0E5227" }, "40": { "$value": "#2E6C40" }, "80": { "$value": "#9BD5AC" }, "90": { "$value": "#B7F0C4" } },
+    "amber": { "$type": "color", "10": { "$value": "#2B1700" }, "20": { "$value": "#452B00" }, "30": { "$value": "#5C3D00" }, "80": { "$value": "#F5BE5C" }, "90": { "$value": "#FFDDB0" } }
+  },
+
+  "rules": {
+    "$description": "Ràng buộc UI Eval kiểm được",
+    "noDirectPaletteUseInComponents": true,
+    "everyRoleMustExistInBothThemes": true,
+    "minContrastNormalText": 4.5,
+    "minContrastLargeTextAndUi": 3.0,
+    "colorMustNotBeSoleSignal": true
+  }
+}

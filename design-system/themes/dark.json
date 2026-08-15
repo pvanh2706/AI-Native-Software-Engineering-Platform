@@ -1,0 +1,62 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Theme TỐI — nền đen tuyệt đối. Phải khai ĐÚNG cùng tập vai trò với themes/light.json; thiếu một vai trò là lỗi DS-02 (theme parity), blocking.",
+  "$extensions": {
+    "theme": "dark",
+    "pairedWith": "themes/light.json",
+    "designNote": "Trên nền #000000 đổ bóng gần như vô hình. Phân tầng độ nổi bằng BẬC SURFACE (surface-container-*), bóng chỉ là lớp phụ trợ. Xem elevation.json → rules.noShadowOnlyHierarchyInDarkTheme."
+  },
+
+  "color": {
+    "primary":               { "$type": "color", "$value": "{palette.blue.80}",  "$description": "Trên nền tối, primary phải SÁNG hơn nền — đảo vai so với theme sáng." },
+    "on-primary":            { "$type": "color", "$value": "{palette.blue.20}" },
+    "primary-container":     { "$type": "color", "$value": "{palette.blue.30}" },
+    "on-primary-container":  { "$type": "color", "$value": "{palette.blue.90}" },
+
+    "error":                 { "$type": "color", "$value": "{palette.red.80}" },
+    "on-error":              { "$type": "color", "$value": "{palette.red.20}" },
+    "error-container":       { "$type": "color", "$value": "{palette.red.30}" },
+    "on-error-container":    { "$type": "color", "$value": "{palette.red.90}" },
+
+    "success":               { "$type": "color", "$value": "{palette.green.80}" },
+    "success-container":     { "$type": "color", "$value": "{palette.green.30}" },
+    "on-success-container":  { "$type": "color", "$value": "{palette.green.90}" },
+
+    "warning-container":     { "$type": "color", "$value": "{palette.amber.30}" },
+    "on-warning-container":  { "$type": "color", "$value": "{palette.amber.90}" },
+
+    "surface":                   { "$type": "color", "$value": "{palette.neutral.0}",  "$description": "ĐEN TUYỆT ĐỐI." },
+    "on-surface":                { "$type": "color", "$value": "{palette.neutral.90}" },
+    "surface-variant":           { "$type": "color", "$value": "{palette.neutral.17}" },
+    "on-surface-variant":        { "$type": "color", "$value": "{palette.neutral-variant.80}" },
+    "surface-container-lowest":  { "$type": "color", "$value": "{palette.neutral.0}" },
+    "surface-container-low":     { "$type": "color", "$value": "{palette.neutral.4}",  "$description": "elevation 1 — thẻ, thanh bên." },
+    "surface-container":         { "$type": "color", "$value": "{palette.neutral.6}",  "$description": "elevation 2." },
+    "surface-container-high":    { "$type": "color", "$value": "{palette.neutral.10}", "$description": "elevation 3 — menu, popover, hộp thoại." },
+    "surface-container-highest": { "$type": "color", "$value": "{palette.neutral.12}", "$description": "elevation 4–5." },
+
+    "outline":               { "$type": "color", "$value": "{palette.neutral-variant.60}" },
+    "outline-variant":       { "$type": "color", "$value": "{palette.neutral.22}", "$description": "Sáng hơn hẳn bản M3 gốc — trên nền đen tuyệt đối, viền tối quá thì đường kẻ bảng biến mất." },
+
+    "shadow":                { "$type": "color", "$value": "{palette.neutral.0}" },
+    "scrim":                 { "$type": "color", "$value": "{palette.neutral.0}", "$extensions": { "alpha": 0.75 } },
+    "state-layer-base":      { "$type": "color", "$value": "{palette.neutral.100}", "$description": "Trên nền tối, lớp phủ trạng thái phải SÁNG lên, không tối đi." },
+
+    "inverse-surface":       { "$type": "color", "$value": "{palette.neutral.90}" },
+    "inverse-on-surface":    { "$type": "color", "$value": "{palette.neutral.10}" }
+  },
+
+  "contrastReport": {
+    "$description": "Kiểm A11Y-01 trên nền đen tuyệt đối — tỉ lệ cao hơn hẳn theme sáng, đó là đặc tính của nền #000000.",
+    "on-surface / surface":               { "ratio": 15.4, "pass": true },
+    "on-surface-variant / surface":       { "ratio": 11.6, "pass": true },
+    "primary / surface":                  { "ratio": 11.2, "pass": true },
+    "on-primary / primary":               { "ratio": 7.0,  "pass": true },
+    "on-primary-container / primary-container": { "ratio": 6.8, "pass": true },
+    "error / surface":                    { "ratio": 9.3,  "pass": true },
+    "on-error-container / error-container":     { "ratio": 6.5, "pass": true },
+    "on-success-container / success-container": { "ratio": 7.9, "pass": true },
+    "on-warning-container / warning-container": { "ratio": 8.4, "pass": true },
+    "outline / surface":                  { "ratio": 6.4,  "pass": true }
+  }
+}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Trạng thái tạo Issue - Jira Automation</title>
+<!-- Fonts and Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config injected from Design System -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#d8e2ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#709bfe",
+                        "on-surface-variant": "#434654",
+                        "on-tertiary-fixed": "#380d00",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "surface-container-high": "#e1e8ff",
+                        "tertiary-fixed": "#ffdbcf",
+                        "surface-container-low": "#f1f3ff",
+                        "on-error-container": "#93000a",
+                        "outline": "#737685",
+                        "inverse-on-surface": "#edf0ff",
+                        "inverse-surface": "#1d3054",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#e9edff",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#051a3e",
+                        "tertiary": "#7b2600",
+                        "surface": "#faf9ff",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "secondary-fixed": "#d9e2ff",
+                        "outline-variant": "#c3c6d6",
+                        "background": "#faf9ff",
+                        "primary-fixed": "#dae2ff",
+                        "on-tertiary-fixed-variant": "#812800",
+                        "surface-bright": "#faf9ff",
+                        "inverse-primary": "#b2c5ff",
+                        "on-primary-fixed": "#001848",
+                        "secondary-fixed-dim": "#b1c6ff",
+                        "on-background": "#051a3e",
+                        "surface-dim": "#ccdaff",
+                        "error": "#ba1a1a",
+                        "secondary": "#285ab9",
+                        "surface-container-highest": "#d8e2ff",
+                        "on-tertiary-container": "#ffc6b2",
+                        "on-secondary-fixed": "#001946",
+                        "on-primary-container": "#c4d2ff",
+                        "surface-tint": "#0c56d0",
+                        "on-secondary-fixed-variant": "#00419d",
+                        "on-secondary-container": "#003179",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "primary-container": "#0052cc",
+                        "primary": "#003d9b",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#a33500",
+                        // Ad hoc colors for Warning/Info state (simulating a warning theme)
+                        "warning": "#e2b203",
+                        "on-warning": "#000000",
+                        "warning-container": "#FFDDB0",
+                        "on-warning-container": "#2B1700",
+                        "warning-outline": "#5C3D00",
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "layout-margin": "24px",
+                        "xl": "24px",
+                        "base": "4px",
+                        "sm": "8px",
+                        "md": "12px",
+                        "xs": "4px",
+                        "lg": "16px",
+                        "layout-gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "h3": ["Hanken Grotesk"],
+                        "h1": ["Hanken Grotesk"],
+                        "label-md": ["Inter"],
+                        "h2": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "mono": ["JetBrains Mono"],
+                        "label-xs": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h3": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "h1": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "h2": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "mono": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "label-xs": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+                        "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f4f5f7; }
+        h1, h2, h3 { font-family: 'Hanken Grotesk', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface h-screen overflow-hidden flex flex-col md:flex-row">
+<!-- Note: Top and Side navigation suppressed as this is a linear transactional / success splash screen -->
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full flex items-center justify-center p-layout-margin overflow-y-auto">
+<!-- Status Card Container -->
+<div class="w-full max-w-[600px] bg-surface-container-lowest border border-warning-outline rounded-xl shadow-[0_4px_12px_rgba(9,30,66,0.15)] overflow-hidden">
+<!-- Header Section (Warning/Info) -->
+<div class="bg-warning-container px-layout-margin py-xl flex items-start space-x-md border-b border-warning-outline">
+<div class="flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-on-warning-container" data-icon="info" style="font-variation-settings: 'FILL' 1;">info</span>
+</div>
+<div>
+<h1 class="text-h2 font-h2 text-on-warning-container mb-xs">Issue ITSUP-2484 đã được tạo thành công</h1>
+<p class="text-body-lg font-body-lg text-on-warning-container">
+                        Tuy nhiên, quá trình tự động chuyển trạng thái đóng đã thất bại.
+                    </p>
+</div>
+</div>
+<!-- Body Section: Details -->
+<div class="p-layout-margin space-y-lg bg-surface-container-lowest">
+<!-- Status Badge -->
+<div class="flex items-center justify-between border border-outline-variant rounded-lg p-md bg-surface-container-low">
+<span class="text-label-md font-label-md text-on-surface-variant">Trạng thái hiện tại:</span>
+<span class="inline-flex items-center px-sm py-xs rounded-full bg-secondary-container text-on-secondary-container text-label-xs font-label-xs">
+                        Chờ duyệt
+                    </span>
+</div>
+<!-- Error Details -->
+<div class="space-y-sm">
+<h3 class="text-h3 font-h3 text-on-surface">Chi tiết lỗi</h3>
+<div class="bg-surface p-md rounded-lg border border-outline-variant border-l-4 border-l-error">
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                            Hỏng ở bước chuyển từ 'Chờ duyệt' sang 'Đã xong'. 
+                            <br/>
+<span class="font-mono text-mono text-error mt-xs inline-block">Lý do: thiếu quyền thực hiện transition.</span>
+</p>
+</div>
+</div>
+<!-- Assurance Message -->
+<div class="flex items-start space-x-sm bg-surface-container-low p-md rounded-lg">
+<span class="material-symbols-outlined text-secondary" data-icon="cloud_done" style="font-variation-settings: 'FILL' 0; font-size: 18px;">cloud_done</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                        Dữ liệu của bạn đã được ghi nhận trên hệ thống an toàn. Vui lòng thử lại bước cuối hoặc kiểm tra quyền trên Jira.
+                    </p>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="px-layout-margin py-md bg-surface-container-low border-t border-outline-variant flex justify-end space-x-md">
+<button class="px-lg py-sm rounded border border-outline-variant bg-surface-container-lowest text-primary hover:bg-surface-variant transition-colors text-label-md font-label-md flex items-center">
+<span class="material-symbols-outlined mr-xs" data-icon="open_in_new" style="font-size: 16px;">open_in_new</span>
+                    Mở trên Jira
+                </button>
+<button class="px-lg py-sm rounded bg-primary-container text-on-primary hover:opacity-90 transition-opacity text-label-md font-label-md flex items-center shadow-sm">
+<span class="material-symbols-outlined mr-xs" data-icon="autorenew" style="font-size: 16px;">autorenew</span>
+                    Thử lại việc chuyển trạng thái
+                </button>
+</div>
+</div>
+</main>
+</body></html>

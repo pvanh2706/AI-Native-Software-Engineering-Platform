@@ -126,6 +126,8 @@ public sealed record Artifact
 
 > 💡 Catalogue này *mở rộng được* — thêm type mới không phá contract. Đây là cách platform lớn lên mà nền không đổi.
 
+**Đã mở rộng:** [07 — UI/UX Capability & UI Eval](07-uiux-capability-and-eval.md) thêm `DesignSystem`, `ComponentRegistry`, `UiCandidateSet`, `UiSpec`; và đổi nguồn của `UiPrototype` từ `RequirementSet` sang `UiSpec`. Không thêm loại cạnh mới.
+
 ## 4. Ví dụ đầy đủ: capability `requirement.analyze`
 
 ```jsonc

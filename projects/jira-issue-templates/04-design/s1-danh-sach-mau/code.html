@@ -1,0 +1,417 @@
+<!DOCTYPE html><html lang="vi"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Jira Automation - Mẫu issue</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Hanken+Grotesk:wght@600;700;800&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "rgb(var(--surface) / <alpha-value>)",
+                        "surface-dim": "rgb(var(--surface-dim) / <alpha-value>)",
+                        "surface-bright": "rgb(var(--surface-bright) / <alpha-value>)",
+                        "surface-container-lowest": "rgb(var(--surface-container-lowest) / <alpha-value>)",
+                        "surface-container-low": "rgb(var(--surface-container-low) / <alpha-value>)",
+                        "surface-container": "rgb(var(--surface-container) / <alpha-value>)",
+                        "surface-container-high": "rgb(var(--surface-container-high) / <alpha-value>)",
+                        "surface-container-highest": "rgb(var(--surface-container-highest) / <alpha-value>)",
+                        "surface-variant": "rgb(var(--surface-variant) / <alpha-value>)",
+                        "on-surface": "rgb(var(--on-surface) / <alpha-value>)",
+                        "on-surface-variant": "rgb(var(--on-surface-variant) / <alpha-value>)",
+                        "inverse-surface": "rgb(var(--inverse-surface) / <alpha-value>)",
+                        "inverse-on-surface": "rgb(var(--inverse-on-surface) / <alpha-value>)",
+                        "outline": "rgb(var(--outline) / <alpha-value>)",
+                        "outline-variant": "rgb(var(--outline-variant) / <alpha-value>)",
+                        "surface-tint": "rgb(var(--surface-tint) / <alpha-value>)",
+                        "background": "rgb(var(--background) / <alpha-value>)",
+                        "on-background": "rgb(var(--on-background) / <alpha-value>)",
+                        "primary": "rgb(var(--primary) / <alpha-value>)",
+                        "on-primary": "rgb(var(--on-primary) / <alpha-value>)",
+                        "primary-container": "rgb(var(--primary-container) / <alpha-value>)",
+                        "on-primary-container": "rgb(var(--on-primary-container) / <alpha-value>)",
+                        "inverse-primary": "rgb(var(--inverse-primary) / <alpha-value>)",
+                        "secondary": "rgb(var(--secondary) / <alpha-value>)",
+                        "on-secondary": "rgb(var(--on-secondary) / <alpha-value>)",
+                        "secondary-container": "rgb(var(--secondary-container) / <alpha-value>)",
+                        "on-secondary-container": "rgb(var(--on-secondary-container) / <alpha-value>)",
+                        "tertiary": "rgb(var(--tertiary) / <alpha-value>)",
+                        "on-tertiary": "rgb(var(--on-tertiary) / <alpha-value>)",
+                        "tertiary-container": "rgb(var(--tertiary-container) / <alpha-value>)",
+                        "on-tertiary-container": "rgb(var(--on-tertiary-container) / <alpha-value>)",
+                        "error": "rgb(var(--error) / <alpha-value>)",
+                        "on-error": "rgb(var(--on-error) / <alpha-value>)",
+                        "error-container": "rgb(var(--error-container) / <alpha-value>)",
+                        "on-error-container": "rgb(var(--on-error-container) / <alpha-value>)",
+                        "primary-fixed": "rgb(var(--primary-fixed) / <alpha-value>)",
+                        "primary-fixed-dim": "rgb(var(--primary-fixed-dim) / <alpha-value>)",
+                        "on-primary-fixed": "rgb(var(--on-primary-fixed) / <alpha-value>)",
+                        "on-primary-fixed-variant": "rgb(var(--on-primary-fixed-variant) / <alpha-value>)",
+                        "secondary-fixed": "rgb(var(--secondary-fixed) / <alpha-value>)",
+                        "secondary-fixed-dim": "rgb(var(--secondary-fixed-dim) / <alpha-value>)",
+                        "on-secondary-fixed": "rgb(var(--on-secondary-fixed) / <alpha-value>)",
+                        "on-secondary-fixed-variant": "rgb(var(--on-secondary-fixed-variant) / <alpha-value>)",
+                        "tertiary-fixed": "rgb(var(--tertiary-fixed) / <alpha-value>)",
+                        "tertiary-fixed-dim": "rgb(var(--tertiary-fixed-dim) / <alpha-value>)",
+                        "on-tertiary-fixed": "rgb(var(--on-tertiary-fixed) / <alpha-value>)",
+                        "on-tertiary-fixed-variant": "rgb(var(--on-tertiary-fixed-variant) / <alpha-value>)",
+                        "success": "rgb(var(--success) / <alpha-value>)",
+                        "nav-active-bg": "rgb(var(--nav-active-bg) / <alpha-value>)",
+                        "nav-active-fg": "rgb(var(--nav-active-fg) / <alpha-value>)",
+                        "row-hover": "rgb(var(--row-hover) / <alpha-value>)"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "layout-margin": "24px",
+                        "layout-gutter": "16px",
+                        "base": "4px",
+                        "xl": "24px",
+                        "lg": "16px",
+                        "md": "12px",
+                        "sm": "8px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "label-xs": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "h3": ["Hanken Grotesk"],
+                        "mono": ["JetBrains Mono"],
+                        "h2": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "h1": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "label-xs": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+                        "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "h3": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "mono": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "h2": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "h1": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    :root {
+        color-scheme: light;
+        --surface: 250 249 255;
+        --surface-dim: 204 218 255;
+        --surface-bright: 250 249 255;
+        --surface-container-lowest: 255 255 255;
+        --surface-container-low: 241 243 255;
+        --surface-container: 233 237 255;
+        --surface-container-high: 225 232 255;
+        --surface-container-highest: 216 226 255;
+        --surface-variant: 216 226 255;
+        --on-surface: 5 26 62;
+        --on-surface-variant: 67 70 84;
+        --inverse-surface: 29 48 84;
+        --inverse-on-surface: 237 240 255;
+        --outline: 115 118 133;
+        --outline-variant: 195 198 214;
+        --surface-tint: 12 86 208;
+        --background: 250 249 255;
+        --on-background: 5 26 62;
+        --primary: 0 61 155;
+        --on-primary: 255 255 255;
+        --primary-container: 0 82 204;
+        --on-primary-container: 196 210 255;
+        --inverse-primary: 178 197 255;
+        --secondary: 40 90 185;
+        --on-secondary: 255 255 255;
+        --secondary-container: 112 155 254;
+        --on-secondary-container: 0 49 121;
+        --tertiary: 123 38 0;
+        --on-tertiary: 255 255 255;
+        --tertiary-container: 163 53 0;
+        --on-tertiary-container: 255 198 178;
+        --error: 186 26 26;
+        --on-error: 255 255 255;
+        --error-container: 255 218 214;
+        --on-error-container: 147 0 10;
+        --primary-fixed: 218 226 255;
+        --primary-fixed-dim: 178 197 255;
+        --on-primary-fixed: 0 24 72;
+        --on-primary-fixed-variant: 0 64 162;
+        --secondary-fixed: 217 226 255;
+        --secondary-fixed-dim: 177 198 255;
+        --on-secondary-fixed: 0 25 70;
+        --on-secondary-fixed-variant: 0 65 157;
+        --tertiary-fixed: 255 219 207;
+        --tertiary-fixed-dim: 255 181 155;
+        --on-tertiary-fixed: 56 13 0;
+        --on-tertiary-fixed-variant: 129 40 0;
+        --success: 0 128 0;
+        --nav-active-bg: 217 226 255;
+        --nav-active-fg: 0 61 155;
+        --row-hover: 241 243 255;
+    }
+    :root.dark {
+        color-scheme: dark;
+        --surface: 14 20 33;
+        --surface-dim: 11 16 28;
+        --surface-bright: 52 59 74;
+        --surface-container-lowest: 9 13 24;
+        --surface-container-low: 22 28 42;
+        --surface-container: 26 33 48;
+        --surface-container-high: 36 43 59;
+        --surface-container-highest: 47 54 70;
+        --surface-variant: 67 70 84;
+        --on-surface: 226 230 242;
+        --on-surface-variant: 195 198 214;
+        --inverse-surface: 226 230 242;
+        --inverse-on-surface: 45 52 68;
+        --outline: 141 144 160;
+        --outline-variant: 67 70 84;
+        --surface-tint: 178 197 255;
+        --background: 14 20 33;
+        --on-background: 226 230 242;
+        --primary: 178 197 255;
+        --on-primary: 0 45 125;
+        --primary-container: 147 176 255;
+        --on-primary-container: 0 45 125;
+        --inverse-primary: 0 61 155;
+        --secondary: 177 198 255;
+        --on-secondary: 0 47 109;
+        --secondary-container: 177 198 255;
+        --on-secondary-container: 217 226 255;
+        --tertiary: 255 181 155;
+        --on-tertiary: 92 26 0;
+        --tertiary-container: 129 40 0;
+        --on-tertiary-container: 255 219 207;
+        --error: 255 180 171;
+        --on-error: 105 0 5;
+        --error-container: 147 0 10;
+        --on-error-container: 255 218 214;
+        --primary-fixed: 218 226 255;
+        --primary-fixed-dim: 178 197 255;
+        --on-primary-fixed: 0 24 72;
+        --on-primary-fixed-variant: 0 64 162;
+        --secondary-fixed: 217 226 255;
+        --secondary-fixed-dim: 177 198 255;
+        --on-secondary-fixed: 0 25 70;
+        --on-secondary-fixed-variant: 0 65 157;
+        --tertiary-fixed: 255 219 207;
+        --tertiary-fixed-dim: 255 181 155;
+        --on-tertiary-fixed: 56 13 0;
+        --on-tertiary-fixed-variant: 129 40 0;
+        --success: 75 206 151;
+        --nav-active-bg: 0 65 157;
+        --nav-active-fg: 218 226 255;
+        --row-hover: 26 33 48;
+    }
+    .table-row-hover:hover { background-color: rgb(var(--row-hover)); }
+    </style>
+<script>
+    // Theme đổi bằng class trên <html>. Không thêm nút bấm nào vào giao diện —
+    // ảnh chụp phải đúng thiết kế. Đổi bằng ?theme=dark, localStorage, hoặc
+    // gọi setTheme('dark') trong console.
+    (function () {
+        // localStorage có thể ném lỗi khi mở bằng file:// ở một số trình duyệt —
+        // bọc lại để không làm hỏng luôn việc đặt theme.
+        var ls = function (fn, d) { try { return fn(); } catch (e) { return d; } };
+        var q = new URLSearchParams(location.search).get('theme');
+        var t = q || ls(function () { return localStorage.getItem('theme'); }) ||
+                (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.classList.toggle('dark', t === 'dark');
+        window.setTheme = function (x) {
+            ls(function () { return localStorage.setItem('theme', x); });
+            document.documentElement.classList.toggle('dark', x === 'dark');
+        };
+    })();
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-sm h-screen overflow-hidden flex">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[240px] bg-surface border-r border-outline-variant flex flex-col p-md space-y-sm z-10">
+<div class="px-md py-lg border-b border-outline-variant mb-sm">
+<h1 class="text-h2 font-h2 font-bold text-primary truncate">Jira Automation</h1>
+<p class="text-body-sm text-on-surface-variant mt-xs">Project Selector</p>
+</div>
+<nav class="flex-1 space-y-xs overflow-y-auto">
+<a class="flex items-center space-x-md px-md py-sm text-nav-active-fg bg-nav-active-bg font-bold rounded-lg scale-[0.98] transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">description</span>
+<span class="text-label-md font-label-md">Mẫu issue</span>
+</a>
+<a class="flex items-center space-x-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="text-label-md font-label-md">Lịch sử issue</span>
+</a>
+<a class="flex items-center space-x-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Cấu hình dự án</span>
+</a>
+</nav>
+<div class="mt-auto pt-sm border-t border-outline-variant">
+<a class="flex items-center space-x-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-label-md font-label-md">Thông tin tài khoản</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[240px] flex-1 flex flex-col h-full bg-background overflow-hidden">
+<!-- TopAppBar Area (Header) -->
+<header class="flex justify-between items-center h-16 px-xl border-b border-outline-variant bg-surface flex-shrink-0">
+<h2 class="text-h1 font-h1 text-on-surface">Mẫu issue Jira</h2>
+<div class="flex items-center space-x-lg">
+<button class="bg-primary-container hover:bg-primary text-on-primary text-label-md font-label-md px-lg py-sm rounded-DEFAULT transition-colors duration-200 flex items-center shadow-sm">
+<span class="material-symbols-outlined mr-xs text-[18px]">add</span>
+                    Tạo mẫu mới
+                </button>
+</div>
+</header>
+<!-- Canvas / Content Scrollable -->
+<div class="flex-1 overflow-auto p-layout-margin space-y-layout-margin">
+<!-- Templates Table Section -->
+<section class="border border-outline-variant rounded-DEFAULT bg-surface">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-md py-md text-label-md font-label-md text-on-surface-variant w-[30%]">Tên mẫu</th>
+<th class="px-md py-md text-label-md font-label-md text-on-surface-variant w-[15%]">Loại Issue</th>
+<th class="px-md py-md text-label-md font-label-md text-on-surface-variant w-[15%]">Trạng thái đích</th>
+<th class="px-md py-md text-label-md font-label-md text-on-surface-variant w-[15%]">Trạng thái mẫu</th>
+<th class="px-md py-md text-label-md font-label-md text-on-surface-variant w-[25%] text-right">Thao tác</th>
+</tr>
+</thead>
+<tbody class="text-body-sm font-body-sm divide-y divide-outline-variant">
+<!-- Row 1: Highlighted / Default -->
+<tr class="table-row-hover bg-surface-container-highest/20 transition-colors">
+<td class="px-md py-md flex items-center space-x-sm">
+<span class="font-bold text-on-surface">Ghi nhận hỗ trợ đã xử lý</span>
+<span class="bg-primary text-on-primary text-label-xs font-label-xs px-2 py-0.5 rounded-full uppercase tracking-wider">MẶC ĐỊNH</span>
+</td>
+<td class="px-md py-md text-on-surface">Task</td>
+<td class="px-md py-md text-on-surface">Tự động Done</td>
+<td class="px-md py-md text-on-secondary-container font-label-md">Đang bật</td>
+<td class="px-md py-md text-right">
+<button class="text-primary hover:text-primary-container font-label-md flex items-center justify-end w-full">
+                                    Tạo issue <span class="material-symbols-outlined ml-xs text-[16px]">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="table-row-hover transition-colors">
+<td class="px-md py-md font-bold text-on-surface">Cấp quyền truy cập</td>
+<td class="px-md py-md text-on-surface">Task</td>
+<td class="px-md py-md text-on-surface">Tự động Done</td>
+<td class="px-md py-md text-on-secondary-container font-label-md">Đang bật</td>
+<td class="px-md py-md text-right">
+<button class="text-primary hover:text-primary-container font-label-md flex items-center justify-end w-full">
+                                    Tạo issue <span class="material-symbols-outlined ml-xs text-[16px]">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="table-row-hover transition-colors">
+<td class="px-md py-md font-bold text-on-surface">Sự cố cần theo dõi</td>
+<td class="px-md py-md text-error flex items-center"><span class="material-symbols-outlined mr-xs text-[16px]">bug_report</span>Bug</td>
+<td class="px-md py-md text-on-surface">Để mở</td>
+<td class="px-md py-md text-on-secondary-container font-label-md">Đang bật</td>
+<td class="px-md py-md text-right">
+<button class="text-primary hover:text-primary-container font-label-md flex items-center justify-end w-full">
+                                    Tạo issue <span class="material-symbols-outlined ml-xs text-[16px]">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 4: Draft / Disabled -->
+<tr class="bg-surface-container-lowest">
+<td class="px-md py-md text-on-surface-variant italic truncate max-w-[300px]" title="Yêu cầu cấp quyền truy cập hệ thống cho nhân sự mới vào tháng 8">Yêu cầu cấp quyền truy cập hệ thống cho nhân sự mới vào tháng 8</td>
+<td class="px-md py-md text-on-surface-variant">Task</td>
+<td class="px-md py-md text-on-surface-variant">Để mở</td>
+<td class="px-md py-md text-on-surface-variant font-label-md">Nháp</td>
+<td class="px-md py-md text-right">
+<button class="text-on-surface-variant cursor-not-allowed font-label-md flex items-center justify-end w-full" disabled="">
+                                    Tạo issue <span class="material-symbols-outlined ml-xs text-[16px]">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 5: Error / Invalid -->
+<tr class="bg-error-container/30">
+<td class="px-md py-md text-on-surface line-through decoration-error">Bàn giao thiết bị</td>
+<td class="px-md py-md text-on-surface-variant">Task</td>
+<td class="px-md py-md text-on-surface-variant">Tự động Done</td>
+<td class="px-md py-md">
+<div class="flex flex-col">
+<span class="text-error font-label-md">Không hợp lệ</span>
+<span class="text-[10px] text-on-error-container mt-1 max-w-[200px]">Field "Người bàn giao" không còn tồn tại trên Jira</span>
+</div>
+</td>
+<td class="px-md py-md text-right">
+<button class="text-on-surface-variant cursor-not-allowed font-label-md flex items-center justify-end w-full" disabled="">
+                                    Tạo issue <span class="material-symbols-outlined ml-xs text-[16px]">block</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<!-- Recent Issues Table Section -->
+<section class="mt-layout-margin">
+<h3 class="text-h3 font-h3 text-on-surface mb-md">Issue gần đây</h3>
+<div class="border border-outline-variant rounded-DEFAULT bg-surface">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-md py-sm text-label-md font-label-md text-on-surface-variant w-[15%]">Key</th>
+<th class="px-md py-sm text-label-md font-label-md text-on-surface-variant w-[30%]">Tên mẫu đã dùng</th>
+<th class="px-md py-sm text-label-md font-label-md text-on-surface-variant w-[20%]">Người tạo</th>
+<th class="px-md py-sm text-label-md font-label-md text-on-surface-variant w-[15%]">Thời gian</th>
+<th class="px-md py-sm text-label-md font-label-md text-on-surface-variant w-[20%]">Kết quả</th>
+</tr>
+</thead>
+<tbody class="text-body-sm font-body-sm divide-y divide-outline-variant font-mono">
+<!-- Recent 1: Error -->
+<tr class="table-row-hover transition-colors">
+<td class="px-md py-sm text-primary font-bold">ITSUP-2482</td>
+<td class="px-md py-sm text-on-surface font-body-sm">Ghi nhận hỗ trợ đã xử lý</td>
+<td class="px-md py-sm text-on-surface-variant font-body-sm">Phạm Việt Anh</td>
+<td class="px-md py-sm text-on-surface-variant">10/08 09:41</td>
+<td class="px-md py-sm text-error font-label-md flex items-center">
+<span class="material-symbols-outlined mr-xs text-[14px]">error</span>
+                                    LỖI: chưa chuyển được sang Done
+                                </td>
+</tr>
+<!-- Recent 2: Success -->
+<tr class="table-row-hover transition-colors">
+<td class="px-md py-sm text-primary font-bold">ITSUP-2481</td>
+<td class="px-md py-sm text-on-surface font-body-sm">Ghi nhận hỗ trợ đã xử lý</td>
+<td class="px-md py-sm text-on-surface-variant font-body-sm">Phạm Việt Anh</td>
+<td class="px-md py-sm text-on-surface-variant">10/08 09:36</td>
+<td class="px-md py-sm text-success font-label-md flex items-center"> <!-- using explicit green as requested conceptually for success -->
+<span class="material-symbols-outlined mr-xs text-[14px]">check_circle</span>
+                                    Done
+                                </td>
+</tr>
+<!-- Recent 3: Success -->
+<tr class="table-row-hover transition-colors">
+<td class="px-md py-sm text-primary font-bold">ITSUP-2479</td>
+<td class="px-md py-sm text-on-surface font-body-sm">Cấp quyền truy cập</td>
+<td class="px-md py-sm text-on-surface-variant font-body-sm">Nguyễn Thị Hoa</td>
+<td class="px-md py-sm text-on-surface-variant">10/08 08:58</td>
+<td class="px-md py-sm text-success font-label-md flex items-center">
+<span class="material-symbols-outlined mr-xs text-[14px]">check_circle</span>
+                                    Done
+                                </td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+</body></html>

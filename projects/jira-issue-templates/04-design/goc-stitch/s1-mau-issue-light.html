@@ -1,0 +1,287 @@
+<!DOCTYPE html><html class="light" lang="vi"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Jira Automation - Mẫu issue</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Hanken+Grotesk:wght@600;700;800&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#d8e2ff",
+                        "on-surface-variant": "#434654",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "tertiary-fixed": "#ffdbcf",
+                        "error": "#ba1a1a",
+                        "surface": "#faf9ff",
+                        "inverse-primary": "#b2c5ff",
+                        "inverse-on-surface": "#edf0ff",
+                        "surface-container-low": "#f1f3ff",
+                        "inverse-surface": "#1d3054",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#b1c6ff",
+                        "surface-container": "#e9edff",
+                        "primary": "#003d9b",
+                        "surface-container-high": "#e1e8ff",
+                        "surface-dim": "#ccdaff",
+                        "on-secondary-fixed-variant": "#00419d",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "secondary-fixed": "#d9e2ff",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#7b2600",
+                        "outline-variant": "#c3c6d6",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "surface-tint": "#0c56d0",
+                        "on-tertiary-fixed-variant": "#812800",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#0052cc",
+                        "on-error-container": "#93000a",
+                        "outline": "#737685",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#a33500",
+                        "on-secondary-fixed": "#001946",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#faf9ff",
+                        "background": "#faf9ff",
+                        "primary-fixed": "#dae2ff",
+                        "on-primary-container": "#c4d2ff",
+                        "on-primary-fixed": "#001848",
+                        "on-tertiary-container": "#ffc6b2",
+                        "surface-variant": "#d8e2ff",
+                        "on-tertiary-fixed": "#380d00",
+                        "on-surface": "#051a3e",
+                        "on-background": "#051a3e",
+                        "secondary-container": "#709bfe",
+                        "on-secondary-container": "#003179",
+                        "secondary": "#285ab9",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "layout-margin": "24px",
+                        "layout-gutter": "16px",
+                        "base": "4px",
+                        "xl": "24px",
+                        "lg": "16px",
+                        "md": "12px",
+                        "sm": "8px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "label-xs": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "h3": ["Hanken Grotesk"],
+                        "mono": ["JetBrains Mono"],
+                        "h2": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "h1": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "label-xs": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+                        "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "h3": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "mono": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "h2": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "h1": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .table-row-hover:hover { background-color: #f1f3ff; } /* surface-container-low */
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-sm h-screen overflow-hidden flex">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[240px] bg-surface dark:bg-inverse-surface border-r border-outline-variant dark:border-outline flex flex-col p-md space-y-sm z-10">
+<div class="px-md py-lg border-b border-outline-variant mb-sm">
+<h1 class="text-h2 font-h2 font-bold text-primary dark:text-inverse-primary truncate">Jira Automation</h1>
+<p class="text-body-sm text-on-surface-variant mt-xs">Project Selector</p>
+</div>
+<nav class="flex-1 space-y-xs overflow-y-auto">
+<a class="flex items-center space-x-md px-md py-sm text-primary dark:text-inverse-primary bg-secondary-fixed dark:bg-on-secondary-fixed-variant font-bold rounded-lg scale-[0.98] transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">description</span>
+<span class="text-label-md font-label-md">Mẫu issue</span>
+</a>
+<a class="flex items-center space-x-md px-md py-sm text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="text-label-md font-label-md">Lịch sử issue</span>
+</a>
+<a class="flex items-center space-x-md px-md py-sm text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Cấu hình dự án</span>
+</a>
+</nav>
+<div class="mt-auto pt-sm border-t border-outline-variant">
+<a class="flex items-center space-x-md px-md py-sm text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-label-md font-label-md">Thông tin tài khoản</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[240px] flex-1 flex flex-col h-full bg-background overflow-hidden">
+<!-- TopAppBar Area (Header) -->
+<header class="flex justify-between items-center h-16 px-xl border-b border-outline-variant bg-surface flex-shrink-0">
+<h2 class="text-h1 font-h1 text-on-surface">Mẫu issue Jira</h2>
+<div class="flex items-center space-x-lg">
+<button class="bg-primary-container hover:bg-primary text-on-primary text-label-md font-label-md px-lg py-sm rounded-DEFAULT transition-colors duration-200 flex items-center shadow-sm">
+<span class="material-symbols-outlined mr-xs text-[18px]">add</span>
+                    Tạo mẫu mới
+                </button>
+</div>
+</header>
+<!-- Canvas / Content Scrollable -->
+<div class="flex-1 overflow-auto p-layout-margin space-y-layout-margin">
+<!-- Templates Table Section -->
+<section class="border border-outline-variant rounded-DEFAULT bg-surface">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-md py-md text-label-md font-label-md text-on-surface-variant w-[30%]">Tên mẫu</th>
+<th class="px-md py-md text-label-md font-label-md text-on-surface-variant w-[15%]">Loại Issue</th>
+<th class="px-md py-md text-label-md font-label-md text-on-surface-variant w-[15%]">Trạng thái đích</th>
+<th class="px-md py-md text-label-md font-label-md text-on-surface-variant w-[15%]">Trạng thái mẫu</th>
+<th class="px-md py-md text-label-md font-label-md text-on-surface-variant w-[25%] text-right">Thao tác</th>
+</tr>
+</thead>
+<tbody class="text-body-sm font-body-sm divide-y divide-outline-variant">
+<!-- Row 1: Highlighted / Default -->
+<tr class="table-row-hover bg-surface-container-highest/20 transition-colors">
+<td class="px-md py-md flex items-center space-x-sm">
+<span class="font-bold text-on-surface">Ghi nhận hỗ trợ đã xử lý</span>
+<span class="bg-primary text-on-primary text-label-xs font-label-xs px-2 py-0.5 rounded-full uppercase tracking-wider">MẶC ĐỊNH</span>
+</td>
+<td class="px-md py-md text-on-surface">Task</td>
+<td class="px-md py-md text-on-surface">Tự động Done</td>
+<td class="px-md py-md text-secondary-container text-on-secondary-container font-label-md">Đang bật</td>
+<td class="px-md py-md text-right">
+<button class="text-primary hover:text-primary-container font-label-md flex items-center justify-end w-full">
+                                    Tạo issue <span class="material-symbols-outlined ml-xs text-[16px]">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="table-row-hover transition-colors">
+<td class="px-md py-md font-bold text-on-surface">Cấp quyền truy cập</td>
+<td class="px-md py-md text-on-surface">Task</td>
+<td class="px-md py-md text-on-surface">Tự động Done</td>
+<td class="px-md py-md text-secondary-container text-on-secondary-container font-label-md">Đang bật</td>
+<td class="px-md py-md text-right">
+<button class="text-primary hover:text-primary-container font-label-md flex items-center justify-end w-full">
+                                    Tạo issue <span class="material-symbols-outlined ml-xs text-[16px]">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="table-row-hover transition-colors">
+<td class="px-md py-md font-bold text-on-surface">Sự cố cần theo dõi</td>
+<td class="px-md py-md text-error flex items-center"><span class="material-symbols-outlined mr-xs text-[16px]">bug_report</span>Bug</td>
+<td class="px-md py-md text-on-surface">Để mở</td>
+<td class="px-md py-md text-secondary-container text-on-secondary-container font-label-md">Đang bật</td>
+<td class="px-md py-md text-right">
+<button class="text-primary hover:text-primary-container font-label-md flex items-center justify-end w-full">
+                                    Tạo issue <span class="material-symbols-outlined ml-xs text-[16px]">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 4: Draft / Disabled -->
+<tr class="bg-surface-container-lowest opacity-60">
+<td class="px-md py-md text-on-surface-variant italic truncate max-w-[300px]" title="Yêu cầu cấp quyền truy cập hệ thống cho nhân sự mới vào tháng 8">Yêu cầu cấp quyền truy cập hệ thống cho nhân sự mới vào tháng 8</td>
+<td class="px-md py-md text-on-surface-variant">Task</td>
+<td class="px-md py-md text-on-surface-variant">Để mở</td>
+<td class="px-md py-md text-on-surface-variant font-label-md">Nháp</td>
+<td class="px-md py-md text-right">
+<button class="text-outline cursor-not-allowed font-label-md flex items-center justify-end w-full" disabled="">
+                                    Tạo issue <span class="material-symbols-outlined ml-xs text-[16px]">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 5: Error / Invalid -->
+<tr class="bg-error-container/30">
+<td class="px-md py-md text-on-surface line-through decoration-error">Bàn giao thiết bị</td>
+<td class="px-md py-md text-on-surface-variant">Task</td>
+<td class="px-md py-md text-on-surface-variant">Tự động Done</td>
+<td class="px-md py-md">
+<div class="flex flex-col">
+<span class="text-error font-label-md">Không hợp lệ</span>
+<span class="text-[10px] text-on-error-container mt-1 max-w-[200px]">Field "Người bàn giao" không còn tồn tại trên Jira</span>
+</div>
+</td>
+<td class="px-md py-md text-right">
+<button class="text-outline cursor-not-allowed font-label-md flex items-center justify-end w-full" disabled="">
+                                    Tạo issue <span class="material-symbols-outlined ml-xs text-[16px]">block</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<!-- Recent Issues Table Section -->
+<section class="mt-layout-margin">
+<h3 class="text-h3 font-h3 text-on-surface mb-md">Issue gần đây</h3>
+<div class="border border-outline-variant rounded-DEFAULT bg-surface">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-md py-sm text-label-md font-label-md text-on-surface-variant w-[15%]">Key</th>
+<th class="px-md py-sm text-label-md font-label-md text-on-surface-variant w-[30%]">Tên mẫu đã dùng</th>
+<th class="px-md py-sm text-label-md font-label-md text-on-surface-variant w-[20%]">Người tạo</th>
+<th class="px-md py-sm text-label-md font-label-md text-on-surface-variant w-[15%]">Thời gian</th>
+<th class="px-md py-sm text-label-md font-label-md text-on-surface-variant w-[20%]">Kết quả</th>
+</tr>
+</thead>
+<tbody class="text-body-sm font-body-sm divide-y divide-outline-variant font-mono">
+<!-- Recent 1: Error -->
+<tr class="table-row-hover transition-colors">
+<td class="px-md py-sm text-primary font-bold">ITSUP-2482</td>
+<td class="px-md py-sm text-on-surface font-body-sm">Ghi nhận hỗ trợ đã xử lý</td>
+<td class="px-md py-sm text-on-surface-variant font-body-sm">Phạm Việt Anh</td>
+<td class="px-md py-sm text-on-surface-variant">10/08 09:41</td>
+<td class="px-md py-sm text-error font-label-md flex items-center">
+<span class="material-symbols-outlined mr-xs text-[14px]">error</span>
+                                    LỖI: chưa chuyển được sang Done
+                                </td>
+</tr>
+<!-- Recent 2: Success -->
+<tr class="table-row-hover transition-colors">
+<td class="px-md py-sm text-primary font-bold">ITSUP-2481</td>
+<td class="px-md py-sm text-on-surface font-body-sm">Ghi nhận hỗ trợ đã xử lý</td>
+<td class="px-md py-sm text-on-surface-variant font-body-sm">Phạm Việt Anh</td>
+<td class="px-md py-sm text-on-surface-variant">10/08 09:36</td>
+<td class="px-md py-sm text-[green] font-label-md flex items-center"> <!-- using explicit green as requested conceptually for success -->
+<span class="material-symbols-outlined mr-xs text-[14px]">check_circle</span>
+                                    Done
+                                </td>
+</tr>
+<!-- Recent 3: Success -->
+<tr class="table-row-hover transition-colors">
+<td class="px-md py-sm text-primary font-bold">ITSUP-2479</td>
+<td class="px-md py-sm text-on-surface font-body-sm">Cấp quyền truy cập</td>
+<td class="px-md py-sm text-on-surface-variant font-body-sm">Nguyễn Thị Hoa</td>
+<td class="px-md py-sm text-on-surface-variant">10/08 08:58</td>
+<td class="px-md py-sm text-[green] font-label-md flex items-center">
+<span class="material-symbols-outlined mr-xs text-[14px]">check_circle</span>
+                                    Done
+                                </td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+</body></html>

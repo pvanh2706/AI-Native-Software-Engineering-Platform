@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+/* Token sinh từ design-system/ — KHÔNG sửa tay.
+   Lệnh: node ../../../tools/design-tokens/build-css.mjs --prefix ds --out src/styles/tokens.css */
+@import "./styles/tokens.css";
+@import "tw-animate-css";
+@import "shadcn-vue/tailwind.css";
+
+/* ══════════════════════════════════════════════════════════════════════════
+   CẦU NỐI shadcn-vue ← DESIGN SYSTEM
+   `shadcn-vue init` mang theo hệ theming riêng: bảng màu oklch riêng, biến
+   --font-sans riêng (kèm Google Fonts từ CDN), --radius riêng, và biến thể
+   dark theo class .dark. Để nguyên là HAI nguồn sự thật cho màu — đúng rủi ro
+   docs/07 §10 nêu với PrimeVue.
+   Cách xử lý: KHÔNG bỏ shadcn, mà bắt biến của nó DẪN XUẤT từ token của mình.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* Theme tối của ta dùng [data-theme="dark"], không dùng class .dark */
+@custom-variant dark (&:is([data-theme="dark"] *));
+
+:root {
+  /* shadcn ← design system */
+  --background:            var(--ds-color-surface);
+  --foreground:            var(--ds-color-on-surface);
+  --card:                  var(--ds-color-surface-container-lowest);
+  --card-foreground:       var(--ds-color-on-surface);
+  --popover:               var(--ds-color-surface-container-high);
+  --popover-foreground:    var(--ds-color-on-surface);
+  --primary:               var(--ds-color-primary);
+  --primary-foreground:    var(--ds-color-on-primary);
+  --secondary:             var(--ds-color-surface-variant);
+  --secondary-foreground:  var(--ds-color-on-surface);
+  --muted:                 var(--ds-color-surface-container);
+  --muted-foreground:      var(--ds-color-on-surface-variant);
+  --accent:                var(--ds-color-primary-container);
+  --accent-foreground:     var(--ds-color-on-primary-container);
+  --destructive:           var(--ds-color-error);
+  --border:                var(--ds-color-outline-variant);
+  --input:                 var(--ds-color-outline);
+  --ring:                  var(--ds-color-primary);
+  /* Atlassian: gần như vuông. shadcn mặc định 0.625rem (10px) — quá mềm. */
+  --radius:                var(--ds-radius-xs);
+}
+/* Biến shadcn đều trỏ tới token, mà token đã tự đổi theo [data-theme]
+   → không cần khai lại khối .dark. Một nguồn sự thật duy nhất. */
+
+@theme inline {
+  /* --- vai trò của design system, dùng trực tiếp trong app --- */
+  --color-primary-container: var(--ds-color-primary-container);
+  --color-on-primary-container: var(--ds-color-on-primary-container);
+  --color-on-primary: var(--ds-color-on-primary);
+  --color-success-container: var(--ds-color-success-container);
+  --color-on-success-container: var(--ds-color-on-success-container);
+  --color-warning-container: var(--ds-color-warning-container);
+  --color-on-warning-container: var(--ds-color-on-warning-container);
+  --color-danger-container: var(--ds-color-error-container);
+  --color-on-danger-container: var(--ds-color-on-error-container);
+  --color-surface: var(--ds-color-surface);
+  --color-on-surface: var(--ds-color-on-surface);
+  --color-surface-variant: var(--ds-color-surface-variant);
+  --color-on-surface-variant: var(--ds-color-on-surface-variant);
+  --color-sf-lowest: var(--ds-color-surface-container-lowest);
+  --color-sf-low: var(--ds-color-surface-container-low);
+  --color-sf-high: var(--ds-color-surface-container-high);
+  --color-sf-highest: var(--ds-color-surface-container-highest);
+  --color-outline: var(--ds-color-outline);
+  --color-outline-variant: var(--ds-color-outline-variant);
+
+  /* --- vai trò shadcn, để utility bg-background/text-muted-foreground… chạy --- */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-xs: var(--ds-radius-xs);
+  --radius-sm: var(--ds-radius-xs);
+  --radius-md: var(--ds-radius-md);
+  --radius-lg: var(--ds-radius-lg);
+  --radius-xl: var(--ds-radius-lg);
+
+  /* Font từ design system — KHÔNG dùng Geist qua Google Fonts:
+     phá tính chạy offline, và ghi đè quyết định font của design system. */
+  --font-sans: var(--ds-font-sans);
+  --font-mono: var(--ds-font-mono);
+
+  --text-overline: var(--ds-text-overline-size);
+  --text-body-sm: var(--ds-text-body-sm-size);
+  --text-body-md: var(--ds-text-body-md-size);
+  --text-title-md: var(--ds-text-title-md-size);
+  --text-title-lg: var(--ds-text-title-lg-size);
+  --text-headline: var(--ds-text-headline-size);
+  --font-heading: var(--ds-font-sans);
+}
+
+/* Thang spacing mặc định của Tailwind (base 4px) trùng đúng thang token:
+   p-2 = 8px, p-4 = 16px, p-6 = 24px, p-8 = 32px. Không khai lại. */
+
+@layer base {
+  * { @apply border-border; }
+  html, body, #app { height: 100%; }
+  body {
+    margin: 0;
+    /* App-shell: khung cố định, chỉ vùng nội dung cuộn (RES-12 / AP-19) */
+    display: flex; flex-direction: column; overflow: hidden;
+    font-size: var(--ds-text-body-md-size);
+    line-height: var(--ds-text-body-md-lh);
+    @apply bg-background text-foreground font-sans;
+  }
+  /* AP-20 — không bao giờ để link rơi về màu mặc định của trình duyệt */
+  a { color: var(--ds-color-primary); }
+  *:focus-visible { outline: 2px solid var(--ds-color-primary); outline-offset: 1px; }
+}
+

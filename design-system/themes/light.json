@@ -1,0 +1,58 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Theme SÁNG — ánh xạ vai trò ngữ nghĩa sang bảng màu gốc. Component chỉ được dùng tên vai trò ở file này, không bao giờ dùng thẳng palette.",
+  "$extensions": { "theme": "light", "pairedWith": "themes/dark.json" },
+
+  "color": {
+    "primary":               { "$type": "color", "$value": "{palette.blue.40}",  "$description": "Hành động chính. KHÔNG dùng để trang trí." },
+    "on-primary":            { "$type": "color", "$value": "{palette.neutral.100}" },
+    "primary-container":     { "$type": "color", "$value": "{palette.blue.90}",  "$description": "Nền cho mục điều hướng đang chọn, chip nhấn, banner thông tin." },
+    "on-primary-container":  { "$type": "color", "$value": "{palette.blue.10}" },
+
+    "error":                 { "$type": "color", "$value": "{palette.red.40}" },
+    "on-error":              { "$type": "color", "$value": "{palette.neutral.100}" },
+    "error-container":       { "$type": "color", "$value": "{palette.red.90}" },
+    "on-error-container":    { "$type": "color", "$value": "{palette.red.10}" },
+
+    "success":               { "$type": "color", "$value": "{palette.green.40}" },
+    "success-container":     { "$type": "color", "$value": "{palette.green.90}" },
+    "on-success-container":  { "$type": "color", "$value": "{palette.green.10}" },
+
+    "warning-container":     { "$type": "color", "$value": "{palette.amber.90}" },
+    "on-warning-container":  { "$type": "color", "$value": "{palette.amber.10}" },
+
+    "surface":                   { "$type": "color", "$value": "{palette.neutral.98}", "$description": "Nền trang." },
+    "on-surface":                { "$type": "color", "$value": "{palette.neutral.10}" },
+    "surface-variant":           { "$type": "color", "$value": "{palette.neutral-variant.90}" },
+    "on-surface-variant":        { "$type": "color", "$value": "{palette.neutral-variant.30}", "$description": "Chữ phụ, nhãn, chú thích." },
+    "surface-container-lowest":  { "$type": "color", "$value": "{palette.neutral.100}" },
+    "surface-container-low":     { "$type": "color", "$value": "{palette.neutral.96}", "$description": "elevation 1 — thẻ, thanh bên." },
+    "surface-container":         { "$type": "color", "$value": "{palette.neutral.94}", "$description": "elevation 2." },
+    "surface-container-high":    { "$type": "color", "$value": "{palette.neutral.92}", "$description": "elevation 3 — menu, popover, hộp thoại." },
+    "surface-container-highest": { "$type": "color", "$value": "{palette.neutral.90}", "$description": "elevation 4–5." },
+
+    "outline":               { "$type": "color", "$value": "{palette.neutral-variant.50}", "$description": "Viền ô nhập, viền nút outlined." },
+    "outline-variant":       { "$type": "color", "$value": "{palette.neutral-variant.80}", "$description": "Đường kẻ phân cách, viền bảng." },
+
+    "shadow":                { "$type": "color", "$value": "{palette.neutral.0}" },
+    "scrim":                 { "$type": "color", "$value": "{palette.neutral.0}", "$extensions": { "alpha": 0.4 } },
+    "state-layer-base":      { "$type": "color", "$value": "{palette.neutral.0}", "$description": "Màu gốc của lớp phủ hover/focus/pressed. Độ mờ lấy từ elevation.json." },
+
+    "inverse-surface":       { "$type": "color", "$value": "{palette.neutral.22}", "$description": "Tooltip, snackbar." },
+    "inverse-on-surface":    { "$type": "color", "$value": "{palette.neutral.96}" }
+  },
+
+  "contrastReport": {
+    "$description": "Kiểm A11Y-01 — tính tại thời điểm sinh theme. Ngưỡng: 4.5:1 chữ thường, 3:1 chữ lớn và thành phần UI.",
+    "on-surface / surface":               { "ratio": 16.6, "pass": true },
+    "on-surface-variant / surface":       { "ratio": 8.6,  "pass": true },
+    "primary / surface":                  { "ratio": 7.9,  "pass": true },
+    "on-primary / primary":               { "ratio": 7.0,  "pass": true },
+    "on-primary-container / primary-container": { "ratio": 13.9, "pass": true },
+    "error / surface":                    { "ratio": 7.4,  "pass": true },
+    "on-error-container / error-container":     { "ratio": 13.2, "pass": true },
+    "on-success-container / success-container": { "ratio": 14.1, "pass": true },
+    "on-warning-container / warning-container": { "ratio": 12.8, "pass": true },
+    "outline / surface":                  { "ratio": 4.1,  "pass": true, "note": "Viền là thành phần UI, ngưỡng 3:1." }
+  }
+}

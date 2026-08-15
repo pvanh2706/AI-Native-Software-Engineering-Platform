@@ -1,0 +1,183 @@
+/* ==========================================================================
+   SINH TỰ ĐỘNG — KHÔNG SỬA TAY
+   Nguồn : design-system/tokens/*.json + design-system/themes/*.json
+   Lệnh  : node tools/design-tokens/build-css.mjs
+   Đổi nhận diện = sửa file nguồn rồi chạy lại lệnh trên.
+   ========================================================================== */
+:root {
+  /* chữ */
+  --ds-font-sans: Inter, Roboto, "Segoe UI", system-ui, -apple-system, sans-serif;
+  --ds-font-mono: ui-monospace, "JetBrains Mono", Consolas, monospace;
+  --ds-text-display-size: 29px;
+  --ds-text-display-lh: 1.2;
+  --ds-text-display-weight: 400;
+  --ds-text-display-ls: -0.02em;
+  --ds-text-headline-size: 20px;
+  --ds-text-headline-lh: 1.3;
+  --ds-text-headline-weight: 400;
+  --ds-text-headline-ls: -0.01em;
+  --ds-text-title-lg-size: 16px;
+  --ds-text-title-lg-lh: 1.35;
+  --ds-text-title-lg-weight: 500;
+  --ds-text-title-md-size: 14px;
+  --ds-text-title-md-lh: 1.4;
+  --ds-text-title-md-weight: 500;
+  --ds-text-title-sm-size: 12px;
+  --ds-text-title-sm-lh: 1.4;
+  --ds-text-title-sm-weight: 500;
+  --ds-text-body-lg-size: 14px;
+  --ds-text-body-lg-lh: 1.5;
+  --ds-text-body-lg-weight: 400;
+  --ds-text-body-md-size: 14px;
+  --ds-text-body-md-lh: 1.45;
+  --ds-text-body-md-weight: 400;
+  --ds-text-body-sm-size: 12px;
+  --ds-text-body-sm-lh: 1.4;
+  --ds-text-body-sm-weight: 400;
+  --ds-text-label-size: 14px;
+  --ds-text-label-lh: 1.15;
+  --ds-text-label-weight: 500;
+  --ds-text-label-ls: 0.01em;
+  --ds-text-overline-size: 11px;
+  --ds-text-overline-lh: 1.3;
+  --ds-text-overline-weight: 500;
+  --ds-text-overline-ls: 0.06em;
+  --ds-text-code-size: 12px;
+  --ds-text-code-lh: 1.4;
+  --ds-text-code-weight: 400;
+
+  /* khoảng cách */
+  --ds-space-0: 0;
+  --ds-space-1: 4px;
+  --ds-space-2: 8px;
+  --ds-space-3: 12px;
+  --ds-space-4: 16px;
+  --ds-space-5: 20px;
+  --ds-space-6: 24px;
+  --ds-space-8: 32px;
+  --ds-space-10: 40px;
+  --ds-space-12: 48px;
+  --ds-space-16: 64px;
+  --ds-space-field-gap: 24px;
+  --ds-space-field-inner: 8px;
+  --ds-space-section-gap: 32px;
+  --ds-space-card-padding: 16px;
+  --ds-space-page-padding: 24px;
+  --ds-space-cell-padding-y: 8px;
+  --ds-space-inline-gap: 8px;
+  --ds-layout-content-max: 1440px;
+  --ds-layout-reading-max: 72ch;
+  --ds-layout-form-max: 840px;
+  --ds-layout-sidebar: 260px;
+  --ds-layout-touch-target: 24px;
+  --ds-layout-row-height: 40px;
+  --ds-layout-control-height: 32px;
+
+  /* bo góc */
+  --ds-radius-none: 0;
+  --ds-radius-xs: 3px;
+  --ds-radius-sm: 3px;
+  --ds-radius-md: 4px;
+  --ds-radius-lg: 6px;
+  --ds-radius-xl: 6px;
+  --ds-radius-full: 9999px;
+  --ds-radius-input: 3px;
+  --ds-radius-card: 3px;
+  --ds-radius-banner: 3px;
+  --ds-radius-dialog: 6px;
+  --ds-radius-button: 3px;
+  --ds-radius-chip: 3px;
+  --ds-radius-nav-item: 3px;
+  --ds-radius-avatar: 9999px;
+
+  /* chuyển động */
+  --ds-dur-instant: 0ms;
+  --ds-dur-fast: 120ms;
+  --ds-dur-normal: 200ms;
+  --ds-dur-slow: 300ms;
+  --ds-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ds-ease-decelerate: cubic-bezier(0, 0, 0, 1);
+  --ds-ease-accelerate: cubic-bezier(0.3, 0, 1, 1);
+  --ds-ease-linear: cubic-bezier(0, 0, 1, 1);
+
+  /* lớp phủ trạng thái */
+  --ds-state-hover: 0.08;
+  --ds-state-focus: 0.1;
+  --ds-state-pressed: 0.12;
+  --ds-state-dragged: 0.16;
+  --ds-state-disabled: 0.38;
+
+  /* độ nổi — màu bóng là #000 ở cả hai theme nên đặt được ở :root */
+  --ds-elev-0: none;
+  --ds-elev-1: 0 1px 2px 0 rgba(0,0,0,0.14), 0 1px 3px 1px rgba(0,0,0,0.12);
+  --ds-elev-2: 0 1px 2px 0 rgba(0,0,0,0.1), 0 2px 6px 2px rgba(0,0,0,0.1);
+  --ds-elev-3: 0 1px 3px 0 rgba(0,0,0,0.08), 0 4px 8px 3px rgba(0,0,0,0.1);
+  --ds-elev-4: 0 2px 4px 0 rgba(0,0,0,0.08), 0 8px 16px 4px rgba(0,0,0,0.12);
+  --ds-elev-5: 0 4px 8px 0 rgba(0,0,0,0.08), 0 12px 24px 6px rgba(0,0,0,0.14);
+}
+
+:root[data-theme="light"] {
+  --ds-color-primary: #003d9b;
+  --ds-color-on-primary: #FFFFFF;
+  --ds-color-primary-container: #0052cc;
+  --ds-color-on-primary-container: #c4d2ff;
+  --ds-color-error: #ba1a1a;
+  --ds-color-on-error: #FFFFFF;
+  --ds-color-error-container: #ffdad6;
+  --ds-color-on-error-container: #93000a;
+  --ds-color-success: #2E6C40;
+  --ds-color-success-container: #B7F0C4;
+  --ds-color-on-success-container: #002110;
+  --ds-color-warning-container: #FFDDB0;
+  --ds-color-on-warning-container: #2B1700;
+  --ds-color-surface: #faf9ff;
+  --ds-color-on-surface: #051a3e;
+  --ds-color-surface-variant: #d8e2ff;
+  --ds-color-on-surface-variant: #434654;
+  --ds-color-surface-container-lowest: #FFFFFF;
+  --ds-color-surface-container-low: #f1f3ff;
+  --ds-color-surface-container: #e9edff;
+  --ds-color-surface-container-high: #e1e8ff;
+  --ds-color-surface-container-highest: #d8e2ff;
+  --ds-color-outline: #737685;
+  --ds-color-outline-variant: #c3c6d6;
+  --ds-color-shadow: #000000;
+  --ds-color-scrim: rgba(0, 0, 0, 0.4);
+  --ds-color-state-layer-base: #000000;
+  --ds-color-inverse-surface: #1d3054;
+  --ds-color-inverse-on-surface: #edf0ff;
+  --ds-state-rgb: 0, 0, 0;
+}
+
+:root[data-theme="dark"] {
+  --ds-color-primary: #b2c5ff;
+  --ds-color-on-primary: #002d7d;
+  --ds-color-primary-container: #93b0ff;
+  --ds-color-on-primary-container: #002d7d;
+  --ds-color-error: #ffb4ab;
+  --ds-color-on-error: #690005;
+  --ds-color-error-container: #93000a;
+  --ds-color-on-error-container: #ffdad6;
+  --ds-color-success: #4bce97;
+  --ds-color-success-container: #0E5227;
+  --ds-color-on-success-container: #B7F0C4;
+  --ds-color-warning-container: #5C3D00;
+  --ds-color-on-warning-container: #FFDDB0;
+  --ds-color-surface: #0e1421;
+  --ds-color-on-surface: #e2e6f2;
+  --ds-color-surface-variant: #434654;
+  --ds-color-on-surface-variant: #c3c6d6;
+  --ds-color-surface-container-lowest: #090d18;
+  --ds-color-surface-container-low: #161c2a;
+  --ds-color-surface-container: #1a2130;
+  --ds-color-surface-container-high: #242b3b;
+  --ds-color-surface-container-highest: #2f3646;
+  --ds-color-outline: #8d90a0;
+  --ds-color-outline-variant: #434654;
+  --ds-color-shadow: #000000;
+  --ds-color-scrim: rgba(0, 0, 0, 0.75);
+  --ds-color-state-layer-base: #FFFFFF;
+  --ds-color-inverse-surface: #e2e6f2;
+  --ds-color-inverse-on-surface: #2d3444;
+  --ds-state-rgb: 255, 255, 255;
+}

@@ -1,0 +1,174 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Thang chữ. Line-height nới rộng hơn thang Material gốc vì tiếng Việt có dấu chồng hai tầng (ề, ộ, ữ) — dùng hệ số Latin-only sẽ dính dấu khi xuống dòng.",
+  "font": {
+    "family": {
+      "sans": {
+        "$type": "fontFamily",
+        "$value": [
+          "Inter",
+          "Roboto",
+          "Segoe UI",
+          "system-ui",
+          "-apple-system",
+          "sans-serif"
+        ],
+        "$description": "Chữ giao diện. Yêu cầu: phủ đủ dấu tiếng Việt. Inter và Roboto đều đạt; system-ui là lưới an toàn khi không tải được font."
+      },
+      "mono": {
+        "$type": "fontFamily",
+        "$value": [
+          "ui-monospace",
+          "JetBrains Mono",
+          "Consolas",
+          "monospace"
+        ],
+        "$description": "Mã, khoá issue, đường dẫn API, giá trị token."
+      }
+    },
+    "weight": {
+      "regular": {
+        "$type": "fontWeight",
+        "$value": 400
+      },
+      "medium": {
+        "$type": "fontWeight",
+        "$value": 500,
+        "$description": "Nhấn trong giao diện. Dùng thay cho bold ở hầu hết trường hợp."
+      },
+      "bold": {
+        "$type": "fontWeight",
+        "$value": 700,
+        "$description": "Chỉ dùng cho số liệu cần đọc lướt và tiêu đề lớn."
+      }
+    }
+  },
+  "typography": {
+    "display": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "29px",
+        "lineHeight": "1.2",
+        "fontWeight": "{font.weight.regular}",
+        "letterSpacing": "-0.02em"
+      },
+      "$description": "Chỉ dùng cho màn hình rỗng và trang giới thiệu. KHÔNG dùng trong app nghiệp vụ."
+    },
+    "headline": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "20px",
+        "lineHeight": "1.3",
+        "fontWeight": "{font.weight.regular}",
+        "letterSpacing": "-0.01em"
+      },
+      "$description": "Tiêu đề màn hình. Mỗi màn đúng MỘT headline. 20px theo thang Atlassian, không phải 24px của Material."
+    },
+    "title-lg": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "16px",
+        "lineHeight": "1.35",
+        "fontWeight": "{font.weight.medium}"
+      },
+      "$description": "Tiêu đề hộp thoại, thẻ lớn."
+    },
+    "title-md": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "14px",
+        "lineHeight": "1.4",
+        "fontWeight": "{font.weight.medium}"
+      },
+      "$description": "Tiêu đề khu vực trong màn hình."
+    },
+    "title-sm": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "12px",
+        "lineHeight": "1.4",
+        "fontWeight": "{font.weight.medium}"
+      },
+      "$description": "Nhãn nhóm, tiêu đề thẻ nhỏ."
+    },
+    "body-lg": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "14px",
+        "lineHeight": "1.5",
+        "fontWeight": "{font.weight.regular}"
+      },
+      "$description": "Giá trị trong ô nhập. 14px theo chuẩn Atlassian — công cụ nội bộ chỉ chạy trên máy tính bàn."
+    },
+    "body-md": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "14px",
+        "lineHeight": "1.45",
+        "fontWeight": "{font.weight.regular}"
+      },
+      "$description": "Cỡ chữ mặc định của app."
+    },
+    "body-sm": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "12px",
+        "lineHeight": "1.4",
+        "fontWeight": "{font.weight.regular}"
+      },
+      "$description": "Chú thích dưới ô nhập, mô tả phụ. KHÔNG dùng cho nội dung người dùng phải đọc kỹ."
+    },
+    "label": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "14px",
+        "lineHeight": "1.15",
+        "fontWeight": "{font.weight.medium}",
+        "letterSpacing": "0.01em"
+      },
+      "$description": "Chữ trên nút và tab."
+    },
+    "overline": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "11px",
+        "lineHeight": "1.3",
+        "fontWeight": "{font.weight.medium}",
+        "letterSpacing": "0.06em",
+        "textTransform": "uppercase"
+      },
+      "$description": "Nhãn cột bảng, tiêu đề nhóm trong menu. Tiếng Việt viết hoa toàn bộ khó đọc — chỉ dùng cho chuỗi ngắn dưới 3 từ."
+    },
+    "code": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.mono}",
+        "fontSize": "12px",
+        "lineHeight": "1.4",
+        "fontWeight": "{font.weight.regular}"
+      },
+      "$description": "Khoá issue, tên field, đường dẫn API."
+    }
+  },
+  "rules": {
+    "$description": "Ràng buộc UI Eval kiểm được",
+    "maxLevelsPerScreen": 4,
+    "oneHeadlinePerScreen": true,
+    "minBodySize": "12.5px",
+    "maxLineLength": "72ch",
+    "noAllCapsLongerThan": 3
+  },
+  "$extensions": {
+    "styleDecision": "J1 — Atlassian/Jira (2026-08-10)"
+  }
+}

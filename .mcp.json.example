@@ -1,0 +1,18 @@
+{
+  "_huong_dan": [
+    "Chép file này thành .mcp.json rồi điền khoá thật.",
+    ".mcp.json đã nằm trong .gitignore nên khoá không đi theo repo.",
+    "Claude Code dùng khoá gốc 'mcpServers'. VS Code dùng 'servers' — Stitch đưa theo định dạng VS Code, phải đổi.",
+    "Lấy khoá Stitch: stitch.withgoogle.com. Khoá hết hạn sau 90 ngày.",
+    "Muốn tránh để khoá trong file thì đặt biến môi trường STITCH_API_KEY rồi ghi \"${STITCH_API_KEY}\" thay cho khoá."
+  ],
+  "mcpServers": {
+    "stitch": {
+      "type": "http",
+      "url": "https://stitch.googleapis.com/mcp",
+      "headers": {
+        "X-Goog-Api-Key": "DAN_KHOA_STITCH_VAO_DAY"
+      }
+    }
+  }
+}

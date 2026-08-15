@@ -21,6 +21,8 @@ Capability  +  Eval  +  Autonomy  +  Knowledge  +  Engineering Lifecycle
 | 04 | [Knowledge & Orchestration](04-knowledge-and-orchestration.md) | Tri thức project/org + vòng lặp điều phối lifecycle |
 | 05 | [Tech Stack & Data Model](05-tech-stack-and-data-model.md) | .NET + Vue 3/TS/Tailwind, provider abstraction, data model |
 | 06 | [Roadmap](06-roadmap.md) | Lộ trình P0→P4 với tiêu chí hoàn thành từng phase |
+| 07 | [UI/UX Capability & UI Eval](07-uiux-capability-and-eval.md) | Nhóm capability `ui.*`, Design System như artifact, Component/Pattern Registry, UI Eval 2 lớp, Design Direction gate |
+| 08 | [Review khoảng cách UI Capability](08-ui-capability-gap-review.md) | Kiểm kê "đã viết" vs "đang dùng", vì sao UI chưa cải thiện, thứ tự ưu tiên, chính sách nguồn ngoài — *chờ duyệt* |
 
 ## Tech stack (đã chốt)
 

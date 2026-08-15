@@ -1,0 +1,169 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Độ nổi. Phong cách Atlassian: bóng rất nhẹ, phân tầng chủ yếu bằng ĐƯỜNG VIỀN và bậc surface. Trên nền tối gần đen bóng gần như vô hình nên mỗi mức vẫn gắn với một bậc surface.",
+  "elevation": {
+    "0": {
+      "$type": "shadow",
+      "$value": "none",
+      "$extensions": {
+        "surfaceStep": "surface",
+        "usage": "Nền trang."
+      }
+    },
+    "1": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "offsetX": "0",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0",
+          "color": "{color.shadow}",
+          "alpha": 0.14
+        },
+        {
+          "offsetX": "0",
+          "offsetY": "1px",
+          "blur": "3px",
+          "spread": "1px",
+          "color": "{color.shadow}",
+          "alpha": 0.12
+        }
+      ],
+      "$extensions": {
+        "surfaceStep": "surface-container-low",
+        "usage": "Thẻ tĩnh, thanh bên."
+      }
+    },
+    "2": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "offsetX": "0",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0",
+          "color": "{color.shadow}",
+          "alpha": 0.1
+        },
+        {
+          "offsetX": "0",
+          "offsetY": "2px",
+          "blur": "6px",
+          "spread": "2px",
+          "color": "{color.shadow}",
+          "alpha": 0.1
+        }
+      ],
+      "$extensions": {
+        "surfaceStep": "surface-container",
+        "usage": "Thẻ khi hover, nút nổi."
+      }
+    },
+    "3": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "offsetX": "0",
+          "offsetY": "1px",
+          "blur": "3px",
+          "spread": "0",
+          "color": "{color.shadow}",
+          "alpha": 0.08
+        },
+        {
+          "offsetX": "0",
+          "offsetY": "4px",
+          "blur": "8px",
+          "spread": "3px",
+          "color": "{color.shadow}",
+          "alpha": 0.1
+        }
+      ],
+      "$extensions": {
+        "surfaceStep": "surface-container-high",
+        "usage": "Menu thả xuống, popover."
+      }
+    },
+    "4": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "offsetX": "0",
+          "offsetY": "2px",
+          "blur": "4px",
+          "spread": "0",
+          "color": "{color.shadow}",
+          "alpha": 0.08
+        },
+        {
+          "offsetX": "0",
+          "offsetY": "8px",
+          "blur": "16px",
+          "spread": "4px",
+          "color": "{color.shadow}",
+          "alpha": 0.12
+        }
+      ],
+      "$extensions": {
+        "surfaceStep": "surface-container-high",
+        "usage": "Ngăn kéo trượt."
+      }
+    },
+    "5": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "offsetX": "0",
+          "offsetY": "4px",
+          "blur": "8px",
+          "spread": "0",
+          "color": "{color.shadow}",
+          "alpha": 0.08
+        },
+        {
+          "offsetX": "0",
+          "offsetY": "12px",
+          "blur": "24px",
+          "spread": "6px",
+          "color": "{color.shadow}",
+          "alpha": 0.14
+        }
+      ],
+      "$extensions": {
+        "surfaceStep": "surface-container-highest",
+        "usage": "Hộp thoại phủ màn."
+      }
+    }
+  },
+  "state-layer": {
+    "$description": "Lớp phủ trạng thái, dùng màu on-surface với độ mờ. Thay cho việc đổi màu nền — nhờ vậy hoạt động đúng ở cả 2 theme mà không cần khai màu hover riêng.",
+    "hover": {
+      "$type": "number",
+      "$value": 0.08
+    },
+    "focus": {
+      "$type": "number",
+      "$value": 0.1
+    },
+    "pressed": {
+      "$type": "number",
+      "$value": 0.12
+    },
+    "dragged": {
+      "$type": "number",
+      "$value": 0.16
+    },
+    "disabled": {
+      "$type": "number",
+      "$value": 0.38,
+      "$description": "Áp lên màu chữ, không phải lớp phủ nền."
+    }
+  },
+  "rules": {
+    "$description": "Ràng buộc UI Eval kiểm được",
+    "mustPairWithSurfaceStep": true,
+    "maxElevationInDenseUI": 2,
+    "noShadowOnlyHierarchyInDarkTheme": true
+  }
+}

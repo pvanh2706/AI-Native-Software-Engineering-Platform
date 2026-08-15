@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tạo Issue - Lỗi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#d8e2ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#709bfe",
+                        "on-surface-variant": "#434654",
+                        "on-tertiary-fixed": "#380d00",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "surface-container-high": "#e1e8ff",
+                        "tertiary-fixed": "#ffdbcf",
+                        "surface-container-low": "#f1f3ff",
+                        "on-error-container": "#93000a",
+                        "outline": "#737685",
+                        "inverse-on-surface": "#edf0ff",
+                        "inverse-surface": "#1d3054",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#e9edff",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#051a3e",
+                        "tertiary": "#7b2600",
+                        "surface": "#faf9ff",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "secondary-fixed": "#d9e2ff",
+                        "outline-variant": "#c3c6d6",
+                        "background": "#faf9ff",
+                        "primary-fixed": "#dae2ff",
+                        "on-tertiary-fixed-variant": "#812800",
+                        "surface-bright": "#faf9ff",
+                        "inverse-primary": "#b2c5ff",
+                        "on-primary-fixed": "#001848",
+                        "secondary-fixed-dim": "#b1c6ff",
+                        "on-background": "#051a3e",
+                        "surface-dim": "#ccdaff",
+                        "error": "#ba1a1a",
+                        "secondary": "#285ab9",
+                        "surface-container-highest": "#d8e2ff",
+                        "on-tertiary-container": "#ffc6b2",
+                        "on-secondary-fixed": "#001946",
+                        "on-primary-container": "#c4d2ff",
+                        "surface-tint": "#0c56d0",
+                        "on-secondary-fixed-variant": "#00419d",
+                        "on-secondary-container": "#003179",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "primary-container": "#0052cc",
+                        "primary": "#003d9b",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#a33500"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "layout-margin": "24px",
+                        "xl": "24px",
+                        "base": "4px",
+                        "sm": "8px",
+                        "md": "12px",
+                        "xs": "4px",
+                        "lg": "16px",
+                        "layout-gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "h3": ["Hanken Grotesk"],
+                        "h1": ["Hanken Grotesk"],
+                        "label-md": ["Inter"],
+                        "h2": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "mono": ["JetBrains Mono"],
+                        "label-xs": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h3": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "h1": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "h2": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "mono": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "label-xs": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+                        "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Ensuring material icons render correctly */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-lg antialiased">
+<div class="flex h-screen overflow-hidden">
+<!-- SideNavBar Component -->
+<nav class="fixed left-0 top-0 h-full w-[240px] bg-surface dark:bg-inverse-surface border-r border-outline-variant dark:border-outline flex flex-col p-md space-y-sm z-20">
+<!-- Header/Logo Area -->
+<div class="flex items-center space-x-sm px-sm py-md">
+<div class="w-8 h-8 rounded bg-primary-container flex items-center justify-center text-on-primary-container shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">dataset</span>
+</div>
+<div>
+<div class="text-h2 font-h2 font-bold text-primary dark:text-inverse-primary truncate">Jira Automation</div>
+<div class="text-label-xs font-label-xs text-on-surface-variant uppercase tracking-wider">Project Selector</div>
+</div>
+</div>
+<!-- CTA Button -->
+<button class="w-full bg-primary text-on-primary text-label-md font-label-md py-2 px-4 rounded-lg flex items-center justify-center space-x-2 hover:bg-primary-container hover:text-on-primary-container transition-colors duration-200 mt-md mb-md">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>Tạo mẫu mới</span>
+</button>
+<!-- Navigation Links -->
+<div class="flex-1 space-y-xs overflow-y-auto">
+<a class="flex items-center space-x-md px-sm py-2 text-primary dark:text-inverse-primary bg-secondary-fixed dark:bg-on-secondary-fixed-variant font-bold rounded-lg transition-transform duration-150 scale-[0.98]" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-label-md font-label-md">Mẫu issue</span>
+</a>
+<a class="flex items-center space-x-md px-sm py-2 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="text-label-md font-label-md">Lịch sử issue</span>
+</a>
+<a class="flex items-center space-x-md px-sm py-2 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Cấu hình dự án</span>
+</a>
+</div>
+<!-- Footer Nav -->
+<div class="mt-auto border-t border-outline-variant pt-sm">
+<a class="flex items-center space-x-md px-sm py-2 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-label-md font-label-md">Thông tin tài khoản</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col ml-[240px] w-[calc(100%-240px)] h-full">
+<!-- TopAppBar Component -->
+<header class="docked full-width top-0 bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline flex justify-between items-center h-16 px-xl shrink-0 z-10">
+<!-- Left: Context/Title -->
+<div class="flex items-center space-x-md">
+<div class="text-h1 font-h1 font-bold text-on-surface dark:text-inverse-on-surface">Tạo mới Issue</div>
+</div>
+<!-- Right: Actions & Profile -->
+<div class="flex items-center space-x-md">
+<!-- Trailing Icon Actions -->
+<button class="p-2 text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="w-px h-8 bg-outline-variant mx-sm"></div>
+<!-- Profile -->
+<div class="w-8 h-8 rounded-full bg-secondary-container overflow-hidden border border-outline-variant cursor-pointer hover:ring-2 ring-primary ring-offset-2 transition-all">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="A small circular avatar placeholder image for a user profile in a B2B enterprise software interface, standard corporate styling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACDGCMemMsAOkRnNlz0kd8A9BVVwnYyjWGCIo6HkPTPH7EZ8C5Wo5qQduut7LxJMmzxkOkR4FmKT7-QHXo6I5pWSDPN7obQyjcJDksaYpGc1CCs_dHeHuQ9rv2qpvw8zRX1PyrTolq7H3lOEooGRbfk-cXRq0yUcx87ltE3YHtCXBXiNwGRY35myHLbrok7dH3S-J4PtBe4iIbClxE-FGJzUOUFl1KT3sddGW51ye88C8lhTKSkoWUcf_ksshQfXZHqtzNbWXMZ2I"/>
+</div>
+</div>
+</header>
+<!-- Main Scrollable Canvas -->
+<main class="flex-1 overflow-y-auto p-layout-margin bg-background">
+<div class="max-w-4xl mx-auto space-y-layout-gutter">
+<!-- ERROR BANNER -->
+<div class="bg-error-container border border-error rounded-lg p-md flex items-start space-x-md shadow-sm">
+<span class="material-symbols-outlined text-error mt-0.5" style="font-variation-settings: 'FILL' 1;">error</span>
+<div>
+<h3 class="text-h3 font-h3 text-on-error-container">Không thể tạo issue. Vui lòng kiểm tra các trường bị lỗi bên dưới.</h3>
+</div>
+</div>
+<!-- FORM CONTAINER -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-layout-margin shadow-sm flex flex-col space-y-layout-gutter">
+<div class="border-b border-outline-variant pb-sm">
+<h2 class="text-h2 font-h2 text-on-surface">Chi tiết Issue</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Điền các thông tin cần thiết để tạo một issue mới trong hệ thống.</p>
+</div>
+<!-- Form Grid -->
+<div class="grid grid-cols-12 gap-layout-gutter">
+<!-- Project (Pre-filled) -->
+<div class="col-span-12 md:col-span-6 space-y-xs">
+<label class="text-label-md font-label-md text-on-surface block">Dự án <span class="text-error">*</span></label>
+<div class="relative">
+<select class="w-full h-[32px] px-sm border border-outline-variant rounded-md bg-surface text-body-lg font-body-lg text-on-surface appearance-none focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary pointer-events-none opacity-80" disabled="">
+<option selected="">Tự động hóa hệ thống (AUTO)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1.5 text-on-surface-variant pointer-events-none text-[18px]">arrow_drop_down</span>
+</div>
+</div>
+<!-- Issue Type (Pre-filled) -->
+<div class="col-span-12 md:col-span-6 space-y-xs">
+<label class="text-label-md font-label-md text-on-surface block">Loại Issue <span class="text-error">*</span></label>
+<div class="relative">
+<select class="w-full h-[32px] px-sm border border-outline-variant rounded-md bg-surface text-body-lg font-body-lg text-on-surface appearance-none focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+<option selected="">Task</option>
+<option>Bug</option>
+<option>Story</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1.5 text-on-surface-variant pointer-events-none text-[18px]">arrow_drop_down</span>
+</div>
+</div>
+<!-- Summary (Pre-filled) -->
+<div class="col-span-12 space-y-xs">
+<label class="text-label-md font-label-md text-on-surface block">Tóm tắt <span class="text-error">*</span></label>
+<input class="w-full h-[32px] px-sm border border-outline-variant rounded-md bg-surface text-body-lg font-body-lg text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-outline" type="text" value="Khắc phục lỗi đồng bộ hóa dữ liệu từ API bên thứ ba"/>
+</div>
+<!-- Description (Pre-filled) -->
+<div class="col-span-12 space-y-xs">
+<label class="text-label-md font-label-md text-on-surface block">Mô tả</label>
+<textarea class="w-full p-sm border border-outline-variant rounded-md bg-surface text-body-lg font-body-lg text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-outline resize-y" rows="4">Quá trình đồng bộ dữ liệu lúc 02:00 AM đang bị lỗi timeout. Cần kiểm tra lại log và tăng thời gian chờ cấu hình.</textarea>
+</div>
+<!-- ERROR FIELD: Thời gian thực tế đã bỏ ra để xử lý -->
+<div class="col-span-12 md:col-span-6 space-y-xs">
+<label class="text-label-md font-label-md text-error block">Thời gian thực tế đã bỏ ra để xử lý <span class="text-error">*</span></label>
+<div class="relative">
+<!-- Input border changed to red (border-error), background slightly tinted for error context -->
+<input class="w-full h-[32px] px-sm border-2 border-error rounded-md bg-error-container/10 text-body-lg font-body-lg text-on-surface focus:outline-none focus:border-error focus:ring-1 focus:ring-error placeholder:text-outline transition-colors" placeholder="Ví dụ: 2h 30m" type="text" value=""/>
+<!-- Optional warning icon inside input for accessibility -->
+<span class="material-symbols-outlined absolute right-2 top-1.5 text-error pointer-events-none text-[18px]">warning</span>
+</div>
+<!-- Exact Jira Error Message below input -->
+<p class="text-label-xs font-label-xs text-error flex items-center mt-1">
+                                    Field 'customfield_10312' is required.
+                                </p>
+</div>
+<!-- Assignee (Pre-filled) -->
+<div class="col-span-12 md:col-span-6 space-y-xs">
+<label class="text-label-md font-label-md text-on-surface block">Người được giao</label>
+<div class="relative">
+<select class="w-full h-[32px] px-sm pl-8 border border-outline-variant rounded-md bg-surface text-body-lg font-body-lg text-on-surface appearance-none focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+<option selected="">Nguyễn Văn A</option>
+</select>
+<div class="absolute left-2 top-1.5 w-5 h-5 rounded-full bg-secondary-container overflow-hidden">
+<img alt="Assignee" class="w-full h-full object-cover" data-alt="Small circular avatar placeholder for assignee in a dropdown select field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1okSC3aSACrrbaxWw9RjnWdXhPfN8BzaPUlGL-HHpjz8GqG8O-vsWVrG3WTAbZRaz3bU4iGDQSMp1nyzkgD-quWyvhk_Ui8Hvb98XRCSoNZGdfFE3jgMrQPnLDWgDScRNF2REypa6ktMtI8ilIYgl-iq7KSrmxtoPNPOuhRRa8KNd15zGPEPsMrIFSJqFzpWIb6PnhSRzkquGsL29k7UpDf-UPpqXADXZcr4ACVMTZdGm-TVWFsKfkPajSKzaDXX4GNcFMRNAYqw"/>
+</div>
+<span class="material-symbols-outlined absolute right-2 top-1.5 text-on-surface-variant pointer-events-none text-[18px]">arrow_drop_down</span>
+</div>
+</div>
+</div>
+<!-- Form Actions -->
+<div class="flex items-center justify-end space-x-md pt-layout-gutter border-t border-outline-variant mt-lg">
+<button class="h-8 px-4 text-label-md font-label-md text-primary bg-transparent hover:bg-surface-variant rounded-md transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-1 outline-none" type="button">
+                                Hủy bỏ
+                            </button>
+<!-- Submit Button with slight error context (optional, but requested to keep button and maybe add indicator) -->
+<button class="h-8 px-4 text-label-md font-label-md text-on-primary bg-primary hover:bg-primary/90 rounded-md shadow-sm transition-colors flex items-center space-x-2 focus:ring-2 focus:ring-primary focus:ring-offset-1 outline-none" type="button">
+<span>Tạo issue</span>
+<span class="material-symbols-outlined text-[16px]">sync_problem</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,81 @@
+{
+  "_huong_dan": [
+    "Cấu hình cho tools/ui-eval/measure.mjs. Chạy app rồi:",
+    "  npm run dev -- --port 5199 --strictPort",
+    "  node ../../../tools/ui-eval/measure.mjs --config ui-eval.config.json --out .ui-eval/",
+    "Tool là chung cho mọi dự án; phần riêng của dự án nằm hết ở file này."
+  ],
+  "urls": [
+    "http://localhost:5199/?theme=light",
+    "http://localhost:5199/?theme=dark",
+    "http://localhost:5199/?man=s2&theme=light",
+    "http://localhost:5199/?man=s2&theme=dark",
+    "http://localhost:5199/?man=s3&theme=light",
+    "http://localhost:5199/?man=s3&theme=dark",
+    "http://localhost:5199/?man=s3-khong-khop&theme=light",
+    "http://localhost:5199/?man=s5a&theme=light",
+    "http://localhost:5199/?man=s5a&theme=dark",
+    "http://localhost:5199/?man=s5a-rong&theme=light",
+    "http://localhost:5199/?man=s5b&theme=light",
+    "http://localhost:5199/?man=s5b&theme=dark",
+    "http://localhost:5199/?man=s5b-chi-xem&theme=light",
+    "http://localhost:5199/?man=s4&theme=light",
+    "http://localhost:5199/?man=s4&theme=dark",
+    "http://localhost:5199/?man=s4&hop=nhanBan&theme=light",
+    "http://localhost:5199/?man=s4&hop=ngungDung&theme=light"
+  ],
+  "luong": [
+    {
+      "ma": "NFR-07",
+      "ten": "Tạo một issue từ mẫu, không sửa gì",
+      "url": "http://localhost:5199/?theme=light",
+      "toiDa": 3,
+      "buoc": [
+        "tr:has-text(\"Ghi nhận hỗ trợ đã xử lý\") button:has-text(\"Tạo issue\")",
+        "button:has-text(\"Tạo issue\")"
+      ],
+      "xong": "[role=dialog] >> text=Tạo issue thành công"
+    },
+    {
+      "ma": "FR-05",
+      "ten": "Mở cấu hình một dự án từ danh sách",
+      "url": "http://localhost:5199/?man=s5a&theme=light",
+      "toiDa": 2,
+      "buoc": [
+        "tr:has-text(\"Hỗ trợ nội bộ\") button:has-text(\"Mở cấu hình\")"
+      ],
+      "xong": "text=Trạng thái đích"
+    },
+    {
+      "ma": "FR-09",
+      "ten": "Thử lại chuyển trạng thái ngay trên dòng lỗi, không rời màn",
+      "url": "http://localhost:5199/?man=s3&theme=light",
+      "toiDa": 1,
+      "buoc": [
+        "tr:has-text(\"ITSUP-2482\") button:has-text(\"Thử lại\")"
+      ],
+      "_ghi_chu": "Đích KHÔNG dùng text=Xong: dòng lúc chưa bấm đã chứa chuỗi «Đã xong» trong câu giải thích, selector sẽ khớp ngay và luồng đạt oan.",
+      "xong": "[data-slot=notice]:has-text(\"ITSUP-2482\")"
+    },
+    {
+      "ma": "A11Y-04",
+      "ten": "Đổi thứ tự mẫu bằng bàn phím (không dùng kéo thả)",
+      "url": "http://localhost:5199/?man=s5b&theme=light",
+      "toiDa": 1,
+      "buoc": [
+        "tr:has-text(\"Cấp quyền truy cập\") button[aria-label^=\"Đưa mẫu\"][aria-label*=\"lên trên\"]"
+      ],
+      "xong": "tbody tr:first-child:has-text(\"Cấp quyền truy cập\")"
+    },
+    {
+      "ma": "FR-04",
+      "ten": "Đổi một trường từ Cho sửa sang Khoá",
+      "url": "http://localhost:5199/?man=s4&theme=light",
+      "toiDa": 1,
+      "buoc": [
+        "tr:has-text(\"Độ ưu tiên\") button[aria-label*=\"đang cho sửa\"]"
+      ],
+      "xong": "tr:has-text(\"Độ ưu tiên\") button[aria-label*=\"đang khoá\"]"
+    }
+  ]
+}

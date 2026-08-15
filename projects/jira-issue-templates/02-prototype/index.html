@@ -1,0 +1,844 @@
+<!doctype html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prototype — Jira Issue Templates</title>
+<style>
+/* ==========================================================================
+   SINH TỰ ĐỘNG — KHÔNG SỬA TAY
+   Nguồn : design-system/tokens/*.json + design-system/themes/*.json
+   Lệnh  : node tools/design-tokens/build-css.mjs
+   Đổi nhận diện = sửa file nguồn rồi chạy lại lệnh trên.
+   ========================================================================== */
+:root {
+  /* chữ */
+  --font-sans: Inter, Roboto, "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, "JetBrains Mono", Consolas, monospace;
+  --text-display-size: 29px;
+  --text-display-lh: 1.2;
+  --text-display-weight: 400;
+  --text-display-ls: -0.02em;
+  --text-headline-size: 20px;
+  --text-headline-lh: 1.3;
+  --text-headline-weight: 400;
+  --text-headline-ls: -0.01em;
+  --text-title-lg-size: 16px;
+  --text-title-lg-lh: 1.35;
+  --text-title-lg-weight: 500;
+  --text-title-md-size: 14px;
+  --text-title-md-lh: 1.4;
+  --text-title-md-weight: 500;
+  --text-title-sm-size: 12px;
+  --text-title-sm-lh: 1.4;
+  --text-title-sm-weight: 500;
+  --text-body-lg-size: 14px;
+  --text-body-lg-lh: 1.5;
+  --text-body-lg-weight: 400;
+  --text-body-md-size: 14px;
+  --text-body-md-lh: 1.45;
+  --text-body-md-weight: 400;
+  --text-body-sm-size: 12px;
+  --text-body-sm-lh: 1.4;
+  --text-body-sm-weight: 400;
+  --text-label-size: 14px;
+  --text-label-lh: 1.15;
+  --text-label-weight: 500;
+  --text-label-ls: 0.01em;
+  --text-overline-size: 11px;
+  --text-overline-lh: 1.3;
+  --text-overline-weight: 500;
+  --text-overline-ls: 0.06em;
+  --text-code-size: 12px;
+  --text-code-lh: 1.4;
+  --text-code-weight: 400;
+
+  /* khoảng cách */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-field-gap: 24px;
+  --space-field-inner: 8px;
+  --space-section-gap: 32px;
+  --space-card-padding: 16px;
+  --space-page-padding: 24px;
+  --space-cell-padding-y: 8px;
+  --space-inline-gap: 8px;
+  --layout-content-max: 1440px;
+  --layout-reading-max: 72ch;
+  --layout-form-max: 840px;
+  --layout-sidebar: 260px;
+  --layout-touch-target: 24px;
+  --layout-row-height: 40px;
+  --layout-control-height: 32px;
+
+  /* bo góc */
+  --radius-none: 0;
+  --radius-xs: 3px;
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 6px;
+  --radius-full: 9999px;
+  --radius-input: 3px;
+  --radius-card: 3px;
+  --radius-banner: 3px;
+  --radius-dialog: 6px;
+  --radius-button: 3px;
+  --radius-chip: 3px;
+  --radius-nav-item: 3px;
+  --radius-avatar: 9999px;
+
+  /* chuyển động */
+  --dur-instant: 0ms;
+  --dur-fast: 120ms;
+  --dur-normal: 200ms;
+  --dur-slow: 300ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-decelerate: cubic-bezier(0, 0, 0, 1);
+  --ease-accelerate: cubic-bezier(0.3, 0, 1, 1);
+  --ease-linear: cubic-bezier(0, 0, 1, 1);
+
+  /* lớp phủ trạng thái */
+  --state-hover: 0.08;
+  --state-focus: 0.1;
+  --state-pressed: 0.12;
+  --state-dragged: 0.16;
+  --state-disabled: 0.38;
+
+  /* độ nổi — màu bóng là #000 ở cả hai theme nên đặt được ở :root */
+  --elev-0: none;
+  --elev-1: 0 1px 2px 0 rgba(0,0,0,0.14), 0 1px 3px 1px rgba(0,0,0,0.12);
+  --elev-2: 0 1px 2px 0 rgba(0,0,0,0.1), 0 2px 6px 2px rgba(0,0,0,0.1);
+  --elev-3: 0 1px 3px 0 rgba(0,0,0,0.08), 0 4px 8px 3px rgba(0,0,0,0.1);
+  --elev-4: 0 2px 4px 0 rgba(0,0,0,0.08), 0 8px 16px 4px rgba(0,0,0,0.12);
+  --elev-5: 0 4px 8px 0 rgba(0,0,0,0.08), 0 12px 24px 6px rgba(0,0,0,0.14);
+}
+
+:root[data-theme="light"] {
+  --color-primary: #1D4ED8;
+  --color-on-primary: #FFFFFF;
+  --color-primary-container: #DBEAFE;
+  --color-on-primary-container: #0A1F52;
+  --color-error: #B3261E;
+  --color-on-error: #FFFFFF;
+  --color-error-container: #F9DEDC;
+  --color-on-error-container: #410E0B;
+  --color-success: #2E6C40;
+  --color-success-container: #B7F0C4;
+  --color-on-success-container: #002110;
+  --color-warning-container: #FFDDB0;
+  --color-on-warning-container: #2B1700;
+  --color-surface: #F9FAFE;
+  --color-on-surface: #171A21;
+  --color-surface-variant: #DDE3ED;
+  --color-on-surface-variant: #414751;
+  --color-surface-container-lowest: #FFFFFF;
+  --color-surface-container-low: #F3F5FB;
+  --color-surface-container: #EDF0F7;
+  --color-surface-container-high: #E7EAF3;
+  --color-surface-container-highest: #DFE2EC;
+  --color-outline: #6F757F;
+  --color-outline-variant: #C0C6D0;
+  --color-shadow: #000000;
+  --color-scrim: rgba(0, 0, 0, 0.4);
+  --color-state-layer-base: #000000;
+  --color-inverse-surface: #30343E;
+  --color-inverse-on-surface: #F3F5FB;
+  --state-rgb: 0, 0, 0;
+}
+
+:root[data-theme="dark"] {
+  --color-primary: #A8C7FA;
+  --color-on-primary: #12326E;
+  --color-primary-container: #1E40AF;
+  --color-on-primary-container: #DBEAFE;
+  --color-error: #F2B8B5;
+  --color-on-error: #601410;
+  --color-error-container: #8C1D18;
+  --color-on-error-container: #F9DEDC;
+  --color-success: #9BD5AC;
+  --color-success-container: #0E5227;
+  --color-on-success-container: #B7F0C4;
+  --color-warning-container: #5C3D00;
+  --color-on-warning-container: #FFDDB0;
+  --color-surface: #000000;
+  --color-on-surface: #DFE2EC;
+  --color-surface-variant: #262A34;
+  --color-on-surface-variant: #C0C6D0;
+  --color-surface-container-lowest: #000000;
+  --color-surface-container-low: #0B0D12;
+  --color-surface-container: #10131A;
+  --color-surface-container-high: #171A21;
+  --color-surface-container-highest: #1E212A;
+  --color-outline: #898F99;
+  --color-outline-variant: #30343E;
+  --color-shadow: #000000;
+  --color-scrim: rgba(0, 0, 0, 0.75);
+  --color-state-layer-base: #FFFFFF;
+  --color-inverse-surface: #DFE2EC;
+  --color-inverse-on-surface: #171A21;
+  --state-rgb: 255, 255, 255;
+}
+
+/* ==========================================================================
+   Phong cách: Atlassian / Jira (quyết định J1)
+   Mọi giá trị thị giác lấy từ token ở trên. Không mã màu, không số đo rời.
+   ========================================================================== */
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%}
+/* App-shell — KHUNG cố định, chỉ vùng nội dung cuộn (RES-12 / AP-19).
+   Không hardcode chiều cao thanh nào. */
+body{margin:0;display:flex;flex-direction:column;overflow:hidden;
+  background:var(--color-surface);color:var(--color-on-surface);
+  font-family:var(--font-sans);font-size:var(--text-body-md-size);line-height:var(--text-body-md-lh)}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3{margin:0;font-weight:var(--text-title-md-weight)}
+
+/* ---------- Thanh trên: gộp chrome prototype + nhận diện sản phẩm ---------- */
+#topbar{flex:0 0 auto;display:flex;align-items:center;gap:var(--space-3);white-space:nowrap;
+  padding:0 var(--space-4);height:var(--layout-control-height);
+  background:var(--color-surface-container-high);border-bottom:1px solid var(--color-outline-variant);
+  font-size:var(--text-body-sm-size);color:var(--color-on-surface-variant)}
+#topbar .tag{background:var(--color-warning-container);color:var(--color-on-warning-container);
+  font-weight:700;font-size:var(--text-overline-size);letter-spacing:var(--text-overline-ls);
+  padding:2px var(--space-2);border-radius:var(--radius-xs)}
+#topbar .brand{font-size:var(--text-title-md-size);font-weight:var(--text-title-md-weight);color:var(--color-on-surface)}
+#topbar .sep{width:1px;height:16px;background:var(--color-outline-variant)}
+.spacer{margin-left:auto}
+#clicks{display:inline-flex;align-items:center;gap:var(--space-2);font-weight:500}
+#clicks b{color:var(--color-primary);min-width:12px;text-align:center}
+
+/* ---------- Khung ---------- */
+#app{display:flex;flex:1;min-height:0;overflow:hidden;width:100%}
+#side{width:var(--layout-sidebar);flex:0 0 var(--layout-sidebar);overflow-y:auto;
+  background:var(--color-surface-container-low);border-right:1px solid var(--color-outline-variant);
+  padding:var(--space-3) var(--space-2);display:flex;flex-direction:column;gap:1px}
+#side .sec{padding:var(--space-4) var(--space-2) var(--space-1);
+  font-size:var(--text-overline-size);font-weight:var(--text-overline-weight);
+  letter-spacing:var(--text-overline-ls);text-transform:uppercase;color:var(--color-on-surface-variant)}
+#side .sec:first-child{padding-top:var(--space-1)}
+.nav{display:flex;align-items:center;gap:var(--space-2);width:100%;text-align:left;
+  height:var(--layout-control-height);padding:0 var(--space-2);border-radius:var(--radius-nav-item);
+  color:var(--color-on-surface);font-size:var(--text-body-md-size)}
+.nav:hover{background:rgba(var(--state-rgb),var(--state-hover))}
+.nav.on{background:var(--color-primary-container);color:var(--color-on-primary-container);font-weight:500}
+.nav .k{font-family:var(--font-mono);font-size:var(--text-overline-size);font-weight:700;
+  background:var(--color-surface-variant);color:var(--color-on-surface-variant);
+  padding:1px var(--space-1);border-radius:var(--radius-xs)}
+.nav.on .k{background:var(--color-on-primary-container);color:var(--color-primary-container)}
+.nav .tail{margin-left:auto;color:var(--color-on-surface-variant)}
+#side .foot{margin-top:auto;padding-top:var(--space-2);border-top:1px solid var(--color-outline-variant)}
+.avatar{width:24px;height:24px;flex:0 0 24px;border-radius:var(--radius-avatar);
+  background:var(--color-primary);color:var(--color-on-primary);
+  display:grid;place-items:center;font-size:var(--text-overline-size);font-weight:700}
+
+#main{flex:1;min-width:0;overflow-y:auto;padding:var(--space-6) var(--space-8) var(--space-12)}
+.col{max-width:1040px}
+
+/* ---------- Chữ ---------- */
+.headline{font-size:var(--text-headline-size);line-height:var(--text-headline-lh);
+  font-weight:var(--text-headline-weight);letter-spacing:var(--text-headline-ls)}
+.sect{font-size:var(--text-title-md-size);font-weight:var(--text-title-md-weight);margin:var(--space-8) 0 var(--space-3)}
+.sub{color:var(--color-on-surface-variant);margin:var(--space-1) 0 0}
+.sm{font-size:var(--text-body-sm-size);color:var(--color-on-surface-variant)}
+.mono{font-family:var(--font-mono);font-size:var(--text-code-size)}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+/* Lưới an toàn: KHÔNG bao giờ để link rơi về màu mặc định của trình duyệt.
+   Trên nền có màu, màu mặc định #0000EE cho tương phản ~1:1 (AP-20). */
+a{color:var(--color-primary)}
+.note a{color:inherit;text-decoration:underline;text-underline-offset:2px;
+  display:inline-block;padding:var(--space-1) 0}
+a.key{color:var(--color-primary);font-weight:500;text-decoration:none;font-family:var(--font-mono);
+  font-size:var(--text-code-size);display:inline-flex;align-items:center;min-height:24px}
+a.key:hover{text-decoration:underline}
+
+/* ---------- Nút kiểu Atlassian ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-1);
+  height:var(--layout-control-height);padding:0 var(--space-3);border-radius:var(--radius-button);
+  font-size:var(--text-label-size);font-weight:var(--text-label-weight);white-space:nowrap;
+  transition:background var(--dur-fast) var(--ease-standard)}
+.btn.primary{background:var(--color-primary);color:var(--color-on-primary)}
+.btn.primary:hover{filter:brightness(1.1)}
+.btn.default{background:var(--color-surface-variant);color:var(--color-on-surface)}
+.btn.default:hover{background:var(--color-surface-container-highest)}
+.btn.subtle{color:var(--color-on-surface-variant)}
+.btn.subtle:hover{background:rgba(var(--state-rgb),var(--state-hover))}
+.btn.danger{background:var(--color-error-container);color:var(--color-on-error-container)}
+.btn.sm{height:24px;padding:0 var(--space-2);font-size:var(--text-body-sm-size)}
+.icon-btn{width:24px;height:24px;display:grid;place-items:center;border-radius:var(--radius-xs);
+  color:var(--color-on-surface-variant)}
+.icon-btn:hover{background:rgba(var(--state-rgb),var(--state-hover))}
+.row{display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap}
+.head{display:flex;align-items:flex-start;gap:var(--space-4);flex-wrap:wrap;margin-bottom:var(--space-4)}
+.head .grow{flex:1;min-width:280px}
+
+/* ---------- Bề mặt ---------- */
+.panel{background:var(--color-surface-container-lowest);border:1px solid var(--color-outline-variant);
+  border-radius:var(--radius-card);padding:var(--space-4)}
+.panel+.panel{margin-top:var(--space-4)}
+.panel>.sect:first-child{margin-top:0}
+
+/* ---------- Lozenge (huy hiệu trạng thái kiểu Atlassian) ---------- */
+.lz{display:inline-block;font-size:var(--text-overline-size);font-weight:700;letter-spacing:.02em;
+  text-transform:uppercase;padding:2px var(--space-1);border-radius:var(--radius-xs);
+  background:var(--color-surface-variant);color:var(--color-on-surface-variant);white-space:nowrap}
+.lz.ok{background:var(--color-success-container);color:var(--color-on-success-container)}
+.lz.warn{background:var(--color-warning-container);color:var(--color-on-warning-container)}
+.lz.err{background:var(--color-error-container);color:var(--color-on-error-container)}
+.lz.info{background:var(--color-primary-container);color:var(--color-on-primary-container)}
+
+/* ---------- Dải thông báo ---------- */
+.note{display:flex;gap:var(--space-3);align-items:flex-start;padding:var(--space-3);
+  border-radius:var(--radius-banner);margin-bottom:var(--space-4);font-size:var(--text-body-md-size)}
+.note.info{background:var(--color-primary-container);color:var(--color-on-primary-container)}
+.note.ok{background:var(--color-success-container);color:var(--color-on-success-container)}
+.note.warn{background:var(--color-warning-container);color:var(--color-on-warning-container)}
+.note.err{background:var(--color-error-container);color:var(--color-on-error-container)}
+
+/* ---------- Bảng: mật độ compact ---------- */
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:var(--text-overline-size);font-weight:var(--text-overline-weight);
+  letter-spacing:var(--text-overline-ls);text-transform:uppercase;color:var(--color-on-surface-variant);
+  padding:var(--space-2) var(--space-2);border-bottom:2px solid var(--color-outline-variant);white-space:nowrap}
+td{padding:var(--space-cell-padding-y) var(--space-2);border-bottom:1px solid var(--color-outline-variant);
+  vertical-align:middle;height:var(--layout-row-height)}
+tbody tr:last-child td{border-bottom:0}
+tr.pick{cursor:pointer}
+tr.pick:hover td{background:rgba(var(--state-rgb),var(--state-hover))}
+.order{display:inline-flex;align-items:center;gap:var(--space-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* ---------- Biểu mẫu ---------- */
+.field{margin-bottom:var(--space-field-gap);max-width:var(--layout-form-max)}
+.field>label{display:block;font-size:var(--text-title-sm-size);font-weight:var(--text-title-sm-weight);
+  color:var(--color-on-surface-variant);margin-bottom:var(--space-field-inner)}
+.field>input,.field>select,.field>textarea{width:100%;height:var(--layout-control-height);
+  padding:0 var(--space-2);border:1px solid var(--color-outline);border-radius:var(--radius-input);
+  background:var(--color-surface-container-lowest);font-size:var(--text-body-lg-size)}
+.field>textarea{height:auto;min-height:120px;padding:var(--space-2);resize:vertical;
+  font-family:var(--font-mono);font-size:var(--text-code-size);line-height:1.5}
+/* FORM-04 / AP-03 — select PHẢI có mũi tên, và mọi select cùng một kiểu */
+.field>select,select.inline{appearance:none;-webkit-appearance:none;padding-right:var(--space-8);
+  background-image:linear-gradient(45deg,transparent 50%,var(--color-on-surface-variant) 50%),
+                   linear-gradient(135deg,var(--color-on-surface-variant) 50%,transparent 50%);
+  background-position:calc(100% - 16px) center,calc(100% - 11px) center;
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+.field>input:focus,.field>select:focus,.field>textarea:focus,select.inline:focus{
+  outline:2px solid var(--color-primary);outline-offset:-1px;border-color:var(--color-primary)}
+.field .hint{font-size:var(--text-body-sm-size);color:var(--color-on-surface-variant);margin-top:var(--space-1)}
+.field .hint b{color:var(--color-primary);font-family:var(--font-mono)}
+/* AP-11 — KHÔNG dùng opacity để biểu đạt trạng thái */
+.field.locked>input,.field.locked>select,.field.locked>textarea{
+  background:var(--color-surface-container);color:var(--color-on-surface-variant);
+  border-style:dashed;cursor:not-allowed}
+.lock{font-weight:400;color:var(--color-on-surface-variant)}
+.req{color:var(--color-error)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:0 var(--space-4);max-width:var(--layout-form-max)}
+.two .field{max-width:none}
+select.inline{height:24px;padding:0 var(--space-6) 0 var(--space-2);border:1px solid var(--color-outline);
+  border-radius:var(--radius-input);background-color:var(--color-surface-container-lowest);
+  font-size:var(--text-body-sm-size);background-position:calc(100% - 14px) center,calc(100% - 9px) center}
+input[type=radio],input[type=checkbox]{width:24px;height:24px;margin:0;accent-color:var(--color-primary);cursor:pointer}
+.switch{display:inline-flex;align-items:center;gap:var(--space-3);cursor:pointer}
+.switch input{position:absolute;opacity:0;width:0;height:0}
+.track{width:36px;height:20px;flex:0 0 36px;border-radius:var(--radius-full);
+  background:var(--color-surface-variant);border:1px solid var(--color-outline);position:relative;
+  transition:background var(--dur-fast) var(--ease-standard)}
+.track::after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;
+  border-radius:var(--radius-full);background:var(--color-on-surface-variant);
+  transition:transform var(--dur-fast) var(--ease-standard)}
+.switch input:checked+.track{background:var(--color-primary);border-color:var(--color-primary)}
+.switch input:checked+.track::after{transform:translateX(16px);background:var(--color-on-primary)}
+.switch input:focus-visible+.track{outline:2px solid var(--color-primary);outline-offset:2px}
+
+/* ---------- Chuỗi bước ---------- */
+.steps{display:flex;align-items:center;gap:var(--space-2);flex-wrap:wrap;margin:var(--space-3) 0}
+.step{padding:var(--space-1) var(--space-2);border-radius:var(--radius-xs);
+  font-size:var(--text-body-sm-size);font-weight:500;background:var(--color-surface-variant);color:var(--color-on-surface-variant)}
+.step.done{background:var(--color-success-container);color:var(--color-on-success-container)}
+.step.fail{background:var(--color-error-container);color:var(--color-on-error-container)}
+.arr{color:var(--color-on-surface-variant)}
+
+/* ---------- Hộp thoại ---------- */
+.scrim{position:fixed;inset:0;background:var(--color-scrim);display:none;place-items:center;z-index:60;padding:var(--space-6)}
+.scrim.on{display:grid}
+.dialog{background:var(--color-surface-container-lowest);border-radius:var(--radius-dialog);
+  padding:var(--space-6);max-width:560px;width:100%;max-height:86vh;overflow:auto;box-shadow:var(--elev-5)}
+
+/* ---------- Truy vết: metadata prototype, KHÔNG chiếm vị trí đắt (AP-18) ---------- */
+.trace{display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap;
+  margin-top:var(--space-8);padding-top:var(--space-3);border-top:1px solid var(--color-outline-variant)}
+.trace::before{content:"Truy vết";font-size:var(--text-body-sm-size);color:var(--color-on-surface-variant)}
+.chip{font-family:var(--font-mono);font-size:var(--text-overline-size);font-weight:700;
+  background:var(--color-surface-variant);color:var(--color-on-surface-variant);
+  padding:2px var(--space-1);border-radius:var(--radius-chip)}
+
+[data-screen]{display:none}
+[data-screen].on{display:block}
+.hide{display:none !important}
+#cfg-edit.readonly{pointer-events:none}
+#cfg-edit.readonly .panel{background:var(--color-surface-container-low)}
+</style>
+</head>
+<body>
+
+<div id="topbar">
+  <span class="tag">Prototype</span>
+  <span class="brand">Issue Templates</span>
+  <span class="sep"></span>
+  <span>v7 · Design System v0.1 · dữ liệu giả</span>
+  <span class="spacer"></span>
+  <label>Xem như
+    <select class="inline" id="role" onchange="setRole(this.value)" aria-label="Giả lập vai trò người dùng">
+      <option value="admin">Quản trị dự án</option>
+      <option value="member">Thành viên thường</option>
+    </select>
+  </label>
+  <span id="clicks">Thao tác <b id="ck">0</b>
+    <button class="icon-btn" onclick="resetClicks(event)" aria-label="Đặt lại bộ đếm thao tác">↺</button></span>
+  <button class="icon-btn" id="theme-btn" onclick="toggleTheme()" aria-label="Đổi sáng tối">◐</button>
+</div>
+
+<div id="app">
+  <aside id="side">
+    <div class="sec">Dự án Jira</div>
+    <div id="projs"></div>
+    <div class="sec">Trong dự án</div>
+    <button class="nav" id="nav-home" onclick="go('home')">Mẫu issue</button>
+    <button class="nav" id="nav-history" onclick="go('history')">Lịch sử issue</button>
+    <div class="sec">Quản trị</div>
+    <button class="nav" id="nav-config" onclick="go('config')">Cấu hình dự án</button>
+    <div class="foot">
+      <button class="nav" onclick="go('pat')">
+        <span class="avatar">PA</span>
+        <span>Phạm Việt Anh</span>
+        <span class="tail mono">🔑</span>
+      </button>
+    </div>
+  </aside>
+
+  <main id="main">
+
+  <!-- ══ S1 · Mẫu issue (pattern: crud-list) ══ -->
+  <section data-screen="home" class="on"><div class="col">
+    <div class="head">
+      <div class="grow">
+        <h1 class="headline" id="h-title">Mẫu issue</h1>
+        <p class="sub" id="h-sub"></p>
+      </div>
+      <button class="btn primary only-admin" onclick="go('editor')">Tạo mẫu</button>
+    </div>
+
+    <div class="note info only-member">
+      <span>🔒</span><div>Bạn không có quyền <code class="mono">ADMINISTER_PROJECTS</code> trên dự án này nên chỉ dùng được mẫu, không sửa được. Server cũng chặn, không chỉ khoá giao diện.</div>
+    </div>
+
+    <div class="panel">
+      <table>
+        <thead><tr><th>Mẫu</th><th>Loại</th><th>Sau khi tạo</th><th>Trạng thái</th><th></th></tr></thead>
+        <tbody id="tlist"></tbody>
+      </table>
+    </div>
+
+    <h2 class="sect">Issue vừa tạo ở dự án này</h2>
+    <div class="panel"><table id="recent"></table></div>
+
+    <div class="trace"><span class="chip">FR-03</span><span class="chip">FR-05</span><span class="chip">FR-06</span><span class="chip">FR-11</span><span class="chip">NFR-07</span></div>
+  </div></section>
+
+  <!-- ══ S2 · Tạo issue từ mẫu (pattern: create-edit-form) ══ -->
+  <section data-screen="create"><div class="col">
+    <button class="btn subtle" onclick="go('home')">← Mẫu issue</button>
+    <div class="head" style="margin-top:12px">
+      <div class="grow"><h1 class="headline" id="c-title">Tạo issue</h1><p class="sub" id="c-sub"></p></div>
+    </div>
+    <div id="c-auto" class="note"></div>
+
+    <div class="panel">
+      <div class="field">
+        <label for="f-sum">Tóm tắt <span class="req">*</span></label>
+        <input type="text" id="f-sum" value="Hỗ trợ: ">
+        <div class="hint">Mẫu điền sẵn tiền tố, người tạo gõ tiếp phần còn lại.</div>
+      </div>
+      <div class="field locked">
+        <label for="f-desc">Mô tả <span class="lock">· khoá bởi mẫu</span></label>
+        <textarea id="f-desc" readonly>h3. Nội dung hỗ trợ
+* Kênh tiếp nhận:
+* Thao tác đã thực hiện:
+
+h3. Kết quả
+(*) Đã xử lý xong</textarea>
+        <div class="hint">Lưu ở dạng <b>wiki markup</b> của Jira DC, gửi thẳng lên API v2 không qua chuyển đổi.</div>
+      </div>
+      <div class="two">
+        <div class="field locked"><label for="f-type">Loại issue <span class="lock">· khoá</span></label><input type="text" id="f-type" value="Task" readonly></div>
+        <div class="field locked"><label for="f-pri">Độ ưu tiên <span class="lock">· khoá</span></label><input type="text" id="f-pri" value="Medium" readonly></div>
+        <div class="field locked"><label for="f-asg">Người thực hiện <span class="lock">· khoá</span></label><input type="text" id="f-asg" value="anh.phamviet" readonly>
+          <div class="hint">Mẫu khai <b>{{me}}</b> → thay lúc tạo.</div></div>
+        <div class="field locked"><label for="f-due">Ngày hết hạn <span class="lock">· khoá</span></label><input type="text" id="f-due" value="10/08/2026" readonly>
+          <div class="hint">Mẫu khai <b>{{today}}</b> → thay lúc tạo.</div></div>
+      </div>
+      <div class="field locked"><label for="f-sp">Story Points <span class="lock">· custom field · khoá</span></label><input type="text" id="f-sp" value="1" readonly></div>
+      <div class="field">
+        <label for="f-unit">Đơn vị yêu cầu <span class="req">*</span> <span class="lock">· custom field</span></label>
+        <select id="f-unit"><option>Phòng Kinh doanh</option><option>Phòng Kế toán</option><option>Phòng Nhân sự</option><option>Ban Giám đốc</option></select>
+        <div class="hint">Ô nhập dựng theo <code class="mono">schema.type</code> Jira trả về từ <code class="mono">createmeta</code>.</div>
+      </div>
+      <div class="row" style="padding-top:16px;border-top:1px solid var(--color-outline-variant)">
+        <button class="btn primary" onclick="go('ok')">Tạo issue</button>
+        <button class="btn default" onclick="go('fail')">Giả lập transition lỗi</button>
+        <span class="sm">Nút thứ hai để xem ca lỗi FR-08.</span>
+      </div>
+    </div>
+    <div class="trace"><span class="chip">FR-04</span><span class="chip">FR-06</span><span class="chip">FR-07</span><span class="chip">NFR-07</span></div>
+  </div></section>
+
+  <!-- ══ S3 · Kết quả thành công ══ -->
+  <section data-screen="ok"><div class="col">
+    <h1 class="headline">Đã tạo issue</h1>
+    <div class="panel" style="margin-top:16px">
+      <div class="note ok"><span>✓</span><div><b>Tạo thành công</b> — <a class="key" href="#" onclick="return false">ITSUP-2481</a> · <span class="mono">POST /rest/api/2/issue</span> bằng token của <b>anh.phamviet</b></div></div>
+      <h2 class="sect">Tự động chuyển trạng thái</h2>
+      <div class="steps"><span class="step done">To Do</span><span class="arr">→</span><span class="step done">In Progress</span><span class="arr">→</span><span class="step done">Done ✓</span></div>
+      <p class="sm">Đi 2 bước vì workflow không cho nhảy thẳng. Bước cuối gửi kèm <span class="mono">Resolution = Done</span> khai ở cấu hình dự án.</p>
+      <div class="row" style="margin-top:16px"><button class="btn primary" onclick="go('home')">Tạo issue khác</button><button class="btn subtle" onclick="go('history')">Xem lịch sử</button></div>
+    </div>
+    <div class="trace"><span class="chip">FR-06</span><span class="chip">FR-07</span></div>
+  </div></section>
+
+  <!-- ══ S3b · Hỏng nửa chừng (STATE-05) ══ -->
+  <section data-screen="fail"><div class="col">
+    <h1 class="headline">Issue đã tạo, nhưng chưa đóng được</h1>
+    <div class="panel" style="margin-top:16px">
+      <div class="note ok"><span>✓</span><div><b>Issue đã được tạo</b> — <a class="key" href="#" onclick="return false">ITSUP-2482</a>. Hệ thống <b>không xoá</b> issue khi transition lỗi.</div></div>
+      <h2 class="sect">Chuỗi transition dừng giữa chừng</h2>
+      <div class="steps"><span class="step done">To Do</span><span class="arr">→</span><span class="step done">In Progress</span><span class="arr">→</span><span class="step fail">Done ✕</span></div>
+      <div class="note err"><span>⚠</span><div>
+        <b>Đang dừng ở: In Progress</b> — hỏng ở bước 2/2.<br>
+        <span class="mono">Jira trả về: "You do not have permission to execute this transition."</span><br>
+        Token của bạn không đủ quyền đóng issue trên dự án này — nhờ quản trị dự án cấp quyền, rồi bấm Thử lại.
+      </div></div>
+      <div class="row"><button class="btn primary" onclick="alert('Prototype: thử lại tiếp tục từ status hiện tại (In Progress), KHÔNG tạo issue mới.')">Thử lại transition</button>
+        <button class="btn subtle" onclick="go('history')">Để sau</button></div>
+    </div>
+    <div class="trace"><span class="chip">FR-08</span></div>
+  </div></section>
+
+  <!-- ══ S4 · Soạn mẫu ══ -->
+  <section data-screen="editor"><div class="col">
+    <button class="btn subtle" onclick="go('home')">← Mẫu issue</button>
+    <div class="head" style="margin-top:12px">
+      <div class="grow"><h1 class="headline">Soạn mẫu issue</h1>
+        <p class="sub">Mẫu gắn với đúng một dự án Jira. Muốn dùng ở dự án khác thì nhân bản.</p></div>
+      <div class="row"><button class="btn default" onclick="openClone()">Nhân bản</button>
+        <button class="btn primary" onclick="alert('Prototype: đã lưu mẫu.')">Lưu mẫu</button></div>
+    </div>
+
+    <div class="panel">
+      <div class="two">
+        <div class="field"><label for="e-name">Tên mẫu <span class="req">*</span></label><input type="text" id="e-name" value="Ghi nhận hỗ trợ đã xử lý"></div>
+        <div class="field"><label for="e-type">Loại issue <span class="req">*</span></label><select id="e-type"><option>Task</option><option>Bug</option><option>Story</option></select></div>
+      </div>
+      <div class="field"><label for="e-desc">Mô tả mẫu</label><input type="text" id="e-desc" value="Dùng khi đã xử lý xong một yêu cầu hỗ trợ, ghi lại để tính công."></div>
+
+      <h2 class="sect">Tự động chuyển Done</h2>
+      <div class="note warn"><span>📌</span><div><b>Bật/tắt nằm ở đây — cấp mẫu</b>, không phải cấp dự án. Nhờ vậy cùng một dự án có mẫu đóng ngay và mẫu để mở.
+        Status đích lấy từ <a href="#" onclick="go('config');return false">cấu hình dự án</a>, không khai lại ở đây.</div></div>
+      <label class="switch"><input type="checkbox" id="e-auto" checked onchange="autoHint()"><span class="track"></span>
+        <span><b>Tự đóng issue sau khi tạo</b><br><span class="sm" id="e-autotxt"></span></span></label>
+
+      <h2 class="sect">Giá trị mặc định</h2>
+      <table>
+        <thead><tr><th style="width:30%">Trường</th><th style="width:38%">Giá trị mặc định</th><th>Người tạo sửa được?</th></tr></thead>
+        <tbody>
+          <tr><td>Summary <span class="req">*</span></td><td class="mono">Hỗ trợ: </td><td><span class="lz ok">Cho sửa</span></td></tr>
+          <tr><td>Description</td><td class="mono sm">h3. Nội dung hỗ trợ …</td><td><span class="lz">Khoá</span></td></tr>
+          <tr><td>Priority</td><td>Medium</td><td><span class="lz">Khoá</span></td></tr>
+          <tr><td>Assignee</td><td class="mono" style="color:var(--color-primary)">{{me}}</td><td><span class="lz">Khoá</span></td></tr>
+          <tr><td>Due date</td><td class="mono" style="color:var(--color-primary)">{{today}}</td><td><span class="lz">Khoá</span></td></tr>
+          <tr><td>Labels</td><td>support, đã-xử-lý</td><td><span class="lz">Khoá</span></td></tr>
+          <tr><td>Story Points <span class="lz">custom</span></td><td>1</td><td><span class="lz">Khoá</span></td></tr>
+          <tr><td>Đơn vị yêu cầu <span class="req">*</span> <span class="lz">custom</span></td><td class="sm">— để trống —</td><td><span class="lz ok">Cho sửa</span></td></tr>
+        </tbody>
+      </table>
+      <p class="sm" style="margin-top:12px">Danh sách trường lấy từ <span class="mono">createmeta</span> của dự án + loại issue. Không lưu được nếu một trường bắt buộc vừa không có mặc định vừa không cho người tạo nhập.</p>
+    </div>
+    <div class="trace"><span class="chip">FR-03</span><span class="chip">FR-04</span><span class="chip">FR-07</span><span class="chip">FR-10</span></div>
+  </div></section>
+
+  <!-- ══ S5a · Cấu hình — danh sách dự án (pattern: crud-list) ══ -->
+  <section data-screen="config"><div class="col">
+    <div class="head">
+      <div class="grow"><h1 class="headline">Cấu hình dự án</h1>
+        <p class="sub">Khu vực quản trị, không phụ thuộc dự án đang chọn ở thanh bên.</p></div>
+      <button class="btn default" onclick="syncJira()">⟳ Lấy lại thông tin từ Jira</button>
+    </div>
+    <div class="note info"><span>💾</span><div>Màn này <b>đọc từ cơ sở dữ liệu của hệ thống</b>, không gọi Jira. Chỉ bấm <b>Lấy lại thông tin từ Jira</b> mới đồng bộ.</div></div>
+    <div class="panel">
+      <p class="sm" id="cfg-count" style="margin:0 0 8px"></p>
+      <table>
+        <thead><tr><th>Dự án</th><th>Quyền của bạn</th><th>Status đích</th><th class="num">Mẫu</th><th>Đồng bộ lần cuối</th><th></th></tr></thead>
+        <tbody id="cfg-list"></tbody>
+      </table>
+    </div>
+    <div class="trace"><span class="chip">FR-02</span><span class="chip">FR-05</span><span class="chip">FR-11</span></div>
+  </div></section>
+
+  <!-- ══ S5b · Cấu hình — chi tiết (pattern: detail-page + settings) ══ -->
+  <section data-screen="config-detail"><div class="col">
+    <button class="btn subtle" onclick="go('config')">← Danh sách dự án</button>
+    <div class="head" style="margin-top:12px">
+      <div class="grow"><h1 class="headline" id="cd-title"></h1><p class="sub" id="cd-sub"></p></div>
+    </div>
+    <div class="note warn" id="cd-ro"><span>🔒</span><div>Bạn không có quyền <code class="mono">ADMINISTER_PROJECTS</code> trên dự án này nên chỉ <b>xem</b> được cấu hình. Server cũng chặn, không chỉ khoá giao diện.</div></div>
+    <div class="note warn" id="cd-nodone"><span>⚠</span><div><b>Chưa đặt status đích</b> — mọi mẫu bật auto-Done ở dự án này sẽ không lưu được.</div></div>
+
+    <div id="cfg-edit">
+      <div class="panel">
+        <h2 class="sect">Đích của auto-Done</h2>
+        <div class="two">
+          <div class="field"><label for="cfg-done">Status đích <span class="req">*</span></label><select id="cfg-done"></select>
+            <div class="hint">Chọn từ status thật của workflow, không gõ tay chuỗi "Done".</div></div>
+          <div class="field"><label for="cfg-max">Giới hạn số bước transition</label>
+            <select id="cfg-max"><option>5 (mặc định)</option><option>3</option><option>10</option></select>
+            <div class="hint">Vượt giới hạn hoặc phát hiện vòng lặp thì dừng và báo.</div></div>
+        </div>
+        <p class="sm" style="margin:0">Đường đi hệ thống tìm được:</p>
+        <div class="steps" id="cfg-path"></div>
+
+        <h2 class="sect">Giá trị field bắt buộc khi transition</h2>
+        <table>
+          <thead><tr><th style="width:34%">Field</th><th style="width:30%">Giá trị gửi kèm</th><th>Nguồn</th></tr></thead>
+          <tbody>
+            <tr><td>Resolution <span class="req">*</span></td>
+              <td><select class="inline" aria-label="Giá trị Resolution gửi kèm khi chuyển trạng thái"><option>Done</option><option>Fixed</option><option>Won't Do</option></select></td>
+              <td class="sm">metadata transition</td></tr>
+            <tr><td>Ghi chú đóng</td><td class="sm">— không bắt buộc —</td><td class="sm">metadata transition</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel">
+        <h2 class="sect">Mẫu trong dự án</h2>
+        <p class="sm" style="margin:0 0 8px">Bật/tắt, đặt mẫu mặc định và thứ tự hiển thị. <b>Không</b> có bật/tắt auto-Done ở đây — cái đó nằm ở từng mẫu.</p>
+        <table>
+          <thead><tr><th>Thứ tự</th><th>Mẫu</th><th>Mặc định</th><th>Đang bật</th></tr></thead>
+          <tbody id="cfg-tmpls"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="trace"><span class="chip">FR-02</span><span class="chip">FR-05</span><span class="chip">FR-07</span><span class="chip">FR-11</span></div>
+  </div></section>
+
+  <!-- ══ S6 · Lịch sử ══ -->
+  <section data-screen="history"><div class="col">
+    <h1 class="headline">Lịch sử issue đã tạo</h1>
+    <p class="sub">Chỉ issue do hệ thống này tạo. Tìm kiếm JQL và sửa issue để Jira lo.</p>
+    <div class="panel" style="margin-top:16px">
+      <div class="row" style="margin-bottom:12px">
+        <select class="inline" aria-label="Lọc theo trạng thái"><option>Mọi trạng thái</option><option>Thành công</option><option>Tạo lỗi</option><option>Auto-Done lỗi</option></select>
+        <select class="inline" aria-label="Lọc theo khoảng thời gian"><option>7 ngày qua</option><option>30 ngày qua</option><option>Toàn bộ</option></select>
+        <select class="inline" aria-label="Lọc theo người tạo"><option>Mọi người</option><option>Chỉ của tôi</option></select>
+        <span class="sm spacer">Hiển thị 1–5 trong 5</span>
+      </div>
+      <table>
+        <thead><tr><th>Issue</th><th>Mẫu</th><th>Người tạo</th><th>Lúc</th><th>Tạo</th><th>Auto-Done</th><th></th></tr></thead>
+        <tbody>
+          <tr><td><a class="key" href="#" onclick="return false">ITSUP-2482</a></td><td>Ghi nhận hỗ trợ đã xử lý</td><td>anh.phamviet</td><td>10/08 09:41</td><td><span class="lz ok">OK</span></td><td><span class="lz err">Lỗi bước 2</span></td><td><button class="btn default sm" onclick="go('fail')">Xem &amp; thử lại</button></td></tr>
+          <tr><td><a class="key" href="#" onclick="return false">ITSUP-2481</a></td><td>Ghi nhận hỗ trợ đã xử lý</td><td>anh.phamviet</td><td>10/08 09:36</td><td><span class="lz ok">OK</span></td><td><span class="lz ok">Done</span></td><td></td></tr>
+          <tr><td><a class="key" href="#" onclick="return false">ITSUP-2479</a></td><td>Cấp quyền truy cập</td><td>hoa.nguyen</td><td>10/08 08:58</td><td><span class="lz ok">OK</span></td><td><span class="lz ok">Done</span></td><td></td></tr>
+          <tr><td class="sm">—</td><td>Sự cố cần theo dõi</td><td>hoa.nguyen</td><td>10/08 08:50</td><td><span class="lz err">Lỗi</span></td><td><span class="lz">—</span></td><td class="sm">Thiếu field bắt buộc "Đơn vị yêu cầu"</td></tr>
+          <tr><td><a class="key" href="#" onclick="return false">ITSUP-2476</a></td><td>Sự cố cần theo dõi</td><td>minh.tran</td><td>09/08 16:20</td><td><span class="lz ok">OK</span></td><td><span class="lz">Không bật</span></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="trace"><span class="chip">FR-08</span><span class="chip">FR-09</span></div>
+  </div></section>
+
+  <!-- ══ S7 · Token Jira ══ -->
+  <section data-screen="pat"><div class="col">
+    <h1 class="headline">Token Jira của tôi</h1>
+    <p class="sub">Mỗi người dùng token riêng, nên issue trên Jira mang đúng tên bạn và quyền đúng theo quyền Jira của bạn.</p>
+    <div class="panel" style="margin-top:16px">
+      <div class="field locked"><label for="p-url">Jira base URL <span class="lock">· do quản trị hệ thống đặt</span></label>
+        <input type="text" id="p-url" value="https://jira.congty.vn" readonly></div>
+      <div class="field"><label for="p-pat">Personal Access Token của bạn <span class="req">*</span></label>
+        <input type="text" id="p-pat" value="••••••••••••••••3f9a">
+        <div class="hint">Lưu dạng mã hoá, không ghi ra log, không có API nào trả về dạng rõ.</div></div>
+      <div class="row"><button class="btn primary" onclick="alert('Prototype: GET /rest/api/2/myself → Phạm Việt Anh (anh.phamviet)')">Kiểm tra kết nối</button>
+        <button class="btn danger" onclick="alert('Prototype: đã thu hồi token. Mọi thao tác Jira sẽ yêu cầu khai lại.')">Thu hồi token</button></div>
+      <div class="note ok" style="margin-top:16px"><span>✓</span><div><b>Đã kết nối</b> — Phạm Việt Anh (<span class="mono">anh.phamviet</span>) · Jira Data Center 9.4 · REST API v2</div></div>
+      <div class="note info" style="margin-bottom:0"><span>🔐</span><div>Quyền quản trị mẫu bám theo <span class="mono">ADMINISTER_PROJECTS</span> của Jira, cache 15 phút. Jira không trả lời được thì <b>từ chối</b> thao tác quản trị, không cho qua.</div></div>
+    </div>
+    <div class="trace"><span class="chip">FR-01</span><span class="chip">FR-11</span><span class="chip">NFR-01</span></div>
+  </div></section>
+
+  </main>
+</div>
+
+<div class="scrim" id="clone"><div class="dialog">
+  <h2 style="font-size:var(--text-title-lg-size)">Nhân bản mẫu sang dự án khác</h2>
+  <p class="sub">Vì mẫu gắn đúng một dự án, nhân bản là cách tái sử dụng chính.</p>
+  <div class="field" style="margin-top:16px"><label for="cl-dst">Dự án đích</label>
+    <select id="cl-dst"><option>WEBAPP — Website bán hàng</option><option>CORE — Core Banking</option></select></div>
+  <div class="note warn"><span>⚠</span><div><b>3 chỗ không khớp với dự án đích</b> — hệ thống đối chiếu metadata trước khi bạn xác nhận:
+    <ul style="margin:8px 0 0;padding-left:20px">
+      <li>Custom field <b>Đơn vị yêu cầu</b> không tồn tại ở WEBAPP → bỏ qua</li>
+      <li><b>Story Points</b> không nằm trên màn hình tạo → bỏ qua</li>
+      <li>Status đích <b>Done</b> chưa cấu hình ở WEBAPP → mẫu sẽ ở trạng thái <b>không hợp lệ</b></li>
+    </ul></div></div>
+  <div class="row" style="justify-content:flex-end;margin-top:16px">
+    <button class="btn subtle" onclick="closeClone()">Huỷ</button>
+    <button class="btn primary" onclick="closeClone()">Vẫn nhân bản</button></div>
+</div></div>
+
+<script>
+const DATA={
+  ITSUP:{name:"IT Support",admin:true,done:"Done",synced:"10/08/2026 08:12",
+    recent:[{k:"ITSUP-2482",t:"Ghi nhận hỗ trợ đã xử lý",w:"anh.phamviet",at:"10/08 09:41",s:"fail"},
+            {k:"ITSUP-2481",t:"Ghi nhận hỗ trợ đã xử lý",w:"anh.phamviet",at:"10/08 09:36",s:"ok"},
+            {k:"ITSUP-2479",t:"Cấp quyền truy cập",w:"hoa.nguyen",at:"10/08 08:58",s:"ok"}],
+    templates:[
+      {n:"Ghi nhận hỗ trợ đã xử lý",t:"Task",auto:true,st:"active",def:true},
+      {n:"Cấp quyền truy cập",t:"Task",auto:true,st:"active"},
+      {n:"Sự cố cần theo dõi",t:"Bug",auto:false,st:"active"},
+      {n:"Yêu cầu mua sắm thiết bị",t:"Task",auto:false,st:"draft"},
+      {n:"Bàn giao thiết bị",t:"Task",auto:true,st:"invalid"}]},
+  WEBAPP:{name:"Website bán hàng",admin:true,done:null,synced:"09/08/2026 17:40",
+    recent:[{k:"WEBAPP-118",t:"Bug từ khách hàng",w:"minh.tran",at:"09/08 15:02",s:"ok"}],
+    templates:[{n:"Bug từ khách hàng",t:"Bug",auto:false,st:"active",def:true},
+               {n:"Cập nhật nội dung trang",t:"Task",auto:true,st:"active"}]},
+  CORE:{name:"Core Banking",admin:false,done:"Closed",synced:"02/08/2026 09:05",recent:[],
+    templates:[{n:"Yêu cầu đối soát",t:"Task",auto:true,st:"active",def:true},
+               {n:"Sự cố giao dịch",t:"Bug",auto:false,st:"active"}]}
+};
+let cur="ITSUP", cfgProj="ITSUP", clicks=0, forcedRole="admin";
+const $=id=>document.getElementById(id);
+
+/* ── Sáng / tối ── */
+function applyTheme(t){ document.documentElement.setAttribute("data-theme",t);
+  $("theme-btn").textContent = t==="dark" ? "◑" : "◐";
+  try{ localStorage.setItem("jit-theme",t); }catch(e){} }
+function toggleTheme(){ applyTheme(document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark"); }
+(function(){ let t=null; try{ t=localStorage.getItem("jit-theme"); }catch(e){}
+  if(!t) t = matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches ? "dark":"light"; applyTheme(t); })();
+
+/* ── Vai trò ── */
+function effAdmin(){ return forcedRole==="admin" && DATA[cur].admin; }
+function applyRole(){
+  document.querySelectorAll(".only-admin").forEach(e=>e.classList.toggle("hide",!effAdmin()));
+  document.querySelectorAll(".only-member").forEach(e=>e.classList.toggle("hide",effAdmin()));
+}
+function setRole(v){ forcedRole=v; applyRole(); renderHome(); renderConfigDetail(); }
+
+/* ── Thanh bên ── */
+function renderProjects(){
+  $("projs").innerHTML=Object.keys(DATA).map(k=>
+    `<button class="nav ${k===cur?"on":""}" onclick="pick('${k}')"><span class="k">${k}</span><span>${DATA[k].name}</span>${DATA[k].admin?"":'<span class="tail" title="Không có quyền quản trị">🔒</span>'}</button>`).join("");
+}
+function pick(k){ cur=k; renderProjects(); applyRole(); renderHome(); go("home"); }
+
+/* ── S1 ── */
+function renderHome(){
+  const p=DATA[cur];
+  $("h-title").textContent="Mẫu issue";
+  $("h-sub").textContent=`${p.name} · ${p.templates.filter(t=>t.st==="active").length} mẫu đang dùng trong ${p.templates.length}`;
+  $("tlist").innerHTML=p.templates.map((t,i)=>{
+    const bad=t.st==="invalid", draft=t.st==="draft", off=bad||draft;
+    const state=bad?'<span class="lz err">Không hợp lệ</span>':draft?'<span class="lz warn">Nháp</span>':'<span class="lz ok">Đang bật</span>';
+    const auto=t.auto?'<span class="lz info">Tự đóng → Done</span>':'<span class="lz">Để mở</span>';
+    const note=bad?'<div class="sm">Field "Người bàn giao" không còn tồn tại trên Jira</div>':"";
+    const act=off?`<button class="btn subtle sm" onclick="alert('${bad?"Mẫu không hợp lệ — sửa lại trước khi dùng.":"Mẫu đang ở trạng thái nháp, chưa dùng được."}')">Không dùng được</button>`
+                 :`<button class="btn default sm" onclick="openCreate(${i})">Tạo issue</button>`;
+    return `<tr class="${off?"":"pick"}" ${off?"":`onclick="openCreate(${i})"`}>
+      <td><b>${t.n}</b> ${t.def?'<span class="lz">mặc định</span>':""}${note}</td>
+      <td>${t.t}</td><td>${auto}</td><td>${state}</td>
+      <td style="text-align:right">${act}</td></tr>`;}).join("");
+
+  const S={ok:'<span class="lz ok">Done</span>',fail:'<span class="lz err">Auto-Done lỗi</span>'};
+  $("recent").innerHTML = p.recent.length
+    ? '<thead><tr><th>Issue</th><th>Mẫu</th><th>Người tạo</th><th>Lúc</th><th>Auto-Done</th></tr></thead><tbody>'
+      + p.recent.map(r=>`<tr><td><a class="key" href="#" onclick="return false">${r.k}</a></td><td>${r.t}</td><td>${r.w}</td><td>${r.at}</td><td>${S[r.s]}</td></tr>`).join('')
+      + '</tbody>'
+    : '<tbody><tr><td class="sm">Chưa có issue nào tạo từ dự án này. Chọn một mẫu ở trên để bắt đầu.</td></tr></tbody>';
+}
+
+/* ── S2 ── */
+function openCreate(i){
+  const t=DATA[cur].templates[i];
+  $("c-title").textContent="Tạo issue — "+t.n;
+  $("c-sub").textContent=`${cur} · loại ${t.t} · trường khoá đã điền sẵn, chỉ sửa phần cần thiết`;
+  const a=$("c-auto"); a.className="note "+(t.auto?"ok":"info");
+  a.innerHTML=t.auto?'<span>⚡</span><div>Mẫu này <b>bật auto-Done</b>: tạo xong hệ thống tự kéo sang <b>Done</b> theo cấu hình dự án.</div>'
+                    :'<span>○</span><div>Mẫu này <b>tắt auto-Done</b>: issue giữ nguyên status khởi tạo của workflow.</div>';
+  go("create");
+}
+function autoHint(){ $("e-autotxt").textContent=$("e-auto").checked?"→ Done (theo cấu hình dự án "+cur+")":"— issue giữ status khởi tạo"; }
+
+/* ── S5a ── */
+function renderConfigList(){
+  const ks=Object.keys(DATA);
+  $("cfg-count").textContent=ks.length+" dự án · dữ liệu đọc từ CSDL của hệ thống";
+  $("cfg-list").innerHTML=ks.map(k=>{
+    const d=DATA[k];
+    return `<tr class="pick" onclick="gotoConfig('${k}')">
+      <td><span class="mono">${k}</span> — ${d.name}</td>
+      <td>${d.admin?'<span class="lz ok">Quản trị</span>':'<span class="lz">Chỉ xem</span>'}</td>
+      <td>${d.done?`<span class="lz ok">${d.done}</span>`:'<span class="lz warn">Chưa cấu hình</span>'}</td>
+      <td class="num">${d.templates.length}</td><td class="sm">${d.synced}</td>
+      <td style="text-align:right"><button class="btn default sm" onclick="event.stopPropagation();gotoConfig('${k}')">Chi tiết</button></td></tr>`;
+  }).join("");
+}
+function gotoConfig(k){ cfgProj=k; renderConfigDetail(); go("config-detail"); }
+function syncJira(){ alert('Prototype: gọi Jira lấy metadata cho cả 3 dự án.\n\n· Quá 2 giây thì hiện tiến độ và cho huỷ\n· Hỏng thì GIỮ NGUYÊN dữ liệu cũ trong CSDL, không xoá cache'); }
+
+/* ── S5b ── */
+function renderConfigDetail(){
+  const p=DATA[cfgProj], ro = forcedRole!=="admin" || !p.admin;
+  $("cd-title").textContent=cfgProj+" — "+p.name;
+  $("cd-sub").textContent=`Metadata đồng bộ lần cuối ${p.synced} · ${p.templates.length} mẫu`;
+  $("cd-ro").classList.toggle("hide",!ro);
+  $("cd-nodone").classList.toggle("hide",!!p.done);
+  $("cfg-edit").classList.toggle("readonly",ro);
+  const ST=["Done","Closed","Resolved","Cancelled"];
+  $("cfg-done").innerHTML=(p.done?"":'<option selected>— chưa chọn —</option>')+ST.map(s=>`<option${s===p.done?" selected":""}>${s}</option>`).join("");
+  $("cfg-path").innerHTML = p.done
+    ? `<span class="step">To Do</span><span class="arr">→</span><span class="step">In Progress</span><span class="arr">→</span><span class="step">${p.done}</span>`
+    : '<span class="sm">Chưa chọn status đích nên chưa tính được đường đi.</span>';
+  $("cfg-tmpls").innerHTML=p.templates.map((t,i)=>
+    `<tr><td><span class="order">${i+1}<button class="icon-btn" aria-label="Đổi thứ tự ${t.n}" onclick="alert('Prototype: kéo thả đổi thứ tự chưa dựng.')">↕</button></span></td>
+     <td>${t.n}</td>
+     <td><input type="radio" name="def-tmpl" ${t.def?"checked":""} aria-label="Đặt ${t.n} làm mẫu mặc định"></td>
+     <td><span class="lz ${t.st==="active"?"ok":""}">${t.st==="active"?"Bật":"Tắt"}</span></td></tr>`).join("");
+}
+
+function openClone(){ $("clone").classList.add("on"); }
+function closeClone(){ $("clone").classList.remove("on"); }
+
+function go(s){
+  document.querySelectorAll("[data-screen]").forEach(e=>e.classList.toggle("on",e.dataset.screen===s));
+  ["nav-home","nav-config","nav-history"].forEach(id=>$(id).classList.remove("on"));
+  const nav={home:"nav-home",config:"nav-config","config-detail":"nav-config",history:"nav-history"}[s];
+  if(nav) $(nav).classList.add("on");
+  if(s==="home") resetClicks();
+  if(s==="editor") autoHint();
+  $("main").scrollTop=0;
+}
+function resetClicks(e){ if(e) e.stopPropagation(); clicks=0; $("ck").textContent=0; }
+$("app").addEventListener("click",ev=>{
+  if(ev.target.closest("button,a,select,input")){ clicks++; $("ck").textContent=clicks; }
+},true);
+
+renderProjects(); applyRole(); renderHome(); renderConfigList(); renderConfigDetail(); go("home");
+</script>
+</body>
+</html>

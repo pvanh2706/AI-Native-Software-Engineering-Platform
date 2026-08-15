@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cấu hình dự án - Jira Automation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#709bfe",
+                        "secondary": "#285ab9",
+                        "surface-variant": "#d8e2ff",
+                        "on-secondary-fixed-variant": "#00419d",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#faf9ff",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "primary": "#003d9b",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e1e8ff",
+                        "outline": "#737685",
+                        "surface": "#faf9ff",
+                        "background": "#faf9ff",
+                        "on-primary-container": "#c4d2ff",
+                        "on-tertiary-fixed-variant": "#812800",
+                        "tertiary": "#7b2600",
+                        "inverse-on-surface": "#edf0ff",
+                        "surface-dim": "#ccdaff",
+                        "surface-tint": "#0c56d0",
+                        "on-tertiary-container": "#ffc6b2",
+                        "primary-container": "#0052cc",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#e9edff",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "tertiary-fixed": "#ffdbcf",
+                        "on-error": "#ffffff",
+                        "on-surface": "#051a3e",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#d9e2ff",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#b2c5ff",
+                        "on-secondary-fixed": "#001946",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#001848",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "on-background": "#051a3e",
+                        "surface-container-highest": "#d8e2ff",
+                        "primary-fixed": "#dae2ff",
+                        "on-secondary-container": "#003179",
+                        "on-tertiary-fixed": "#380d00",
+                        "inverse-surface": "#1d3054",
+                        "tertiary-container": "#a33500",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#434654",
+                        "outline-variant": "#c3c6d6",
+                        "secondary-fixed-dim": "#b1c6ff",
+                        "surface-container-low": "#f1f3ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "16px",
+                        "md": "12px",
+                        "layout-gutter": "16px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "base": "4px",
+                        "layout-margin": "24px",
+                        "xl": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "h3": ["Hanken Grotesk"],
+                        "h1": ["Hanken Grotesk"],
+                        "mono": ["JetBrains Mono"],
+                        "label-xs": ["Inter"],
+                        "h2": ["Hanken Grotesk"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "h3": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "h1": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "mono": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "label-xs": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+                        "h2": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .table-cell-padding {
+                @apply px-sm py-md;
+            }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-lg text-body-lg antialiased h-screen overflow-hidden flex">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full w-[240px] bg-surface border-r border-outline-variant flex flex-col p-md space-y-sm z-20">
+<!-- Brand -->
+<div class="px-sm py-lg mb-sm">
+<h2 class="text-h2 font-h2 font-bold text-primary">Jira Automation</h2>
+<p class="text-label-xs font-label-xs text-on-surface-variant uppercase tracking-wider mt-1">Project Selector</p>
+</div>
+<!-- CTA -->
+<div class="px-sm pb-md">
+<button class="w-full bg-primary-container text-on-primary py-2 px-4 rounded font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                Tạo mẫu mới
+            </button>
+</div>
+<!-- Navigation Tabs -->
+<ul class="flex-1 space-y-1">
+<li>
+<a class="flex items-center gap-3 px-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">description</span>
+<span class="text-label-md font-label-md">Mẫu issue</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">history</span>
+<span class="text-label-md font-label-md">Lịch sử issue</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-sm py-2 rounded-lg bg-secondary-fixed text-primary font-bold transition-colors duration-200 scale-[0.98]" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="text-label-md font-label-md">Cấu hình dự án</span>
+</a>
+</li>
+</ul>
+<!-- Footer Tab -->
+<div class="mt-auto pt-sm border-t border-outline-variant">
+<a class="flex items-center gap-3 px-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">account_circle</span>
+<span class="text-label-md font-label-md">Thông tin tài khoản</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col ml-[240px] h-full w-[calc(100%-240px)] bg-surface">
+<!-- TopAppBar -->
+<header class="h-16 px-xl flex justify-between items-center border-b border-outline-variant bg-surface shrink-0">
+<div class="flex items-center">
+<h1 class="text-h1 font-h1 font-semibold text-on-surface">Cấu hình dự án</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-full p-1">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-full p-1">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-on-surface-variant">person</span>
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<main class="flex-1 overflow-auto p-layout-margin bg-background">
+<div class="max-w-[1200px] mx-auto flex flex-col h-full space-y-md">
+<!-- Action Bar -->
+<div class="flex justify-between items-end pb-sm">
+<div>
+<h3 class="text-h3 font-h3 text-on-surface">Danh sách dự án</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Quản lý cấu hình sinh issue tự động theo từng dự án.</p>
+</div>
+<button class="bg-surface border border-outline-variant text-primary hover:bg-surface-container-high transition-colors py-1.5 px-3 rounded font-label-md text-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+                        Lấy thông tin tất cả dự án
+                    </button>
+</div>
+<!-- Data Table -->
+<div class="flex-1 overflow-auto border border-outline-variant rounded bg-surface-container-lowest">
+<table class="w-full text-left border-collapse">
+<thead class="sticky top-0 bg-surface-container-low border-b border-outline-variant z-10">
+<tr>
+<th class="table-cell-padding text-label-md font-label-md text-on-surface uppercase text-xs w-[25%]">Dự án</th>
+<th class="table-cell-padding text-label-md font-label-md text-on-surface uppercase text-xs w-[10%]">Quyền hạn</th>
+<th class="table-cell-padding text-label-md font-label-md text-on-surface uppercase text-xs w-[20%]">Trạng thái cấu hình</th>
+<th class="table-cell-padding text-label-md font-label-md text-on-surface uppercase text-xs w-[8%] text-right">Số mẫu</th>
+<th class="table-cell-padding text-label-md font-label-md text-on-surface uppercase text-xs w-[22%]">Lần cuối lấy dữ liệu</th>
+<th class="table-cell-padding text-label-md font-label-md text-on-surface uppercase text-xs w-[15%] text-right">Thao tác</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1: ITSUP -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="table-cell-padding">
+<div class="flex items-center gap-2">
+<div class="bg-primary/10 text-primary px-2 py-0.5 rounded text-mono font-mono text-[11px] font-medium border border-primary/20">ITSUP</div>
+<span class="text-body-sm font-body-sm font-medium truncate" title="Hỗ trợ nội bộ">Hỗ trợ nội bộ</span>
+</div>
+</td>
+<td class="table-cell-padding text-body-sm">
+<span class="text-on-surface-variant">Quản trị</span>
+</td>
+<td class="table-cell-padding">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-green-50 text-green-700 border border-green-200">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-label-xs font-label-xs">Đã đặt status đích</span>
+</div>
+</td>
+<td class="table-cell-padding text-body-sm text-right font-mono">12</td>
+<td class="table-cell-padding text-body-sm text-on-surface-variant font-mono">11/08 08:30</td>
+<td class="table-cell-padding text-right">
+<div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 text-primary hover:bg-primary/10 rounded flex items-center justify-center tooltip" title="Lấy lại data">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+</button>
+<button class="px-2 py-1 text-primary text-label-md font-label-md hover:bg-primary/10 rounded transition-colors">
+                                            Mở cấu hình
+                                        </button>
+</div>
+</td>
+</tr>
+<!-- Row 2: HRQ -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="table-cell-padding">
+<div class="flex items-center gap-2">
+<div class="bg-primary/10 text-primary px-2 py-0.5 rounded text-mono font-mono text-[11px] font-medium border border-primary/20">HRQ</div>
+<span class="text-body-sm font-body-sm font-medium truncate" title="Yêu cầu nhân sự">Yêu cầu nhân sự</span>
+</div>
+</td>
+<td class="table-cell-padding text-body-sm">
+<span class="text-on-surface-variant">Quản trị</span>
+</td>
+<td class="table-cell-padding">
+<div class="flex flex-col gap-1">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-yellow-50 text-yellow-800 border border-yellow-200 w-fit">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="text-label-xs font-label-xs">CHƯA đặt status đích</span>
+</div>
+<span class="text-[10px] leading-tight text-on-surface-variant max-w-[200px]">Mẫu tự động đóng sẽ không lưu được</span>
+</div>
+</td>
+<td class="table-cell-padding text-body-sm text-right font-mono">4</td>
+<td class="table-cell-padding text-body-sm text-on-surface-variant font-mono">11/08 07:15</td>
+<td class="table-cell-padding text-right">
+<div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 text-primary hover:bg-primary/10 rounded flex items-center justify-center tooltip" title="Lấy lại data">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+</button>
+<button class="px-2 py-1 text-primary text-label-md font-label-md hover:bg-primary/10 rounded transition-colors">
+                                            Mở cấu hình
+                                        </button>
+</div>
+</td>
+</tr>
+<!-- Row 3: INFRA -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="table-cell-padding">
+<div class="flex items-center gap-2">
+<div class="bg-primary/10 text-primary px-2 py-0.5 rounded text-mono font-mono text-[11px] font-medium border border-primary/20">INFRA</div>
+<span class="text-body-sm font-body-sm font-medium truncate" title="Hạ tầng và vận hành hệ thống nội bộ khối văn phòng">Hạ tầng &amp; Vận hành...</span>
+</div>
+</td>
+<td class="table-cell-padding text-body-sm">
+<span class="text-on-surface-variant">Chỉ xem</span>
+</td>
+<td class="table-cell-padding">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-green-50 text-green-700 border border-green-200">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-label-xs font-label-xs">Đã đặt status đích</span>
+</div>
+</td>
+<td class="table-cell-padding text-body-sm text-right font-mono">7</td>
+<td class="table-cell-padding text-body-sm text-on-surface-variant font-mono">10/08 16:02</td>
+<td class="table-cell-padding text-right">
+<div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1 text-primary hover:bg-primary/10 rounded flex items-center justify-center tooltip" title="Lấy lại data">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+</button>
+<button class="px-2 py-1 text-primary text-label-md font-label-md hover:bg-primary/10 rounded transition-colors" disabled="">
+<span class="opacity-50">Chỉ xem</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: DEVOPS -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="table-cell-padding">
+<div class="flex items-center gap-2">
+<div class="bg-primary/10 text-primary px-2 py-0.5 rounded text-mono font-mono text-[11px] font-medium border border-primary/20">DEVOPS</div>
+<span class="text-body-sm font-body-sm font-medium truncate" title="Triển khai và vận hành">Triển khai và vận hành</span>
+</div>
+</td>
+<td class="table-cell-padding text-body-sm">
+<span class="text-on-surface-variant">Quản trị</span>
+</td>
+<td class="table-cell-padding">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-green-50 text-green-700 border border-green-200">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-label-xs font-label-xs">Đã đặt status đích</span>
+</div>
+</td>
+<td class="table-cell-padding text-body-sm text-right font-mono">9</td>
+<td class="table-cell-padding">
+<div class="flex flex-col gap-1">
+<span class="text-body-sm font-mono text-error font-medium">08/08 09:20</span>
+<span class="text-[10px] leading-tight text-error max-w-[200px]">ĐÃ QUÁ HẠN: Cần lấy lại thông tin từ Jira</span>
+</div>
+</td>
+<td class="table-cell-padding text-right">
+<div class="flex items-center justify-end gap-1 opacity-100 group-hover:opacity-100 transition-opacity">
+<button class="p-1 text-error hover:bg-error/10 rounded flex items-center justify-center tooltip border border-error/30" title="Lấy lại data ngay">
+<span class="material-symbols-outlined text-[18px]">sync_problem</span>
+</button>
+<button class="px-2 py-1 text-primary text-label-md font-label-md hover:bg-primary/10 rounded transition-colors">
+                                            Mở cấu hình
+                                        </button>
+</div>
+</td>
+</tr>
+<!-- Row 5: LEGAL -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="table-cell-padding">
+<div class="flex items-center gap-2">
+<div class="bg-primary/10 text-primary px-2 py-0.5 rounded text-mono font-mono text-[11px] font-medium border border-primary/20">LEGAL</div>
+<span class="text-body-sm font-body-sm font-medium truncate" title="Pháp chế">Pháp chế</span>
+</div>
+</td>
+<td class="table-cell-padding text-body-sm">
+<span class="text-on-surface-variant">Chỉ xem</span>
+</td>
+<td class="table-cell-padding">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-yellow-50 text-yellow-800 border border-yellow-200 w-fit">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="text-label-xs font-label-xs">CHƯA đặt status đích</span>
+</div>
+</td>
+<td class="table-cell-padding text-body-sm text-right font-mono">0</td>
+<td class="table-cell-padding">
+<div class="flex flex-col gap-1">
+<span class="text-body-sm font-mono text-error font-medium">11/08 06:40</span>
+<span class="text-[10px] leading-tight text-error max-w-[200px]">THẤT BẠI: Jira không phản hồi - đang dùng dữ liệu cũ từ 09/08 18:00</span>
+</div>
+</td>
+<td class="table-cell-padding text-right">
+<div class="flex items-center justify-end gap-1 opacity-100 group-hover:opacity-100 transition-opacity">
+<button class="p-1 text-error hover:bg-error/10 rounded flex items-center justify-center tooltip border border-error/30" title="Thử lại">
+<span class="material-symbols-outlined text-[18px]">replay</span>
+</button>
+<button class="px-2 py-1 text-primary text-label-md font-label-md hover:bg-primary/10 rounded transition-colors" disabled="">
+<span class="opacity-50">Chỉ xem</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Density Info / Footer note -->
+<div class="text-label-xs font-label-xs text-on-surface-variant flex justify-between items-center">
+<span>Hiển thị 5 dự án. Dữ liệu được đồng bộ tự động mỗi 24h.</span>
+<span class="font-mono">Workspace: main-jira-cloud</span>
+</div>
+</div>
+</main>
+</div>
+</body></html>

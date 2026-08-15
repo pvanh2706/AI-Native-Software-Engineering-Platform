@@ -1,0 +1,550 @@
+{
+  "man": [
+    {
+      "url": "http://localhost:5199/?theme=light",
+      "cmp01": {
+        "pct": 85.2,
+        "theoComp": {
+          "table/TableCell.vue": 46.5,
+          "table/TableHead.vue": 23,
+          "ui/NavItem.vue": 10.3,
+          "button/Button.vue": 5,
+          "badge/Badge.vue": 0.4
+        },
+        "vietTay": {
+          "ui/AppShell.vue": 8.2,
+          "screens/S1DanhSachMau.vue": 6.7
+        }
+      },
+      "a11y01": [],
+      "a11y02": [],
+      "a11y03": [],
+      "res12": [],
+      "res01b": [],
+      "res01": [],
+      "dat": true
+    },
+    {
+      "url": "http://localhost:5199/?theme=dark",
+      "cmp01": {
+        "pct": 85.2,
+        "theoComp": {
+          "table/TableCell.vue": 46.5,
+          "table/TableHead.vue": 23,
+          "ui/NavItem.vue": 10.3,
+          "button/Button.vue": 5,
+          "badge/Badge.vue": 0.4
+        },
+        "vietTay": {
+          "ui/AppShell.vue": 8.2,
+          "screens/S1DanhSachMau.vue": 6.7
+        }
+      },
+      "a11y01": [],
+      "a11y02": [],
+      "a11y03": [],
+      "res12": [],
+      "res01b": [],
+      "res01": [],
+      "dat": true
+    },
+    {
+      "url": "http://localhost:5199/?man=s2&theme=light",
+      "cmp01": {
+        "pct": 81.3,
+        "theoComp": {
+          "input/Input.vue": 23.5,
+          "textarea/Textarea.vue": 21.2,
+          "label/Label.vue": 15.1,
+          "ui/NavItem.vue": 13.3,
+          "tags-input/TagsInput.vue": 3.3,
+          "button/Button.vue": 2.7,
+          "select/SelectValue.vue": 1.5,
+          "badge/Badge.vue": 0.6
+        },
+        "vietTay": {
+          "ui/AppShell.vue": 11,
+          "screens/S2TaoIssue.vue": 7.6
+        }
+      },
+      "a11y01": [],
+      "a11y02": [],
+      "a11y03": [],
+      "res12": [],
+      "res01b": [],
+      "res01": [],
+      "dat": true
+    },
+    {
+      "url": "http://localhost:5199/?man=s2&theme=dark",
+      "cmp01": {
+        "pct": 81.3,
+        "theoComp": {
+          "input/Input.vue": 23.5,
+          "textarea/Textarea.vue": 21.2,
+          "label/Label.vue": 15.1,
+          "ui/NavItem.vue": 13.3,
+          "tags-input/TagsInput.vue": 3.3,
+          "button/Button.vue": 2.7,
+          "select/SelectValue.vue": 1.5,
+          "badge/Badge.vue": 0.6
+        },
+        "vietTay": {
+          "ui/AppShell.vue": 11,
+          "screens/S2TaoIssue.vue": 7.6
+        }
+      },
+      "a11y01": [],
+      "a11y02": [],
+      "a11y03": [],
+      "res12": [],
+      "res01b": [],
+      "res01": [],
+      "dat": true
+    },
+    {
+      "url": "http://localhost:5199/?man=s3&theme=light",
+      "cmp01": {
+        "pct": 92.7,
+        "theoComp": {
+          "table/TableCell.vue": 51.4,
+          "table/TableHead.vue": 10.4,
+          "table/TableCaption.vue": 9.4,
+          "ui/NavItem.vue": 9.4,
+          "button/Button.vue": 3.6,
+          "label/Label.vue": 3.6,
+          "badge/Badge.vue": 2.3,
+          "input/Input.vue": 2.1,
+          "select/SelectValue.vue": 0.4
+        },
+        "vietTay": {
+          "ui/AppShell.vue": 7.3
+        }
+      },
+      "a11y01": [],
+      "a11y02": [],
+      "a11y03": [],
+      "res12": [],
+      "res01b": [],
+      "res01": [],
+      "dat": true
+    },
+    {
+      "url": "http://localhost:5199/?man=s3&theme=dark",
+      "cmp01": {
+        "pct": 92.7,
+        "theoComp": {
+          "table/TableCell.vue": 51.4,
+          "table/TableHead.vue": 10.4,
+          "table/TableCaption.vue": 9.4,
+          "ui/NavItem.vue": 9.4,
+          "button/Button.vue": 3.6,
+          "label/Label.vue": 3.6,
+          "badge/Badge.vue": 2.3,
+          "input/Input.vue": 2.1,
+          "select/SelectValue.vue": 0.4
+        },
+        "vietTay": {
+          "ui/AppShell.vue": 7.3
+        }
+      },
+      "a11y01": [],
+      "a11y02": [],
+      "a11y03": [],
+      "res12": [],
+      "res01b": [],
+      "res01": [],
+      "dat": true
+    },
+    {
+      "url": "http://localhost:5199/?man=s3-khong-khop&theme=light",
+      "cmp01": {
+        "pct": 85.9,
+        "theoComp": {
+          "table/TableHead.vue": 20.2,
+          "table/TableCaption.vue": 18.2,
+          "ui/NavItem.vue": 18.1,
+          "notice/Notice.vue": 16.3,
+          "label/Label.vue": 7,
+          "input/Input.vue": 4,
+          "button/Button.vue": 1.4,
+          "select/SelectValue.vue": 0.7
+        },
+        "vietTay": {
+          "ui/AppShell.vue": 14.1
+        }
+      },
+      "a11y01": [],
+      "a11y02": [],
+      "a11y03": [],
+      "res12": [],
+      "res01b": [],
+      "res01": [],
+      "dat": true
+    },
+    {
+      "url": "http://localhost:5199/?man=s5a&theme=light",
+      "cmp01": {
+        "pct": 83.2,
+        "theoComp": {
+          "table/TableCell.vue": 33.7,
+          "table/TableHead.vue": 18.1,
+          "ui/NavItem.vue": 13.1,
+          "button/Button.vue": 8.1,
+          "badge/Badge.vue": 5.1,
+          "card/CardTitle.vue": 2.7,
+          "card/CardDescription.vue": 2.4
+        },
+        "vietTay": {
+          "ui/AppShell.vue": 10.4,
+          "screens/S5aDanhSachDuAn.vue": 6.4
+        }
+      },
+      "a11y01": [],
+      "a11y02": [],
+      "a11y03": [],
+      "res12": [],
+      "res01b": [],
+      "res01": [],
+      "dat": true
+    },
+    {
+      "url": "http://localhost:5199/?man=s5a&theme=dark",
+      "cmp01": {
+        "pct": 83.2,
+        "theoComp": {
+          "table/TableCell.vue": 33.7,
+          "table/TableHead.vue": 18.1,
+          "ui/NavItem.vue": 13.1,
+          "button/Button.vue": 8.1,
+          "badge/Badge.vue": 5.1,
+          "card/CardTitle.vue": 2.7,
+          "card/CardDescription.vue": 2.4
+        },
+        "vietTay": {
+          "ui/AppShell.vue": 10.4,
+          "screens/S5aDanhSachDuAn.vue": 6.4
+        }
+      },
+      "a11y01": [],
+      "a11y02": [],
+      "a11y03": [],
+      "res12": [],
+      "res01b": [],
+      "res01": [],
+      "dat": true
+    },
+    {
+      "url": "http://localhost:5199/?man=s5a-rong&theme=light",
+      "cmp01": {
+        "pct": 79.7,
+        "theoComp": {
+          "table/TableHead.vue": 28.6,
+          "ui/NavItem.vue": 25.5,
+          "table/TableCell.vue": 11,
+          "card/CardTitle.vue": 5.2,
+          "button/Button.vue": 4.8,
+          "card/CardDescription.vue": 4.7
+        },
+        "vietTay": {
+          "ui/AppShell.vue": 20.3
+        }
+      },
+      "a11y01": [],
+      "a11y02": [],
+      "a11y03": [],
+      "res12": [],
+      "res01b": [],
+      "res01": [],
+      "dat": false
+    },
+    {
+      "url": "http://localhost:5199/?man=s5b&theme=light",
+      "cmp01": {
+        "pct": 89.5,
+        "theoComp": {
+          "table/TableCell.vue": 17.1,
+          "ui/NavItem.vue": 12.7,
+          "card/CardTitle.vue": 10.1,
+          "table/TableHead.vue": 9.7,
+          "card/CardDescription.vue": 9.1,
+          "card/CardContent.vue": 8.7,
+          "input/Input.vue": 8.4,
+          "label/Label.vue": 7.5,
+          "button/Button.vue": 4.8,
+          "badge/Badge.vue": 0.6,
+          "select/SelectValue.vue": 0.6
+        },
+        "vietTay": {
+          "ui/AppShell.vue": 10.5
+        }
+      },
+      "a11y01": [],
+      "a11y02": [],
+      "a11y03": [],
+      "res12": [],
+      "res01b": [],
+      "res01": [],
+      "dat": true
+    },
+    {
+      "url": "http://localhost:5199/?man=s5b&theme=dark",
+      "cmp01": {
+        "pct": 89.5,
+        "theoComp": {
+          "table/TableCell.vue": 17.1,
+          "ui/NavItem.vue": 12.7,
+          "card/CardTitle.vue": 10.1,
+          "table/TableHead.vue": 9.7,
+          "card/CardDescription.vue": 9.1,
+          "card/CardContent.vue": 8.7,
+          "input/Input.vue": 8.4,
+          "label/Label.vue": 7.5,
+          "button/Button.vue": 4.8,
+          "badge/Badge.vue": 0.6,
+          "select/SelectValue.vue": 0.6
+        },
+        "vietTay": {
+          "ui/AppShell.vue": 10.5
+        }
+      },
+      "a11y01": [],
+      "a11y02": [],
+      "a11y03": [],
+      "res12": [],
+      "res01b": [],
+      "res01": [],
+      "dat": true
+    },
+    {
+      "url": "http://localhost:5199/?man=s5b-chi-xem&theme=light",
+      "cmp01": {
+        "pct": 88.7,
+        "theoComp": {
+          "table/TableCell.vue": 16,
+          "ui/NavItem.vue": 11.7,
+          "notice/Notice.vue": 11.6,
+          "card/CardTitle.vue": 9.3,
+          "card/CardDescription.vue": 8.4,
+          "table/TableHead.vue": 8,
+          "card/CardContent.vue": 8,
+          "input/Input.vue": 7.8,
+          "label/Label.vue": 6.9,
+          "badge/Badge.vue": 0.6,
+          "select/SelectValue.vue": 0.6
+        },
+        "vietTay": {
+          "ui/AppShell.vue": 11.3
+        }
+      },
+      "a11y01": [],
+      "a11y02": [],
+      "a11y03": [],
+      "res12": [],
+      "res01b": [],
+      "res01": [],
+      "dat": true
+    },
+    {
+      "url": "http://localhost:5199/?man=s4&theme=light",
+      "cmp01": {
+        "pct": 93.1,
+        "theoComp": {
+          "table/TableCell.vue": 19.4,
+          "input/Input.vue": 15.7,
+          "textarea/Textarea.vue": 10.1,
+          "button/Button.vue": 9.7,
+          "ui/NavItem.vue": 8.7,
+          "table/TableHead.vue": 6.4,
+          "card/CardContent.vue": 5.9,
+          "label/Label.vue": 5.7,
+          "tags-input/TagsInput.vue": 2.9,
+          "card/CardTitle.vue": 2.5,
+          "select/SelectValue.vue": 2.2,
+          "card/CardDescription.vue": 1.8,
+          "card/CardHeader.vue": 1.8,
+          "badge/Badge.vue": 0.4,
+          "field-value-input/FieldValueInput.vue": 0
+        },
+        "vietTay": {
+          "ui/AppShell.vue": 6.9
+        }
+      },
+      "a11y01": [],
+      "a11y02": [],
+      "a11y03": [],
+      "res12": [],
+      "res01b": [],
+      "res01": [],
+      "dat": true
+    },
+    {
+      "url": "http://localhost:5199/?man=s4&theme=dark",
+      "cmp01": {
+        "pct": 93.1,
+        "theoComp": {
+          "table/TableCell.vue": 19.4,
+          "input/Input.vue": 15.7,
+          "textarea/Textarea.vue": 10.1,
+          "button/Button.vue": 9.7,
+          "ui/NavItem.vue": 8.7,
+          "table/TableHead.vue": 6.4,
+          "card/CardContent.vue": 5.9,
+          "label/Label.vue": 5.7,
+          "tags-input/TagsInput.vue": 2.9,
+          "card/CardTitle.vue": 2.5,
+          "select/SelectValue.vue": 2.2,
+          "card/CardDescription.vue": 1.8,
+          "card/CardHeader.vue": 1.8,
+          "badge/Badge.vue": 0.4,
+          "field-value-input/FieldValueInput.vue": 0
+        },
+        "vietTay": {
+          "ui/AppShell.vue": 6.9
+        }
+      },
+      "a11y01": [],
+      "a11y02": [],
+      "a11y03": [],
+      "res12": [],
+      "res01b": [],
+      "res01": [],
+      "dat": true
+    },
+    {
+      "url": "http://localhost:5199/?man=s4&hop=nhanBan&theme=light",
+      "cmp01": {
+        "pct": 93.1,
+        "theoComp": {
+          "table/TableCell.vue": 19.4,
+          "input/Input.vue": 15.7,
+          "textarea/Textarea.vue": 10.1,
+          "button/Button.vue": 9.7,
+          "ui/NavItem.vue": 8.7,
+          "table/TableHead.vue": 6.4,
+          "card/CardContent.vue": 5.9,
+          "label/Label.vue": 5.7,
+          "tags-input/TagsInput.vue": 2.9,
+          "card/CardTitle.vue": 2.5,
+          "select/SelectValue.vue": 2.2,
+          "card/CardDescription.vue": 1.8,
+          "card/CardHeader.vue": 1.8,
+          "badge/Badge.vue": 0.4,
+          "field-value-input/FieldValueInput.vue": 0
+        },
+        "vietTay": {
+          "ui/AppShell.vue": 6.9
+        }
+      },
+      "a11y01": [],
+      "a11y02": [],
+      "a11y03": [],
+      "res12": [],
+      "res01b": [],
+      "res01": [],
+      "dat": true
+    },
+    {
+      "url": "http://localhost:5199/?man=s4&hop=ngungDung&theme=light",
+      "cmp01": {
+        "pct": 93.1,
+        "theoComp": {
+          "table/TableCell.vue": 19.4,
+          "input/Input.vue": 15.7,
+          "textarea/Textarea.vue": 10.1,
+          "button/Button.vue": 9.7,
+          "ui/NavItem.vue": 8.7,
+          "table/TableHead.vue": 6.4,
+          "card/CardContent.vue": 5.9,
+          "label/Label.vue": 5.7,
+          "tags-input/TagsInput.vue": 2.9,
+          "card/CardTitle.vue": 2.5,
+          "select/SelectValue.vue": 2.2,
+          "card/CardDescription.vue": 1.8,
+          "card/CardHeader.vue": 1.8,
+          "badge/Badge.vue": 0.4,
+          "field-value-input/FieldValueInput.vue": 0
+        },
+        "vietTay": {
+          "ui/AppShell.vue": 6.9
+        }
+      },
+      "a11y01": [],
+      "a11y02": [],
+      "a11y03": [],
+      "res12": [],
+      "res01b": [],
+      "res01": [],
+      "dat": true
+    }
+  ],
+  "luong": [
+    {
+      "ma": "NFR-07",
+      "ten": "Tạo một issue từ mẫu, không sửa gì",
+      "url": "http://localhost:5199/?theme=light",
+      "toiDa": 3,
+      "buoc": [
+        "tr:has-text(\"Ghi nhận hỗ trợ đã xử lý\") button:has-text(\"Tạo issue\")",
+        "button:has-text(\"Tạo issue\")"
+      ],
+      "xong": "[role=dialog] >> text=Tạo issue thành công",
+      "bam": 2,
+      "dat": true,
+      "loi": null
+    },
+    {
+      "ma": "FR-05",
+      "ten": "Mở cấu hình một dự án từ danh sách",
+      "url": "http://localhost:5199/?man=s5a&theme=light",
+      "toiDa": 2,
+      "buoc": [
+        "tr:has-text(\"Hỗ trợ nội bộ\") button:has-text(\"Mở cấu hình\")"
+      ],
+      "xong": "text=Trạng thái đích",
+      "bam": 1,
+      "dat": true,
+      "loi": null
+    },
+    {
+      "ma": "FR-09",
+      "ten": "Thử lại chuyển trạng thái ngay trên dòng lỗi, không rời màn",
+      "url": "http://localhost:5199/?man=s3&theme=light",
+      "toiDa": 1,
+      "buoc": [
+        "tr:has-text(\"ITSUP-2482\") button:has-text(\"Thử lại\")"
+      ],
+      "_ghi_chu": "Đích KHÔNG dùng text=Xong: dòng lúc chưa bấm đã chứa chuỗi «Đã xong» trong câu giải thích, selector sẽ khớp ngay và luồng đạt oan.",
+      "xong": "[data-slot=notice]:has-text(\"ITSUP-2482\")",
+      "bam": 1,
+      "dat": true,
+      "loi": null
+    },
+    {
+      "ma": "A11Y-04",
+      "ten": "Đổi thứ tự mẫu bằng bàn phím (không dùng kéo thả)",
+      "url": "http://localhost:5199/?man=s5b&theme=light",
+      "toiDa": 1,
+      "buoc": [
+        "tr:has-text(\"Cấp quyền truy cập\") button[aria-label^=\"Đưa mẫu\"][aria-label*=\"lên trên\"]"
+      ],
+      "xong": "tbody tr:first-child:has-text(\"Cấp quyền truy cập\")",
+      "bam": 1,
+      "dat": true,
+      "loi": null
+    },
+    {
+      "ma": "FR-04",
+      "ten": "Đổi một trường từ Cho sửa sang Khoá",
+      "url": "http://localhost:5199/?man=s4&theme=light",
+      "toiDa": 1,
+      "buoc": [
+        "tr:has-text(\"Độ ưu tiên\") button[aria-label*=\"đang cho sửa\"]"
+      ],
+      "xong": "tr:has-text(\"Độ ưu tiên\") button[aria-label*=\"đang khoá\"]",
+      "bam": 1,
+      "dat": true,
+      "loi": null
+    }
+  ]
+}

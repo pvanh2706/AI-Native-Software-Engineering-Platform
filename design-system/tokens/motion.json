@@ -1,0 +1,33 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Chuyển động. Nguyên tắc cho công cụ nội bộ dùng nhiều lần mỗi ngày: chuyển động phục vụ việc hiểu chuyện gì vừa xảy ra, không phải để đẹp. Thà không có animation còn hơn có animation chậm.",
+
+  "duration": {
+    "instant": { "$type": "duration", "$value": "0ms",   "$description": "Đổi trạng thái ô nhập, checkbox — phản hồi phải tức thì." },
+    "fast":    { "$type": "duration", "$value": "120ms", "$description": "Hover, focus, đổi màu nền." },
+    "normal":  { "$type": "duration", "$value": "200ms", "$description": "Mở/đóng menu, chuyển tab." },
+    "slow":    { "$type": "duration", "$value": "300ms", "$description": "Hộp thoại, ngăn kéo. Mức TRẦN cho app nghiệp vụ." }
+  },
+
+  "easing": {
+    "standard":   { "$type": "cubicBezier", "$value": [0.2, 0, 0, 1],    "$description": "Mặc định cho chuyển đổi trong màn hình." },
+    "decelerate": { "$type": "cubicBezier", "$value": [0, 0, 0, 1],      "$description": "Phần tử đi vào." },
+    "accelerate": { "$type": "cubicBezier", "$value": [0.3, 0, 1, 1],    "$description": "Phần tử đi ra." },
+    "linear":     { "$type": "cubicBezier", "$value": [0, 0, 1, 1],      "$description": "Thanh tiến độ, spinner." }
+  },
+
+  "semantic": {
+    "state-change": { "$type": "transition", "$value": { "duration": "{duration.fast}",   "timingFunction": "{easing.standard}" } },
+    "enter":        { "$type": "transition", "$value": { "duration": "{duration.normal}", "timingFunction": "{easing.decelerate}" } },
+    "exit":         { "$type": "transition", "$value": { "duration": "{duration.fast}",   "timingFunction": "{easing.accelerate}" } },
+    "overlay":      { "$type": "transition", "$value": { "duration": "{duration.slow}",   "timingFunction": "{easing.standard}" } }
+  },
+
+  "rules": {
+    "$description": "Ràng buộc UI Eval kiểm được",
+    "maxDuration": "300ms",
+    "respectPrefersReducedMotion": true,
+    "noAnimationOnDataTableRows": true,
+    "noEntranceAnimationOnPageLoad": true
+  }
+}

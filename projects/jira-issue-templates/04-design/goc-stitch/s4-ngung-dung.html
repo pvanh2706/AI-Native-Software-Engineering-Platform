@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Jira Automation - Confirm Deprecation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-high": "#e1e8ff",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-container": "#ffc6b2",
+                      "tertiary-fixed": "#ffdbcf",
+                      "secondary-fixed-dim": "#b1c6ff",
+                      "error-container": "#ffdad6",
+                      "on-primary-container": "#c4d2ff",
+                      "inverse-primary": "#b2c5ff",
+                      "on-tertiary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "surface-tint": "#0c56d0",
+                      "primary-fixed-dim": "#b2c5ff",
+                      "surface-dim": "#ccdaff",
+                      "on-surface": "#051a3e",
+                      "surface-variant": "#d8e2ff",
+                      "outline": "#737685",
+                      "on-secondary-fixed-variant": "#00419d",
+                      "tertiary": "#7b2600",
+                      "on-background": "#051a3e",
+                      "on-secondary-fixed": "#001946",
+                      "on-tertiary-fixed": "#380d00",
+                      "secondary-container": "#709bfe",
+                      "secondary": "#285ab9",
+                      "surface-container-highest": "#d8e2ff",
+                      "primary-fixed": "#dae2ff",
+                      "on-secondary-container": "#003179",
+                      "tertiary-container": "#a33500",
+                      "on-primary-fixed": "#001848",
+                      "inverse-surface": "#1d3054",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed-dim": "#ffb59b",
+                      "surface-bright": "#faf9ff",
+                      "surface": "#faf9ff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container": "#e9edff",
+                      "inverse-on-surface": "#edf0ff",
+                      "background": "#faf9ff",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#812800",
+                      "on-surface-variant": "#434654",
+                      "secondary-fixed": "#d9e2ff",
+                      "primary": "#003d9b",
+                      "outline-variant": "#c3c6d6",
+                      "surface-container-low": "#f1f3ff",
+                      "primary-container": "#0052cc",
+                      "on-primary-fixed-variant": "#0040a2",
+                      "on-error": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "layout-gutter": "16px",
+                      "md": "12px",
+                      "xs": "4px",
+                      "xl": "24px",
+                      "sm": "8px",
+                      "layout-margin": "24px",
+                      "lg": "16px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "h1": [
+                              "Hanken Grotesk"
+                      ],
+                      "mono": [
+                              "JetBrains Mono"
+                      ],
+                      "label-xs": [
+                              "Inter"
+                      ],
+                      "h3": [
+                              "Hanken Grotesk"
+                      ],
+                      "h2": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-md": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h1": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-xs": [
+                              "11px",
+                              {
+                                      "lineHeight": "14px",
+                                      "letterSpacing": "0.04em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "h3": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h2": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface h-screen w-screen overflow-hidden flex relative">
+<!-- Shell: SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[240px] bg-surface dark:bg-inverse-surface border-r border-outline-variant dark:border-outline flex flex-col p-md space-y-sm z-10">
+<!-- Brand -->
+<div class="flex items-center gap-sm p-sm mb-lg">
+<div class="w-8 h-8 rounded bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+<span aria-label="Jira Automation Logo" class="material-symbols-outlined" data-icon="all_inclusive">all_inclusive</span>
+</div>
+<div>
+<h2 class="text-h2 font-h2 font-bold text-primary dark:text-inverse-primary truncate">Jira Automation</h2>
+<div class="text-label-xs font-label-xs text-on-surface-variant uppercase tracking-wider">Project Selector</div>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<nav class="flex-1 flex flex-col gap-xs">
+<!-- Inactive -->
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-label-md font-label-md">Mẫu issue</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="text-label-md font-label-md">Lịch sử issue</span>
+</a>
+<!-- Active (Configuration Context) -->
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-primary dark:text-inverse-primary bg-secondary-fixed dark:bg-on-secondary-fixed-variant font-bold scale-[0.98] transition-transform duration-150" href="#">
+<span class="material-symbols-outlined icon-fill">settings</span>
+<span class="text-label-md font-label-md">Cấu hình dự án</span>
+</a>
+</nav>
+<!-- CTA -->
+<div class="pt-md pb-sm border-t border-outline-variant mt-auto">
+<button class="w-full flex items-center justify-center gap-sm bg-primary-container text-on-primary hover:bg-primary py-sm rounded-lg text-label-md font-label-md transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                Tạo mẫu mới
+            </button>
+</div>
+<!-- Footer -->
+<div class="mt-auto">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-label-md font-label-md">Thông tin tài khoản</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="flex-1 ml-[240px] flex flex-col h-full bg-surface-container-lowest">
+<!-- Shell: TopAppBar -->
+<header class="docked full-width top-0 bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline flex justify-between items-center h-16 px-xl z-10 shrink-0">
+<!-- Left: Breadcrumb/Context (Dummy) -->
+<div class="flex items-center gap-sm">
+<span class="text-h3 font-h3 text-on-surface">Cấu hình dự án</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">chevron_right</span>
+<span class="text-label-md font-label-md text-on-surface-variant">Quản lý mẫu</span>
+</div>
+<!-- Right Actions -->
+<div class="flex items-center gap-layout-gutter">
+<button class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-full p-xs">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-full p-xs">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-outline-variant overflow-hidden shrink-0">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="A small, professional headshot photo of a software engineer used as a user avatar profile image in a light, corporate UI setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCASQ2n9vtrhTsmebWAzlCWV4DJeMbjOK2bvYfB5dhEkkQdXyWzXQxJAqmOODoMzGQbOXMKrYrc3Xf8ssey0uSexJoA0fkngs9FpGJWSdWO9aWD0qZJythSdxc8f65e45RXOuW8Pbeqm9oT_HtAKByIN2z-8BiAajRANc6LujKvWMKBnUvlwEvbXmgxeX9j_czSeaaeY3V71RZSUpZGLnM3b9EHyfr5M1X9rv9mHdiRKp41RZ1u9A5PTrRHvAp7sTvdw094r5gx-4k"/>
+</div>
+<button class="bg-primary-container text-on-primary hover:bg-primary px-lg py-sm rounded-lg text-label-md font-label-md transition-colors shadow-sm ml-sm">
+                    Tạo mẫu mới
+                </button>
+</div>
+</header>
+<!-- Main Canvas (Background Content for context) -->
+<main class="flex-1 overflow-auto p-layout-margin bg-surface-container-lowest select-none pointer-events-none blur-[1px]">
+<!-- Dummy Header -->
+<div class="mb-xl">
+<h1 class="text-h1 font-h1 text-on-surface mb-xs">Danh sách mẫu issue</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant">Quản lý và cấu hình các mẫu issue cho dự án IT Support.</p>
+</div>
+<!-- Dummy Bento Grid of Templates -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-layout-gutter">
+<!-- Card 1 (Target of deprecation) -->
+<div class="bg-surface rounded-xl border-2 border-error-container p-layout-gutter flex flex-col gap-md relative overflow-hidden">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded bg-primary-fixed text-primary flex items-center justify-center">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<span class="bg-surface-variant text-on-surface-variant px-2 py-1 rounded-full text-label-xs font-label-xs">Active</span>
+</div>
+<div>
+<h3 class="text-h3 font-h3 text-on-surface mb-1">Ghi nhận hỗ trợ đã xử lý</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant line-clamp-2">Dùng để log nhanh các yêu cầu hỗ trợ qua điện thoại hoặc chat đã được xử lý ngay lập tức.</p>
+</div>
+<div class="mt-auto pt-md border-t border-outline-variant flex gap-sm">
+<div class="w-full h-6 bg-surface-container rounded animate-pulse"></div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface rounded-xl border border-outline-variant p-layout-gutter flex flex-col gap-md opacity-70">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded bg-secondary-fixed text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined">bug_report</span>
+</div>
+</div>
+<div>
+<h3 class="text-h3 font-h3 text-on-surface mb-1">Báo cáo lỗi (Bug)</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant line-clamp-2">Mẫu chuẩn để user báo cáo lỗi phần mềm hoặc hệ thống.</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface rounded-xl border border-outline-variant p-layout-gutter flex flex-col gap-md opacity-70">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded bg-tertiary-fixed text-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined">add_task</span>
+</div>
+</div>
+<div>
+<h3 class="text-h3 font-h3 text-on-surface mb-1">Yêu cầu tính năng mới</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant line-clamp-2">Đề xuất thêm chức năng hoặc thay đổi luồng nghiệp vụ hiện tại.</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- MODAL OVERLAY (The core task) -->
+<div aria-labelledby="modal-title" aria-modal="true" class="fixed inset-0 z-50 flex items-center justify-center bg-on-surface/40 backdrop-blur-sm p-layout-margin" role="dialog">
+<!-- Modal Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_4px_24px_rgba(5,26,62,0.15)] w-full max-w-[480px] flex flex-col border border-outline-variant overflow-hidden transform transition-all">
+<!-- Modal Body -->
+<div class="p-xl flex flex-col gap-layout-gutter">
+<!-- Header -->
+<div class="flex items-start gap-md">
+<div class="w-10 h-10 rounded-full bg-error-container text-error flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-[24px]">warning</span>
+</div>
+<div>
+<h2 class="text-h2 font-h2 text-on-surface mb-sm" id="modal-title">Ngừng dùng mẫu issue?</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">
+                            Mẫu 'Ghi nhận hỗ trợ đã xử lý' sẽ biến khỏi danh sách lựa chọn khi tạo issue mới. Tuy nhiên, lịch sử các issue đã tạo từ mẫu này vẫn được lưu lại và tra cứu bình thường trong phần Lịch sử issue.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Modal Footer (Actions) -->
+<div class="px-xl py-layout-gutter bg-surface-container-low border-t border-outline-variant flex items-center justify-end gap-sm">
+<!-- Secondary/Ghost Action -->
+<button class="px-lg py-sm rounded-lg text-label-md font-label-md text-on-surface-variant hover:text-primary hover:bg-surface-variant transition-colors focus:ring-2 focus:ring-primary focus:outline-none" type="button">
+                    Quay lại
+                </button>
+<!-- Primary Danger Action -->
+<button class="px-lg py-sm rounded-lg text-label-md font-label-md bg-error text-on-error hover:bg-[#a41717] transition-colors shadow-sm focus:ring-2 focus:ring-error focus:ring-offset-2 focus:ring-offset-surface-container-lowest focus:outline-none flex items-center gap-xs" type="button">
+                    Ngừng dùng
+                </button>
+</div>
+</div>
+</div>
+</body></html>

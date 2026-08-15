@@ -1,0 +1,330 @@
+<title>Jira Automation Admin</title>
+<style>
+  :root{
+    --ground:#ffffff;
+    --panel:#f6f7f9;
+    --ink:#15181c;
+    --ink-2:#525c68;
+    --ink-3:#7c8794;
+    --rule:#dce0e5;
+    --rule-2:#eceef1;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,"Cascadia Mono","Cascadia Code",Consolas,"SF Mono",Menlo,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0e1116; --panel:#161b22; --ink:#e8ecf1; --ink-2:#a3adba;
+      --ink-3:#7a8593; --rule:#2a323b; --rule-2:#1e242c;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0e1116; --panel:#161b22; --ink:#e8ecf1; --ink-2:#a3adba;
+    --ink-3:#7a8593; --rule:#2a323b; --rule-2:#1e242c;
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .page{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+
+  .eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin:0 0 10px}
+  h1{font-family:var(--serif);font-weight:600;font-size:38px;line-height:1.12;letter-spacing:-.01em;margin:0 0 12px;text-wrap:balance}
+  h2{font-family:var(--serif);font-weight:600;font-size:23px;line-height:1.25;margin:0 0 4px;text-wrap:balance}
+  .lede{font-size:17px;line-height:1.55;color:var(--ink-2);margin:0;max-width:64ch}
+  p{margin:0 0 14px;max-width:68ch}
+  .muted{color:var(--ink-2)}
+  code{font-family:var(--mono);font-size:.88em;background:var(--panel);padding:1px 5px;border-radius:3px}
+
+  .meta{display:flex;flex-wrap:wrap;gap:8px 28px;margin:22px 0 0;padding-top:16px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:12.5px;color:var(--ink-2)}
+  .meta b{color:var(--ink);font-weight:500}
+
+  section{margin-top:56px;padding-top:24px;border-top:1px solid var(--rule)}
+  .sec-head{margin-bottom:22px}
+  .sec-head p{margin:8px 0 0}
+
+  .roles{display:flex;flex-direction:column;gap:18px;margin-top:8px}
+  .role{border:1px solid var(--rule);border-radius:5px;overflow:hidden}
+  .role-name{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:10px 14px;background:var(--panel);border-bottom:1px solid var(--rule)}
+  .role-name b{font-family:var(--mono);font-size:13px;font-weight:600}
+  .role-name span{font-size:13px;color:var(--ink-2)}
+  .quad{display:grid;grid-template-columns:repeat(4,1fr)}
+  @media (max-width:720px){.quad{grid-template-columns:repeat(2,1fr)}}
+  .cell{border-right:1px solid var(--rule)}
+  .cell:last-child{border-right:0}
+  .fill{height:74px;display:flex;align-items:center;justify-content:center;font-size:13.5px;font-weight:600;text-align:center;padding:0 8px}
+  .cap{padding:7px 10px 9px;background:var(--ground)}
+  .cap .k{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);word-break:break-all}
+  .cap .h{font-family:var(--mono);font-size:11.5px;color:var(--ink-3)}
+
+  .surfaces{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:10px;margin-top:8px}
+  .sq{border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+  .sq .fill{height:52px}
+
+  .demo{margin-top:8px;border:1px solid var(--rule);border-radius:6px;overflow:hidden;background:#F9FAFB;padding:24px}
+  .card{background:#FFFFFF;border:1px solid #E4E7EC;border-radius:16px;padding:24px;box-shadow:0 1px 2px rgba(16,24,40,.05)}
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-bottom:24px}
+  .tile{background:#FFFFFF;border:1px solid #E4E7EC;border-radius:16px;padding:20px}
+  .tile .ic{width:36px;height:36px;border-radius:10px;background:#F2F4F7;display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:12px}
+  .tile .lb{font-size:13px;color:#667085;margin-bottom:2px}
+  .tile .no{font-size:24px;font-weight:600;color:#101828;line-height:1.2}
+  .dtab{width:100%;border-collapse:collapse;font-size:14px;color:#101828}
+  .dtab th{text-align:left;font-size:12px;font-weight:600;color:#667085;padding:0 16px 10px;border-bottom:1px solid #E4E7EC}
+  .dtab td{padding:12px 16px;border-bottom:1px solid #E4E7EC;height:44px}
+  .dtab tr:last-child td{border-bottom:0}
+  .pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:500;white-space:nowrap}
+  .btn{display:inline-block;padding:8px 14px;border-radius:8px;font-size:13px;font-weight:500;border:1px solid transparent}
+  .btn-p{background:#465FFF;color:#fff}
+  .btn-s{background:#fff;color:#344054;border-color:#828D9F}
+
+  .tw{overflow-x:auto;margin-top:8px;border:1px solid var(--rule);border-radius:5px}
+  table.m{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+  caption{text-align:left;padding:12px 14px;font-size:13px;color:var(--ink-2);border-bottom:1px solid var(--rule)}
+  table.m th,table.m td{padding:8px 14px;border-bottom:1px solid var(--rule-2);text-align:left;vertical-align:top}
+  table.m thead th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600;background:var(--panel);border-bottom:1px solid var(--rule)}
+  table.m tbody tr:last-child td{border-bottom:0}
+  table.m td.n,table.m th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:13px}
+  table.m td.k{font-family:var(--mono);font-size:12.5px}
+  tr.group td{background:var(--panel);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+  .v{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;font-size:13px}
+  .v i{width:9px;height:9px;border-radius:2px;flex:none}
+  .v.pass i{border:1.5px solid var(--ink-3)}
+  .v.pass{color:var(--ink-2)}
+  .v.fail i{background:var(--ink)}
+  .v.fail{color:var(--ink);font-weight:650}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+  @media (max-width:720px){.split{grid-template-columns:1fr}}
+  .box{border:1px solid var(--rule);border-radius:5px;padding:16px 18px}
+  .box h3{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+  .box ul{margin:0;padding-left:18px}
+  .box li{margin-bottom:7px;font-size:14.5px;color:var(--ink-2)}
+  .box li:last-child{margin-bottom:0}
+  .box li b{color:var(--ink);font-weight:600}
+</style>
+
+<div class="page">
+
+  <p class="eyebrow">Vòng 0 · ngôn ngữ thị giác đã ghim</p>
+  <h1>Jira Automation Admin</h1>
+  <p class="lede">Trích từ <a href="https://vue-demo.tailadmin.com/">demo TailAdmin</a> bằng cách đo trên trang chạy thật, không đọc tài liệu và không đoán từ ảnh. Ba lỗi tương phản của chính TailAdmin đã sửa; hai chỗ cố ý đi khác template.</p>
+
+  <div class="meta">
+    <span><b>13/08/2026</b></span>
+    <span>asset <b>0bb7f9a4…</b></span>
+    <span>project <b>8915115124044208786</b></span>
+    <span>đã đo <b>19/19 cặp đạt</b></span>
+  </div>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">Trông thế nào</p>
+      <h2>Thẻ trắng bo 16px trên nền xám</h2>
+      <p class="muted">Đây là ý tưởng cấu trúc duy nhất của phong cách này — không phải đổ bóng, không phải đường kẻ đậm. Khối dưới đây tô bằng đúng token đã ghim.</p>
+    </div>
+    <div class="demo">
+      <div class="tiles">
+        <div class="tile"><div class="ic">📄</div><div class="lb">Tổng số mẫu</div><div class="no">6</div></div>
+        <div class="tile"><div class="ic">✅</div><div class="lb">Đang dùng</div><div class="no">3</div></div>
+        <div class="tile"><div class="ic">✏️</div><div class="lb">Nháp</div><div class="no">2</div></div>
+        <div class="tile"><div class="ic">⚠️</div><div class="lb">Không hợp lệ</div><div class="no">1</div></div>
+      </div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;gap:12px;flex-wrap:wrap">
+          <div style="font-size:18px;font-weight:600;color:#101828">Mẫu issue của ITSUP</div>
+          <div style="display:flex;gap:8px"><span class="btn btn-s">Lọc</span><span class="btn btn-p">Tạo mẫu mới</span></div>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="dtab">
+            <thead><tr><th>Tên mẫu</th><th>Người sửa</th><th>Trạng thái</th></tr></thead>
+            <tbody>
+              <tr><td>Ghi nhận hỗ trợ đã xử lý</td><td>Phạm Việt Anh</td><td><span class="pill" style="background:#ECFDF3;color:#027A48">Đang dùng</span></td></tr>
+              <tr><td>Sự cố mạng nội bộ</td><td>Đặng Vũ Tuấn Kiệt</td><td><span class="pill" style="background:#F0F9FF;color:#026AA2">Đang đồng bộ</span></td></tr>
+              <tr><td>Bàn giao thiết bị</td><td>Trương Thị Mỹ Duyên</td><td><span class="pill" style="background:#F2F4F7;color:#344054">Nháp</span></td></tr>
+              <tr><td>Kiểm tra định kỳ máy chủ</td><td>Phạm Việt Anh</td><td><span class="pill" style="background:#FFFAEB;color:#B54708">Cần xem lại</span></td></tr>
+              <tr><td>Đề nghị mua sắm</td><td>—</td><td><span class="pill" style="background:#FEF3F2;color:#B42318">Không hợp lệ</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:14px">Dòng bảng ở đây cao <b>44px</b>, không phải 75px như demo TailAdmin. Đó là một trong hai chỗ cố ý đi khác — xem mục cuối.</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">Sáu vai trò</p>
+      <h2>Bảng màu ngữ nghĩa</h2>
+      <p class="muted">Nền <code>-container</code> giữ nguyên của TailAdmin; chữ <code>on-container</code> đẩy từ bậc 600 lên <b>700</b> để đạt AA. Nhìn không khác, đọc thì được.</p>
+    </div>
+    <div class="roles">
+
+      <div class="role">
+        <div class="role-name"><b>primary</b> <span>— hành động chính, mục điều hướng đang chọn</span></div>
+        <div class="quad">
+          <div class="cell"><div class="fill" style="background:#465FFF;color:#FFFFFF">Tạo issue</div><div class="cap"><div class="k">primary</div><div class="h">#465FFF</div></div></div>
+          <div class="cell"><div class="fill" style="background:#FFFFFF;color:#465FFF;border-bottom:1px solid #828D9F">4.84 — đạt</div><div class="cap"><div class="k">on-primary</div><div class="h">#FFFFFF</div></div></div>
+          <div class="cell"><div class="fill" style="background:#ECF3FF;color:#2A31D8">Mẫu issue</div><div class="cap"><div class="k">primary-container</div><div class="h">#ECF3FF</div></div></div>
+          <div class="cell"><div class="fill" style="background:#2A31D8;color:#ECF3FF">7.44 — đạt</div><div class="cap"><div class="k">on-primary-container</div><div class="h">#2A31D8</div></div></div>
+        </div>
+      </div>
+
+      <div class="role">
+        <div class="role-name"><b>success</b> <span>— “Hoàn tất”</span></div>
+        <div class="quad">
+          <div class="cell"><div class="fill" style="background:#027A48;color:#FFFFFF">5.41 — đạt</div><div class="cap"><div class="k">success</div><div class="h">#027A48</div></div></div>
+          <div class="cell"><div class="fill" style="background:#FFFFFF;color:#027A48;border-bottom:1px solid #828D9F">on-success</div><div class="cap"><div class="k">on-success</div><div class="h">#FFFFFF</div></div></div>
+          <div class="cell"><div class="fill" style="background:#ECFDF3;color:#027A48">Hoàn tất</div><div class="cap"><div class="k">success-container</div><div class="h">#ECFDF3</div></div></div>
+          <div class="cell"><div class="fill" style="background:#027A48;color:#ECFDF3">5.13 — đạt</div><div class="cap"><div class="k">on-success-container</div><div class="h">#027A48</div></div></div>
+        </div>
+      </div>
+
+      <div class="role">
+        <div class="role-name"><b>info</b> <span>— “Đang chạy”, chưa xong nhưng bình thường</span></div>
+        <div class="quad">
+          <div class="cell"><div class="fill" style="background:#026AA2;color:#FFFFFF">5.86 — đạt</div><div class="cap"><div class="k">info</div><div class="h">#026AA2</div></div></div>
+          <div class="cell"><div class="fill" style="background:#FFFFFF;color:#026AA2;border-bottom:1px solid #828D9F">on-info</div><div class="cap"><div class="k">on-info</div><div class="h">#FFFFFF</div></div></div>
+          <div class="cell"><div class="fill" style="background:#F0F9FF;color:#026AA2">Đang chạy</div><div class="cap"><div class="k">info-container</div><div class="h">#F0F9FF</div></div></div>
+          <div class="cell"><div class="fill" style="background:#026AA2;color:#F0F9FF">5.49 — đạt</div><div class="cap"><div class="k">on-info-container</div><div class="h">#026AA2</div></div></div>
+        </div>
+      </div>
+
+      <div class="role">
+        <div class="role-name"><b>warning</b> <span>— “Cần xem lại”, chưa hỏng nhưng phải chú ý</span></div>
+        <div class="quad">
+          <div class="cell"><div class="fill" style="background:#B54708;color:#FFFFFF">5.43 — đạt</div><div class="cap"><div class="k">warning</div><div class="h">#B54708</div></div></div>
+          <div class="cell"><div class="fill" style="background:#FFFFFF;color:#B54708;border-bottom:1px solid #828D9F">on-warning</div><div class="cap"><div class="k">on-warning</div><div class="h">#FFFFFF</div></div></div>
+          <div class="cell"><div class="fill" style="background:#FFFAEB;color:#B54708">Cần xem lại</div><div class="cap"><div class="k">warning-container</div><div class="h">#FFFAEB</div></div></div>
+          <div class="cell"><div class="fill" style="background:#B54708;color:#FFFAEB">5.20 — đạt</div><div class="cap"><div class="k">on-warning-container</div><div class="h">#B54708</div></div></div>
+        </div>
+      </div>
+
+      <div class="role">
+        <div class="role-name"><b>error</b> <span>— “Thất bại”, hỏng thật</span></div>
+        <div class="quad">
+          <div class="cell"><div class="fill" style="background:#B42318;color:#FFFFFF">6.57 — đạt</div><div class="cap"><div class="k">error</div><div class="h">#B42318</div></div></div>
+          <div class="cell"><div class="fill" style="background:#FFFFFF;color:#B42318;border-bottom:1px solid #828D9F">on-error</div><div class="cap"><div class="k">on-error</div><div class="h">#FFFFFF</div></div></div>
+          <div class="cell"><div class="fill" style="background:#FEF3F2;color:#B42318">Không hợp lệ</div><div class="cap"><div class="k">error-container</div><div class="h">#FEF3F2</div></div></div>
+          <div class="cell"><div class="fill" style="background:#B42318;color:#FEF3F2">6.05 — đạt</div><div class="cap"><div class="k">on-error-container</div><div class="h">#B42318</div></div></div>
+        </div>
+      </div>
+
+      <div class="role">
+        <div class="role-name"><b>secondary</b> <span>— hành động phụ, trạng thái trung tính</span></div>
+        <div class="quad">
+          <div class="cell"><div class="fill" style="background:#475467;color:#FFFFFF">7.69 — đạt</div><div class="cap"><div class="k">secondary</div><div class="h">#475467</div></div></div>
+          <div class="cell"><div class="fill" style="background:#FFFFFF;color:#475467;border-bottom:1px solid #828D9F">on-secondary</div><div class="cap"><div class="k">on-secondary</div><div class="h">#FFFFFF</div></div></div>
+          <div class="cell"><div class="fill" style="background:#F2F4F7;color:#344054">Nháp</div><div class="cap"><div class="k">secondary-container</div><div class="h">#F2F4F7</div></div></div>
+          <div class="cell"><div class="fill" style="background:#344054;color:#F2F4F7">9.49 — đạt</div><div class="cap"><div class="k">on-secondary-container</div><div class="h">#344054</div></div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">Nền và viền</p>
+      <h2>Bề mặt</h2>
+      <p class="muted">Chiều sâu đến từ quan hệ <em>thẻ trắng trên nền xám</em>. Viền ô nhập là chỗ TailAdmin sai và ta đã sửa.</p>
+    </div>
+    <div class="surfaces">
+      <div class="sq"><div class="fill" style="background:#F9FAFB;color:#101828;border-bottom:1px solid #E4E7EC">nền trang</div><div class="cap"><div class="k">background</div><div class="h">#F9FAFB</div></div></div>
+      <div class="sq"><div class="fill" style="background:#FFFFFF;color:#101828;border-bottom:1px solid #E4E7EC">thẻ</div><div class="cap"><div class="k">surface</div><div class="h">#FFFFFF</div></div></div>
+      <div class="sq"><div class="fill" style="background:#F2F4F7;color:#101828;border-bottom:1px solid #E4E7EC">vùng chìm</div><div class="cap"><div class="k">surface-container</div><div class="h">#F2F4F7</div></div></div>
+      <div class="sq"><div class="fill" style="background:#101828;color:#FFFFFF">chữ chính</div><div class="cap"><div class="k">on-surface</div><div class="h">#101828</div></div></div>
+      <div class="sq"><div class="fill" style="background:#667085;color:#FFFFFF">chữ phụ</div><div class="cap"><div class="k">on-surface-variant</div><div class="h">#667085</div></div></div>
+      <div class="sq"><div class="fill" style="background:#828D9F;color:#FFFFFF">3.35 — đạt</div><div class="cap"><div class="k">outline · viền ô nhập</div><div class="h">#828D9F</div></div></div>
+      <div class="sq"><div class="fill" style="background:#E4E7EC;color:#101828">viền thẻ</div><div class="cap"><div class="k">outline-variant</div><div class="h">#E4E7EC</div></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">Số đo</p>
+      <h2>Tương phản — 19/19 đạt</h2>
+      <p class="muted">Đo bằng công thức WCAG 2.x trên đúng giá trị YAML đã ghim. Không có dòng nào tự nhận.</p>
+    </div>
+    <div class="tw">
+      <table class="m">
+        <thead><tr><th>Cặp màu</th><th>Dùng ở đâu</th><th class="n">Tỉ lệ</th><th class="n">Ngưỡng</th><th>Kết quả</th></tr></thead>
+        <tbody>
+          <tr class="group"><td colspan="5">Nhãn trạng thái — dạng pill trong bảng</td></tr>
+          <tr><td class="k">on-success-c / success-c</td><td>Hoàn tất</td><td class="n">5.13</td><td class="n">4.5</td><td><span class="v pass"><i></i>đạt</span></td></tr>
+          <tr><td class="k">on-info-c / info-c</td><td>Đang chạy</td><td class="n">5.49</td><td class="n">4.5</td><td><span class="v pass"><i></i>đạt</span></td></tr>
+          <tr><td class="k">on-warning-c / warning-c</td><td>Cần xem lại</td><td class="n">5.20</td><td class="n">4.5</td><td><span class="v pass"><i></i>đạt</span></td></tr>
+          <tr><td class="k">on-error-c / error-c</td><td>Thất bại</td><td class="n">6.05</td><td class="n">4.5</td><td><span class="v pass"><i></i>đạt</span></td></tr>
+          <tr><td class="k">on-primary-c / primary-c</td><td>mục nav đang chọn</td><td class="n">7.44</td><td class="n">4.5</td><td><span class="v pass"><i></i>đạt</span></td></tr>
+          <tr><td class="k">on-secondary-c / secondary-c</td><td>Nháp</td><td class="n">9.49</td><td class="n">4.5</td><td><span class="v pass"><i></i>đạt</span></td></tr>
+
+          <tr class="group"><td colspan="5">Nút nền đặc, chữ trắng</td></tr>
+          <tr><td class="k">on-primary / primary</td><td>nút chính</td><td class="n">4.84</td><td class="n">4.5</td><td><span class="v pass"><i></i>đạt</span></td></tr>
+          <tr><td class="k">on-secondary / secondary</td><td>nút phụ đặc</td><td class="n">7.69</td><td class="n">4.5</td><td><span class="v pass"><i></i>đạt</span></td></tr>
+          <tr><td class="k">on-info / info</td><td>nút thông tin</td><td class="n">5.86</td><td class="n">4.5</td><td><span class="v pass"><i></i>đạt</span></td></tr>
+          <tr><td class="k">on-success / success</td><td>nút xác nhận</td><td class="n">5.41</td><td class="n">4.5</td><td><span class="v pass"><i></i>đạt</span></td></tr>
+          <tr><td class="k">on-warning / warning</td><td>nút cảnh báo</td><td class="n">5.43</td><td class="n">4.5</td><td><span class="v pass"><i></i>đạt</span></td></tr>
+          <tr><td class="k">on-error / error</td><td>nút xoá</td><td class="n">6.57</td><td class="n">4.5</td><td><span class="v pass"><i></i>đạt</span></td></tr>
+
+          <tr class="group"><td colspan="5">Chữ trên nền — cả ba loại nền</td></tr>
+          <tr><td class="k">on-surface / surface</td><td>chữ chính trên thẻ</td><td class="n">17.75</td><td class="n">4.5</td><td><span class="v pass"><i></i>đạt</span></td></tr>
+          <tr><td class="k">on-surface / background</td><td>chữ chính trên nền trang</td><td class="n">16.98</td><td class="n">4.5</td><td><span class="v pass"><i></i>đạt</span></td></tr>
+          <tr><td class="k">on-surface-variant / surface</td><td>chữ phụ trên thẻ</td><td class="n">4.97</td><td class="n">4.5</td><td><span class="v pass"><i></i>đạt</span></td></tr>
+          <tr><td class="k">on-surface-variant / background</td><td>chữ phụ trên nền trang</td><td class="n">4.76</td><td class="n">4.5</td><td><span class="v pass"><i></i>đạt</span></td></tr>
+          <tr><td class="k">on-surface-variant / surface-container</td><td>chữ phụ trên vùng chìm</td><td class="n">4.51</td><td class="n">4.5</td><td><span class="v pass"><i></i>sát ngưỡng</span></td></tr>
+
+          <tr class="group"><td colspan="5">Viền điều khiển — WCAG 2.2 §1.4.11, ngưỡng 3:1</td></tr>
+          <tr><td class="k">outline / surface</td><td>viền ô nhập trên thẻ</td><td class="n">3.35</td><td class="n">3</td><td><span class="v pass"><i></i>đạt</span></td></tr>
+          <tr><td class="k">outline / background</td><td>viền ô nhập trên nền trang</td><td class="n">3.21</td><td class="n">3</td><td><span class="v pass"><i></i>đạt</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">So với nguồn</p>
+      <h2>TailAdmin sai ở đâu, và ta cố ý khác ở đâu</h2>
+      <p class="muted">Đo trên demo thật bằng Playwright ở bốn mức rộng. Sáu cặp màu của chính họ không đạt AA.</p>
+    </div>
+    <div class="split">
+      <div class="box">
+        <h3>Đã sửa — bất biến a11y</h3>
+        <ul>
+          <li><b>Nhãn trạng thái</b> dùng chữ bậc 600 trên nền bậc 50: success <b>3.54</b>, warning <b>3.34</b>, info <b>3.75</b>, error <b>4.44</b> — cả bốn trượt. Đẩy chữ lên bậc <b>700</b> → 5.13–6.05, nhìn không khác</li>
+          <li><b>Viền ô nhập</b> <code>gray-300</code> đo <b>1.47:1</b> — đúng y hệt lỗi ta vừa sửa ở vòng trước. Vẻ nhẹ nhàng của dòng template này một phần đến từ viền gần như vô hình. Thay bằng <code>#828D9F</code></li>
+          <li><b>Chữ phụ</b> <code>gray-400</code> đo <b>2.58:1</b> — dùng <code>gray-500 #667085</code> (4.97) thay thế</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>Cố ý khác — quyết định của người</h3>
+        <ul>
+          <li><b>Dòng bảng 44px, chữ 14px</b> thay vì 75px và 16px. Ở 900px chiều cao: <b>12 dòng</b> thay vì 7. Sản phẩm này là công cụ bảng, dòng chính là công việc</li>
+          <li><b>Thanh trên chỉ có nút đổi sáng/tối và avatar.</b> Bỏ ô tìm kiếm toàn cục và chuông thông báo — hai thứ kéo theo yêu cầu mới mà chưa FR nào đòi</li>
+          <li><b>Giữ lại</b> nguyên vẹn: thẻ bo 16px, nền xám, pill, icon ở mọi mục nav, đệm thẻ 24px, chữ Outfit</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">Ngoài màu</p>
+      <h2>Chữ và hình dạng</h2>
+    </div>
+    <div class="tw">
+      <table class="m">
+        <thead><tr><th>Cấp</th><th class="n">Cỡ / dòng</th><th class="n">Đậm</th><th>Ghi chú</th></tr></thead>
+        <tbody>
+          <tr><td class="k">headline-lg</td><td class="n">24 / 32</td><td class="n">600</td><td></td></tr>
+          <tr><td class="k">headline-md</td><td class="n">20 / 28</td><td class="n">600</td><td>tiêu đề thẻ</td></tr>
+          <tr><td class="k">headline-sm</td><td class="n">16 / 24</td><td class="n">600</td><td></td></tr>
+          <tr><td class="k">body-md</td><td class="n">14 / 22</td><td class="n">400</td><td>ô bảng — dòng cao 1.57 để dấu tiếng Việt không chạm nhau</td></tr>
+          <tr><td class="k">body-sm</td><td class="n">12 / 18</td><td class="n">400</td><td>nhãn pill</td></tr>
+          <tr><td class="k">label-md</td><td class="n">13 / 18</td><td class="n">500</td><td>nhãn biểu mẫu</td></tr>
+          <tr><td class="k">code</td><td class="n">13 / 20</td><td class="n">400</td><td>JetBrains Mono — mã issue, dấu thời gian</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted" style="margin-top:14px">Chữ <b>Outfit</b> — đo được ở 605/606 phần tử của demo. Bo góc: <b>thẻ 16px</b> (chữ ký của phong cách, không giảm) · nút và ô nhập 8px · pill và avatar bo tròn hết · ô bảng 0px. Thanh bên 280px, trắng, icon ở mọi mục, mục đang chọn là khối bo tròn nền <code>primary-container</code>.</p>
+  </section>
+
+</div>

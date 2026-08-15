@@ -1,0 +1,37 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Bo góc. Phong cách Atlassian: gần như vuông. Bo góc lớn làm giao diện mềm và tốn diện tích thị giác — ngược với mục tiêu mật độ cao của công cụ nội bộ.",
+  "$extensions": {
+    "styleDecision": "J1 — Atlassian/Jira (2026-08-10). Trước đó là Material 3 với thang 4–28px.",
+    "rule": "Toàn hệ thống chỉ dùng 3 giá trị: 3px cho hầu hết, 6px cho lớp nổi, tròn hoàn toàn cho avatar."
+  },
+
+  "radius": {
+    "none": { "$type": "dimension", "$value": "0" },
+    "xs":   { "$type": "dimension", "$value": "3px", "$description": "Mặc định — ô nhập, nút, thẻ, chip, ô bảng, mục điều hướng." },
+    "sm":   { "$type": "dimension", "$value": "3px", "$description": "Giữ tên để tương thích; cùng giá trị với xs." },
+    "md":   { "$type": "dimension", "$value": "4px" },
+    "lg":   { "$type": "dimension", "$value": "6px", "$description": "Lớp nổi — menu, popover, hộp thoại." },
+    "xl":   { "$type": "dimension", "$value": "6px" },
+    "full": { "$type": "dimension", "$value": "9999px", "$description": "CHỈ dùng cho avatar và huy hiệu đếm số." }
+  },
+
+  "semantic": {
+    "input":    { "$type": "dimension", "$value": "{radius.xs}" },
+    "card":     { "$type": "dimension", "$value": "{radius.xs}" },
+    "banner":   { "$type": "dimension", "$value": "{radius.xs}" },
+    "dialog":   { "$type": "dimension", "$value": "{radius.lg}" },
+    "button":   { "$type": "dimension", "$value": "{radius.xs}", "$description": "KHÔNG dùng nút dạng viên — đó là ngôn ngữ Material, không phải Atlassian." },
+    "chip":     { "$type": "dimension", "$value": "{radius.xs}" },
+    "nav-item": { "$type": "dimension", "$value": "{radius.xs}" },
+    "avatar":   { "$type": "dimension", "$value": "{radius.full}" }
+  },
+
+  "rules": {
+    "$description": "Ràng buộc UI Eval kiểm được",
+    "allowedValues": ["0", "3px", "4px", "6px", "9999px"],
+    "fullRoundOnlyFor": ["avatar", "count-badge"],
+    "nestedMustBeSmaller": true,
+    "allowArbitraryValues": false
+  }
+}

@@ -1,0 +1,21 @@
+# ── BÍ MẬT — không bao giờ commit ────────────────────────────────────────
+# .mcp.json chứa API key của Stitch. Cấu trúc cấu hình được lưu ở
+# .mcp.json.example (không có khoá) để người khác biết cần khai gì.
+.mcp.json
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# ── Phụ thuộc & bản build ────────────────────────────────────────────────
+node_modules/
+dist/
+.vite/
+*.tsbuildinfo
+
+# ── Hệ điều hành / IDE ───────────────────────────────────────────────────
+Thumbs.db
+.DS_Store
+*.log
+npm-debug.log*
